@@ -98,7 +98,7 @@ public class Crouch : MonoBehaviour
                 if (colliderToLower)
                 {
                     colliderToLower.height = defaultColliderHeight.Value;
-                    colliderToLower.center = Vector3.up * colliderToLower.height * .5f;
+                    colliderToLower.center = Vector3.up * colliderToLower.height * .1f;
                 }
 
                 // Reset IsCrouched.
