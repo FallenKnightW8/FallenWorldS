@@ -4,6 +4,7 @@ public class Jump : MonoBehaviour
 {
     Rigidbody rigidbody;
     public float jumpStrength = 2;
+    private Vector3 Velocity;
     public event System.Action Jumped;
 
     [SerializeField, Tooltip("Prevents jumping when the transform is in mid-air.")]
@@ -30,5 +31,10 @@ public class Jump : MonoBehaviour
             rigidbody.AddForce(Vector3.up * 100 * jumpStrength);
             Jumped?.Invoke();
         }
+      /*  if (groundCheck || groundCheck.isGrounded)
+        {
+          Rigidbody.AddForce(Vector3.down *10);
+        }
+        */
     }
 }
