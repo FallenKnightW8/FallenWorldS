@@ -4,6 +4,9 @@ using UnityEngine.AI;
 
 public class EnemyAiTutorial : MonoBehaviour
 {
+    public GameObject Health;
+    public float Distance;
+
     public NavMeshAgent agent;
 
     public Transform player;
@@ -82,12 +85,21 @@ public class EnemyAiTutorial : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            ///Attack code here
+/*        ///Attack code here
             Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            rb.AddForce(transform.forward * 250f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 4f, ForceMode.Impulse);
             ///End of attack code
-
+*/
+            Ray ray = new Ray(transform.position, transform.forward);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, Distance))
+            {
+              if (hit.collider.GetComponent<Health>())
+              {
+//                currentHealth -= 15;
+              }
+          }
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }

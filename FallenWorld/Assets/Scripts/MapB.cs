@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class Vremenno : MonoBehaviour
+public class MapB : MonoBehaviour
 {
-  private void OnTriggerEnter(Collider Other)
+  public GameObject Mapb;
+  public void cancell()
+  {
+    Mapb.SetActive(false);
+  }
+  public void FMission()
   {
     SceneManager.LoadScene("FmisiionShop");
   }

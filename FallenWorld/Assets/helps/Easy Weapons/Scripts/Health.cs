@@ -8,14 +8,16 @@
 
 using UnityEngine;
 using System.Collections;
-
 public class Health : MonoBehaviour
 {
+	public GameObject DeadC;
+	public GameObject Dead;
+
 	public bool canDie = true;					// Whether or not this health can die
-	
+
 	public float startingHealth = 100.0f;		// The amount of health to start with
 	public float maxHealth = 100.0f;			// The maximum amount of health
-	private float currentHealth;				// The current ammount of health
+	public float currentHealth;				// The current ammount of health
 
 	public bool replaceWhenDead = false;		// Whether or not a dead replacement should be instantiated.  (Useful for breaking/shattering/exploding effects)
 	public GameObject deadReplacement;			// The prefab to instantiate when this GameObject dies
@@ -26,12 +28,17 @@ public class Health : MonoBehaviour
 	public GameObject deathCam;					// The camera to activate when the player dies
 
 	private bool dead = false;					// Used to make sure the Die() function isn't called twice
-
 	// Use this for initialization
 	void Start()
 	{
 		// Initialize the currentHealth variable to the value specified by the user in startingHealth
 		currentHealth = startingHealth;
+	}
+
+	void Update()
+	{
+		if (currentHealth <= 0 && !dead && canDie)
+			Die();
 	}
 
 	public void ChangeHealth(float amount)
@@ -48,11 +55,17 @@ public class Health : MonoBehaviour
 			currentHealth = maxHealth;
 	}
 
+	public void OnTriggerEnter(Collider TR)
+	{
+		currentHealth -= 5;
+	}
+
+
 	public void Die()
 	{
 		// This GameObject is officially dead.  This is used to make sure the Die() function isn't called again
 		dead = true;
-
+		Destroy(gameObject);
 		// Make death effects
 		if (replaceWhenDead)
 			Instantiate(deadReplacement, transform.position, transform.rotation);
@@ -60,8 +73,10 @@ public class Health : MonoBehaviour
 			Instantiate(explosion, transform.position, transform.rotation);
 
 		if (isPlayer && deathCam != null)
+			Time.timeScale = 0f;
+			DeadC.SetActive(true);
 			deathCam.SetActive(true);
-
+			Cursor.lockState = CursorLockMode.None;
 		// Remove this GameObject from the scene
 		Destroy(gameObject);
 	}

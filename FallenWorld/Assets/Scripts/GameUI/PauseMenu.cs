@@ -46,6 +46,7 @@ public class PauseMenu : MonoBehaviour
     public void CancellMision()
     {
       SceneManager.LoadScene("PlayerBase");
+      Time.timeScale = 1f;
     }
 
     public void ExitPressed()
