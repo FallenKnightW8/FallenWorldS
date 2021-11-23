@@ -53,6 +53,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa35b3c8200736468e59f5a9be5f39f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Hp: {fileID: 0}
+  Distance: 100
+  Damage: 10
   agent: {fileID: 1205829657}
   player: {fileID: 0}
   whatIsGround:
@@ -109,7 +112,7 @@ PrefabInstance:
     - target: {fileID: 1380913499838862408, guid: 12274a07b6d5cfd499bc1efbdd5a9f01,
         type: 3}
       propertyPath: m_Name
-      value: TEnemy Variant
+      value: TEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 1380913499838862408, guid: 12274a07b6d5cfd499bc1efbdd5a9f01,
         type: 3}

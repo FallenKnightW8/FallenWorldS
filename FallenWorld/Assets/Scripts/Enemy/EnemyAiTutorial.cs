@@ -4,8 +4,9 @@ using UnityEngine.AI;
 
 public class EnemyAiTutorial : MonoBehaviour
 {
-    public GameObject Health;
+    public Health Hp;
     public float Distance;
+    public int Damage;
 
     public NavMeshAgent agent;
 
@@ -95,8 +96,9 @@ public class EnemyAiTutorial : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Distance))
             {
-              if (hit.collider.GetComponent<Health>())
+              if (hit.collider.GetComponent<Take>())
               {
+                Hp.currentHealth -= Damage;
 //                currentHealth -= 15;
               }
           }

@@ -1966,7 +1966,7 @@ PrefabInstance:
       objectReference: {fileID: 739535345}
     - target: {fileID: 11423680, guid: f92ed867cffe5cc4c9e6ae62e180f5ea, type: 3}
       propertyPath: maxHealth
-      value: 1
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 11423680, guid: f92ed867cffe5cc4c9e6ae62e180f5ea, type: 3}
       propertyPath: currentHealth
@@ -1974,7 +1974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11423680, guid: f92ed867cffe5cc4c9e6ae62e180f5ea, type: 3}
       propertyPath: startingHealth
-      value: 1
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f92ed867cffe5cc4c9e6ae62e180f5ea, type: 3}
@@ -1984,6 +1984,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1851070116}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1851070118 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 11423680, guid: f92ed867cffe5cc4c9e6ae62e180f5ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 1851070116}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851070117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e1876ddae4a1046b64b5dd5c293c0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1990808031
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,6 +2221,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1205829658, guid: 655c6544b5ef1c541b76b06d585a7536, type: 3}
+      propertyPath: Hp
+      value: 
+      objectReference: {fileID: 1851070118}
+    - target: {fileID: 1205829658, guid: 655c6544b5ef1c541b76b06d585a7536, type: 3}
+      propertyPath: Damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1205829658, guid: 655c6544b5ef1c541b76b06d585a7536, type: 3}
       propertyPath: Health
       value: 
       objectReference: {fileID: 1851070117}
@@ -2216,6 +2236,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 808533353}
+    - target: {fileID: 1205829658, guid: 655c6544b5ef1c541b76b06d585a7536, type: 3}
+      propertyPath: Distance
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1205829658, guid: 655c6544b5ef1c541b76b06d585a7536, type: 3}
       propertyPath: projectile
       value: 
