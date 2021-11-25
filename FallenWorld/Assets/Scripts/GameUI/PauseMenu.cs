@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviour
       Cursor.lockState = CursorLockMode.None;
       PauseUI.SetActive(true);
       Weapon.SetActive(false);
-      //GameUI.SetActive(false);
+      Cursor.visible = true;
       Time.timeScale = 0f;
     }
 
@@ -38,7 +38,7 @@ public class PauseMenu : MonoBehaviour
     {
       Cursor.lockState = CursorLockMode.Locked;
       PauseUI.SetActive(false);
-      //GameUI.SetActive(true);
+      Cursor.visible = false;
       Weapon.SetActive(true);
       Time.timeScale = 1f;
     }

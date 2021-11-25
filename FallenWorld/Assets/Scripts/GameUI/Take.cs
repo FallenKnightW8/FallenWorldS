@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Take : MonoBehaviour
 {
@@ -8,7 +9,10 @@ public class Take : MonoBehaviour
   public GameObject TXT;
   public Item Point;
   public int Points;
-//  public Text SC;
+  public Text Sc;
+  private int Tpoint;
+  public run Chek;
+
     void Update()
     {
       Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
@@ -21,10 +25,12 @@ public class Take : MonoBehaviour
             if (Input.GetKeyDown(takeButton))
             {
               Point.point();
+              Tpoint = Points + Tpoint;
               Destroy(hit.collider.GetComponent<Item>().gameObject);
               TXT.SetActive(false);
-//              SC.text = "0" + Points.ToString();
-
+              SCore();
+              Points = 0;
+              Chek.point = Tpoint;
           }
         }
       }
@@ -32,18 +38,9 @@ public class Take : MonoBehaviour
       {
         TXT.SetActive(false);
       }
-/*      if (Input.GetKeyDown(takeButton))
-      {
-        Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 2f))
-        {
-          if (hit.collider.GetComponent<Item>())
-          {
-            Destroy(hit.collider.GetComponent<Item>().gameObject);
-          }
-        }
-      }*/
-
+    }
+    public void SCore()
+    {
+      Sc.text = Tpoint.ToString();
     }
 }

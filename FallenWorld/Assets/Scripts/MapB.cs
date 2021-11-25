@@ -8,6 +8,8 @@ public class MapB : MonoBehaviour
   public void cancell()
   {
     Mapb.SetActive(false);
+    Cursor.visible = false;
+    Cursor.lockState = CursorLockMode.Locked;
   }
   public void FMission()
   {

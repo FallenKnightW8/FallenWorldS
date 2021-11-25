@@ -19,6 +19,8 @@ public class PlayerMapBase : MonoBehaviour
               TXT.SetActive(true);
               if (Input.GetKeyDown(JobButton))
               {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 MapB.SetActive(true);
                 TXT.SetActive(false);
             }

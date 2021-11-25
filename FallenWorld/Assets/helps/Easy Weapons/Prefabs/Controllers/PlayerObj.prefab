@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 11400002}
   - component: {fileID: 11423680}
   m_Layer: 9
-  m_Name: EW-SAI-D-FPS_CHARACTER
+  m_Name: PlayerObj
   m_TagString: Team2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,6 +205,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   takeButton: 0
   TXT: {fileID: 0}
+  Point: {fileID: 0}
+  Points: 0
+  Sc: {fileID: 0}
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -352,9 +355,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e1876ddae4a1046b64b5dd5c293c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeadC: {fileID: 0}
+  Dead: {fileID: 0}
   canDie: 1
   startingHealth: 150
   maxHealth: 100
+  currentHealth: 0
   replaceWhenDead: 0
   deadReplacement: {fileID: 0}
   makeExplosion: 0
