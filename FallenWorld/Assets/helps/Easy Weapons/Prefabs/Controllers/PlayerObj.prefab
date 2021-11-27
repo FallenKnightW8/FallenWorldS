@@ -208,6 +208,7 @@ MonoBehaviour:
   Point: {fileID: 0}
   Points: 0
   Sc: {fileID: 0}
+  Chek: {fileID: 0}
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -355,6 +356,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e1876ddae4a1046b64b5dd5c293c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HpBar: {fileID: 0}
+  fill: 0
+  CountHP: {fileID: 0}
   DeadC: {fileID: 0}
   Dead: {fileID: 0}
   canDie: 1

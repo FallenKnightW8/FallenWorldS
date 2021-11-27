@@ -8,8 +8,13 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
+	public Image HpBar;
+	public float fill;
+	public Text CountHP;
+
 	public GameObject DeadC;
 	public GameObject Dead;
 
@@ -33,12 +38,16 @@ public class Health : MonoBehaviour
 	{
 		// Initialize the currentHealth variable to the value specified by the user in startingHealth
 		currentHealth = startingHealth;
+		fill = 1f;
 	}
 
 	void Update()
 	{
 		if (currentHealth <= 0 && !dead && canDie)
 			Die();
+			HpBar.fillAmount = fill;
+			fill = (currentHealth/100);
+			CountHP.text = currentHealth.ToString();
 	}
 
 	public void ChangeHealth(float amount)
