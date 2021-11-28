@@ -3920,7 +3920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb66f17e54f60e49b0c3a6664754fcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JobButton: 102
+  JobButton: 101
   TXT: {fileID: 1171104448}
   MapB: {fileID: 663568737}
 --- !u!1 &1171104448
@@ -3993,7 +3993,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press F to take
+  m_Text: Press E to take
 --- !u!222 &1171104451
 CanvasRenderer:
   m_ObjectHideFlags: 0
