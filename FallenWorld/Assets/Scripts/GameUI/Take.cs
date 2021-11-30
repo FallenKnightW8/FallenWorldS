@@ -10,8 +10,17 @@ public class Take : MonoBehaviour
   public Item Point;
   public int Points;
   public Text Sc;
-  private int Tpoint;
+  public int Tpoint;
   public run Chek;
+
+  void start()
+  {
+    if (PlayerPrefs.HasKey("Points"))
+    {
+      Tpoint = PlayerPrefs.GetInt("Points");
+    }
+  }
+
 
     void Update()
     {
@@ -31,6 +40,7 @@ public class Take : MonoBehaviour
               SCore();
               Points = 0;
               Chek.point = Tpoint;
+              PlayerPrefs.SetInt("Points", Tpoint);
           }
         }
       }
