@@ -7,6 +7,14 @@ public class Shop : MonoBehaviour
 {
   public GameObject Shops;
   public Take Mpoints;
+  public int Tpoint;
+  void Update()
+  {
+    if (PlayerPrefs.HasKey("Points"))
+    {
+      Tpoint = PlayerPrefs.GetInt("Points");
+    }
+  }
 
   public void cancell()
   {
@@ -17,8 +25,9 @@ public class Shop : MonoBehaviour
 
   public void bull1()
 {
-  if (Mpoints.Tpoint>= 1000)
-    Mpoints.Tpoint -= 1000;
+  if (Tpoint>= 1000)
+    Tpoint -= 1000;
+    PlayerPrefs.SetInt("Points", Tpoint);
 }
 
 }

@@ -37,6 +37,7 @@ public class PlayerMapBase : MonoBehaviour
 
       public void shop()
       {
+        TXT.SetActive(true);
         if (Input.GetKeyDown(JobButton))
         {
           Shops.SetActive(true);

@@ -13,17 +13,13 @@ public class Take : MonoBehaviour
   public int Tpoint;
   public run Chek;
 
-  void start()
-  {
-    if (PlayerPrefs.HasKey("Points"))
-    {
-      Tpoint = PlayerPrefs.GetInt("Points");
-    }
-  }
-
 
     void Update()
     {
+      if (PlayerPrefs.HasKey("Points"))
+      {
+        Tpoint = PlayerPrefs.GetInt("Points");
+      }
       Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
       RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 2f))

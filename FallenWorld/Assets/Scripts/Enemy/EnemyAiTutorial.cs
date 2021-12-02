@@ -14,8 +14,6 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
-    public float health;
-
     //Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -29,7 +27,7 @@ public class EnemyAiTutorial : MonoBehaviour
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
-
+    public bool FreandInSightRange, FreandInAttackRange;
     private void Awake()
     {
         player = GameObject.Find("PlayerObj").transform;
@@ -93,7 +91,6 @@ public class EnemyAiTutorial : MonoBehaviour
               if (hit.collider.GetComponent<Take>())
               {
                 Hp.currentHealth -= Damage;
-//                currentHealth -= 15;
               }
           }
             alreadyAttacked = true;
@@ -104,16 +101,4 @@ public class EnemyAiTutorial : MonoBehaviour
     {
         alreadyAttacked = false;
     }
-
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
-    }
-    private void DestroyEnemy()
-    {
-        Destroy(gameObject);
-    }
-
 }
