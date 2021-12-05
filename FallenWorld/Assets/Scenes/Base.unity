@@ -6265,8 +6265,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 16.19209, y: 17.2129, z: 4.1074524}
-  m_Center: {x: -0.12404823, y: 8.106448, z: 1.5537262}
+  m_Size: {x: 16.19209, y: 17.2129, z: 5.479004}
+  m_Center: {x: -0.12404823, y: 8.106448, z: 2.239502}
 --- !u!1001 &501946220
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13274,7 +13274,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1063346192}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba7ade45d4a194745bb00e839221169a, type: 3}
+  m_Script: {fileID: 11500000, guid: c3ac70a7920eb4b409f56142a9ae2193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!65 &1063346194
@@ -28328,11 +28328,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: f92ed867cffe5cc4c9e6ae62e180f5ea, type: 3}
       propertyPath: jumpLandMove
-      value: 1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: f92ed867cffe5cc4c9e6ae62e180f5ea, type: 3}
       propertyPath: jumpLandTilt
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11400008, guid: f92ed867cffe5cc4c9e6ae62e180f5ea, type: 3}
       propertyPath: weapons.Array.size

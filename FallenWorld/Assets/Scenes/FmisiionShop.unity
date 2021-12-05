@@ -7334,7 +7334,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ba3d2ed7446764ba686f0abbeaf137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Points: 0
 --- !u!4 &149942111
 Transform:
   m_ObjectHideFlags: 0
@@ -24238,7 +24237,6 @@ MonoBehaviour:
   PauseUI: {fileID: 1513040166}
   isPaused: 0
   Weapon: {fileID: 1842080813}
-  Points: 0
 --- !u!114 &567485962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24251,7 +24249,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ba3d2ed7446764ba686f0abbeaf137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Points: 0
 --- !u!1 &567664420
 GameObject:
   m_ObjectHideFlags: 0
@@ -66592,7 +66589,6 @@ MonoBehaviour:
   PauseUI: {fileID: 913044594}
   isPaused: 0
   Weapon: {fileID: 1842080813}
-  Points: 0
 --- !u!4 &1681149444
 Transform:
   m_ObjectHideFlags: 0
@@ -75644,6 +75640,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 688683214}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1912978394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912978392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a7902843e41724c9a578333750312d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Count: 1
+  HealButton: 113
+  HealHp: 50
+  Hp: {fileID: 688683215}
 --- !u!114 &1912978400 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3205621762906641799, guid: f92ed867cffe5cc4c9e6ae62e180f5ea,
