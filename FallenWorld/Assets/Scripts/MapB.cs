@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 public class MapB : MonoBehaviour
 {
   public GameObject Mapb;
+  public GameObject Shop;
+  public int Mission;
   public void cancell()
   {
     Mapb.SetActive(false);
@@ -13,7 +15,10 @@ public class MapB : MonoBehaviour
   }
   public void FMission()
   {
-    SceneManager.LoadScene("FmisiionShop");
+      Mission = 0;
+      PlayerPrefs.SetInt("Mission", Mission);
+      SceneManager.LoadScene("reading");
+//    SceneManager.LoadScene("FmisiionShop");
   }
 
 }

@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/PlayerBase.unity
     guid: cbb553bdbe5cf4943a47f1c4b1f3da14
   - enabled: 1
+    path: Assets/Scenes/reading.unity
+    guid: ea4800a2bae45cc49a4f6ccdf03ddaa3
+  - enabled: 1
     path: Assets/Scenes/FmisiionShop.unity
     guid: da9af5c085afff345b6538db2c91a6d6
   m_configObjects:

@@ -749,6 +749,12 @@ Transform:
   m_Father: {fileID: 1130420311}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &637169858 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: f92ed867cffe5cc4c9e6ae62e180f5ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 1851070116}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &685618612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,12 +1428,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1205829651 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3493069742144268668, guid: 655c6544b5ef1c541b76b06d585a7536,
-    type: 3}
-  m_PrefabInstance: {fileID: 3493069741066758511}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1205829658 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3493069742144268667, guid: 655c6544b5ef1c541b76b06d585a7536,
@@ -1463,7 +1463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ac83bf5081fdf40ba980b4f58a0be8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabToSpawn: {fileID: 1205829651}
+  prefabToSpawn: {fileID: 637169858}
   spawnFrequency: 6
   spawnOnStart: 0
   move: 0
@@ -2199,7 +2199,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1851070116}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 637169858}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11e1876ddae4a1046b64b5dd5c293c0f, type: 3}
