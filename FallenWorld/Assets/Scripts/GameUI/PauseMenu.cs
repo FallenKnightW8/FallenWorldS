@@ -9,11 +9,12 @@ public class PauseMenu : MonoBehaviour
   //public GameObject  GameUI;
   public bool isPaused = false;
   public GameObject Weapon;
-
+  private int Points;
 
     void Start()
     {
       PauseUI = transform.GetChild(0).gameObject;
+      Points = PlayerPrefs.GetInt("Points");
     }
 
     void Update()
@@ -37,20 +38,22 @@ public class PauseMenu : MonoBehaviour
     public void ResumeGame()
     {
       Cursor.lockState = CursorLockMode.Locked;
+      Time.timeScale = 1f;
       PauseUI.SetActive(false);
       Cursor.visible = false;
       Weapon.SetActive(true);
-      Time.timeScale = 1f;
     }
 
     public void CancellMision()
     {
+      PlayerPrefs.SetInt("Points", Points);
       SceneManager.LoadScene("PlayerBase");
       Time.timeScale = 1f;
     }
 
     public void ExitPressed()
         {
+          PlayerPrefs.SetInt("Points", Points);
           Application.Quit();
           Debug.Log("Exit pressed!");
         }

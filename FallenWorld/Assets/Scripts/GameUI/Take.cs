@@ -16,6 +16,7 @@ public class Take : MonoBehaviour
 
     void Update()
     {
+      SCore();
       if (PlayerPrefs.HasKey("Points"))
       {
         Tpoint = PlayerPrefs.GetInt("Points");

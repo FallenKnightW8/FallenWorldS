@@ -25,8 +25,9 @@ public class Shop : MonoBehaviour
 
   public void bull1()
 {
-  if (Tpoint>= 1000)
-    Tpoint -= 1000;
+  if (Tpoint>= 0)
+    Tpoint -= 0;
+    PlayerPrefs.SetInt("BuyedWeapon", 1);
     PlayerPrefs.SetInt("Points", Tpoint);
 }
 

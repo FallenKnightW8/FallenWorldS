@@ -7334,6 +7334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ba3d2ed7446764ba686f0abbeaf137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Points: 0
 --- !u!4 &149942111
 Transform:
   m_ObjectHideFlags: 0
@@ -10512,8 +10513,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 31.990723, y: 26.375017, z: 8.674557}
-  m_Center: {x: -0.06756973, y: 12.687509, z: 3.8372784}
+  m_Size: {x: 31.990723, y: 26.375017, z: 9.056252}
+  m_Center: {x: -0.06756973, y: 12.687509, z: 4.028126}
 --- !u!1001 &228943960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24237,6 +24238,7 @@ MonoBehaviour:
   PauseUI: {fileID: 1513040166}
   isPaused: 0
   Weapon: {fileID: 1842080813}
+  Points: 0
 --- !u!114 &567485962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24249,6 +24251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ba3d2ed7446764ba686f0abbeaf137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Points: 0
 --- !u!1 &567664420
 GameObject:
   m_ObjectHideFlags: 0
@@ -26246,7 +26249,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5471e7a0247f30847a8901cf210e8488,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.784969
+      value: -10.878
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5471e7a0247f30847a8901cf210e8488,
         type: 3}
@@ -66589,6 +66592,7 @@ MonoBehaviour:
   PauseUI: {fileID: 913044594}
   isPaused: 0
   Weapon: {fileID: 1842080813}
+  Points: 0
 --- !u!4 &1681149444
 Transform:
   m_ObjectHideFlags: 0
@@ -74261,8 +74265,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.957899, y: 32.524464, z: 24.149761}
-  m_Center: {x: -0.013035774, y: 15.762232, z: -0.04305458}
+  m_Size: {x: 12.218041, y: 32.524464, z: 24.149761}
+  m_Center: {x: -0.64310694, y: 15.762232, z: -0.04305458}
 --- !u!1 &1892919294
 GameObject:
   m_ObjectHideFlags: 0

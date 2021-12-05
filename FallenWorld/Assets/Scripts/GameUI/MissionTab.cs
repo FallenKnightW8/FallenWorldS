@@ -6,17 +6,26 @@ public class MissionTab : MonoBehaviour
 {
   public GameObject MissionUI;
   public GameObject Weapon;
+  private int TabHaspred;
 
     void Update()
     {
       if (Input.GetKeyDown(KeyCode.Tab))
       {
-        MissionCanv();
+        if (TabHaspred == 0)
+        {
+          MissionCanv();
+        }
+        else
+        {
+          ResumeGame();
+        }
       }
     }
 
     public void MissionCanv()
     {
+      TabHaspred = 1;
       MissionUI.SetActive(true);
       Time.timeScale = 0f;
       Weapon.SetActive(false);
@@ -26,6 +35,7 @@ public class MissionTab : MonoBehaviour
 
     public void ResumeGame()
     {
+      TabHaspred = 0;
       Cursor.lockState = CursorLockMode.Locked;
       Weapon.SetActive(true);
       Cursor.visible = false;
