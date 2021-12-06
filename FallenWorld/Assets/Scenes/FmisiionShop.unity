@@ -75736,7 +75736,7 @@ MonoBehaviour:
   HealButton: 113
   HealHp: 50
   Hp: {fileID: 688683215}
-  CountC: {fileID: 0}
+  CountC: {fileID: 695466028}
 --- !u!114 &1912978400 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3205621762906641799, guid: f92ed867cffe5cc4c9e6ae62e180f5ea,
