@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FirstAid : MonoBehaviour
 {
@@ -8,9 +9,16 @@ public class FirstAid : MonoBehaviour
   public KeyCode HealButton;
   public int HealHp;
   public Health Hp;
+  public Text CountC;
 
+void Start()
+{
+  HealHp = PlayerPrefs.GetInt("AidHP");
+  Count = PlayerPrefs.GetInt("CountAid");
+}
     void Update()
     {
+      Show();
       if (Input.GetKeyDown(HealButton))
       {
         Heal();
@@ -23,5 +31,8 @@ public class FirstAid : MonoBehaviour
         Hp.currentHealth += HealHp;
       }
     }
-
+    public void Show()
+    {
+      CountC.text = Count.ToString();
+    }
 }

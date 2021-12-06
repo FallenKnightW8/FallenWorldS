@@ -30,5 +30,9 @@ public class Shop : MonoBehaviour
     PlayerPrefs.SetInt("BuyedWeapon", 1);
     PlayerPrefs.SetInt("Points", Tpoint);
 }
-
+  public void Coop1()
+  {
+    PlayerPrefs.SetInt("CountsAid", 1);
+    PlayerPrefs.SetInt("AidHP", 25);
+  }
 }
