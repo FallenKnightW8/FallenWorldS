@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 public class EnemyAiTutorial : MonoBehaviour
 {
+    public GameObject FR;
     public Health Hp;
     public float Distance;
     public int Damage;
@@ -84,6 +85,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
         if (!alreadyAttacked)
         {
+            FR.SetActive(true);
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Distance))
@@ -99,6 +101,7 @@ public class EnemyAiTutorial : MonoBehaviour
     }
     private void ResetAttack()
     {
+        FR.SetActive(false);
         alreadyAttacked = false;
     }
 }
