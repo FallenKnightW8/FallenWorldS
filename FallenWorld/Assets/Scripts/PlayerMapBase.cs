@@ -23,7 +23,7 @@ public class PlayerMapBase : MonoBehaviour
             {
               Map();
             }
-          else if (hit.collider.GetComponent<shop1>())
+          else if (hit.collider.GetComponent<PCSHOP>())
           {
             shop();
           }
