@@ -14,7 +14,7 @@ public class FirstAid : MonoBehaviour
 void Start()
 {
   HealHp = PlayerPrefs.GetInt("AidHP");
-  Count = PlayerPrefs.GetInt("CountAid");
+  Count = PlayerPrefs.GetInt("CountsAid");
 }
     void Update()
     {
