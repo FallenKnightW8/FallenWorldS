@@ -6331,7 +6331,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 31973233f6c86ff47be83838869a18e7,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: 31973233f6c86ff47be83838869a18e7,
         type: 3}
@@ -6435,7 +6435,7 @@ MonoBehaviour:
   makeMuzzleEffects: 1
   muzzleEffects:
   - {fileID: 100002, guid: e840492206edf364baccc15150e2cc63, type: 3}
-  muzzleEffectsPosition: {fileID: 0}
+  muzzleEffectsPosition: {fileID: 1307092748}
   makeHitEffects: 1
   hitEffects:
   - {fileID: 100002, guid: 0c631565793959f47a2464ec266aca7c, type: 3}
@@ -51353,7 +51353,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1307092747}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 1.23, y: 1.77, z: 6.58}
+  m_LocalPosition: {x: 1.23, y: 1.77, z: 6.54}
   m_LocalScale: {x: 9, y: 9, z: 9}
   m_Children: []
   m_Father: {fileID: 121639057}
@@ -84250,12 +84250,17 @@ PrefabInstance:
     - target: {fileID: 1680082402794608394, guid: f18716ccefdf2434aa6bb0490c0bc5a9,
         type: 3}
       propertyPath: BuyedWeapon
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1680082402794608394, guid: f18716ccefdf2434aa6bb0490c0bc5a9,
         type: 3}
       propertyPath: weapons.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1680082402794608394, guid: f18716ccefdf2434aa6bb0490c0bc5a9,
+        type: 3}
+      propertyPath: startingWeaponIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1680082402794608394, guid: f18716ccefdf2434aa6bb0490c0bc5a9,
         type: 3}
@@ -84295,12 +84300,12 @@ PrefabInstance:
     - target: {fileID: 1986566662790438546, guid: f18716ccefdf2434aa6bb0490c0bc5a9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1986566663085429601, guid: f18716ccefdf2434aa6bb0490c0bc5a9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4263908331889308101, guid: f18716ccefdf2434aa6bb0490c0bc5a9,
         type: 3}
