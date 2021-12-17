@@ -13,6 +13,8 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public Transform player;
 
+    public Transform CoopAI;
+
     public LayerMask whatIsGround, whatIsPlayer;
 
     //Patroling
@@ -28,10 +30,11 @@ public class EnemyAiTutorial : MonoBehaviour
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
-    public bool FreandInSightRange, FreandInAttackRange;
+    public bool CoopAIInSightRange, CoopAIInAttackRange;
     private void Awake()
     {
         player = GameObject.Find("PlayerObj").transform;
+        CoopAI = GameObject.FindWithTag("CoopAI").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -41,9 +44,15 @@ public class EnemyAiTutorial : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
+        CoopAIInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        CoopAIInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+
+
+        if (!playerInSightRange && !playerInAttackRange && !CoopAIInSightRange && !CoopAIInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        if (CoopAIInSightRange && !CoopAIInAttackRange) ChaseCoopAI();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        if (CoopAIInAttackRange && CoopAIInSightRange) AttackCoopAI();
     }
 
     private void Patroling()
@@ -76,6 +85,12 @@ public class EnemyAiTutorial : MonoBehaviour
         agent.SetDestination(player.position);
     }
 
+    private void ChaseCoopAI()
+    {
+      agent.SetDestination(CoopAI.position);
+    }
+
+
     private void AttackPlayer()
     {
         //Make sure enemy doesn't move
@@ -98,6 +113,28 @@ public class EnemyAiTutorial : MonoBehaviour
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
+    }
+    private void AttackCoopAI()
+    {
+      agent.SetDestination(transform.position);
+
+      transform.LookAt(CoopAI);
+
+      if (!alreadyAttacked)
+      {
+//            FR.SetActive(true);
+          Ray ray = new Ray(transform.position, transform.forward);
+          RaycastHit hit;
+          if (Physics.Raycast(ray, out hit, Distance))
+          {
+            if (hit.collider.GetComponent<Coop>)
+            {
+              Hp.currentHealth -= Damage;
+            }
+        }
+          alreadyAttacked = true;
+          Invoke(nameof(ResetAttack), timeBetweenAttacks);
+      }
     }
     private void ResetAttack()
     {

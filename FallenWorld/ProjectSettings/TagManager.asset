@@ -20,6 +20,7 @@ TagManager:
   - LootBox
   - Team2
   - Ground
+  - CoopAI
   layers:
   - Default
   - TransparentFX
