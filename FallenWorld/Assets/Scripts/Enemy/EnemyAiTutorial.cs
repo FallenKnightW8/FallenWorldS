@@ -6,6 +6,7 @@ public class EnemyAiTutorial : MonoBehaviour
 {
 //    public GameObject FR;
     public Health Hp;
+    public Health HPF;
     public float Distance;
     public int Damage;
 
@@ -105,9 +106,11 @@ public class EnemyAiTutorial : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Distance))
             {
+              Debug.DrawLine(transform.position,transform.forward);
               if (hit.collider.GetComponent<Take>())
               {
                 Hp.currentHealth -= Damage;
+                Debug.Log("popal?");
               }
           }
             alreadyAttacked = true;
@@ -127,9 +130,9 @@ public class EnemyAiTutorial : MonoBehaviour
           RaycastHit hit;
           if (Physics.Raycast(ray, out hit, Distance))
           {
-            if (hit.collider.GetComponent<Coop>)
+            if (hit.collider.GetComponent<Coop>())
             {
-              Hp.currentHealth -= Damage;
+              HPF.currentHealth -= Damage;
             }
         }
           alreadyAttacked = true;
