@@ -60,6 +60,7 @@ public class EnemyAiTutorial : MonoBehaviour
       {
         gameObject.tag = "CoopAI";
         gameObject.layer = 19;
+        player = GameObject.Find("PlayerObj").transform;
         Enemy = GameObject.FindWithTag("Enemy").transform;
         EnemyInsightRange = Physics.CheckSphere(transform.position, sightRange, whatIsEnemy);
         EnemyInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsEnemy);
