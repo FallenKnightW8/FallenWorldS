@@ -21,6 +21,7 @@ TagManager:
   - Team2
   - Ground
   - CoopAI
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -40,8 +41,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Enemys
+  - Coop
   - Weapon
   - Player
   - NPC

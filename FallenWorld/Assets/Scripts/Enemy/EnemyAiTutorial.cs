@@ -5,8 +5,6 @@ using UnityEngine.AI;
 public class EnemyAiTutorial : MonoBehaviour
 {
 //    public GameObject FR;
-    public Health Hp;
-    public Health HPF;
     public float Distance;
     public int Damage;
 
@@ -14,9 +12,11 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public Transform player;
 
-    public Transform CoopAI;
+    public Transform CoopAI,Enemy;
 
-    public LayerMask whatIsGround, whatIsPlayer;
+    public bool isFreandly = false;
+
+    public LayerMask whatIsGround, whatIsPlayer, whatIsCoop,whatIsEnemy;
 
     //Patroling
     public Vector3 walkPoint;
@@ -26,34 +26,52 @@ public class EnemyAiTutorial : MonoBehaviour
     //Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
-    public GameObject projectile;
 
     //States
     public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
-    public bool CoopAIInSightRange, CoopAIInAttackRange;
+    public bool playerInSightRange, playerInAttackRange,EnemyInsightRange;
+    public bool CoopAIInSightRange, CoopAIInAttackRange,EnemyInAttackRange;
     private void Awake()
     {
-        player = GameObject.Find("PlayerObj").transform;
-        CoopAI = GameObject.FindWithTag("CoopAI").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
     {
         //Check for sight and attack range
+        if (isFreandly == false)
+        {
+        player = GameObject.Find("PlayerObj").transform;
+        CoopAI = GameObject.FindWithTag("CoopAI").transform;
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        CoopAIInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        CoopAIInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        CoopAIInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsCoop);
+        CoopAIInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsCoop);
 
 
         if (!playerInSightRange && !playerInAttackRange && !CoopAIInSightRange && !CoopAIInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (CoopAIInSightRange && !CoopAIInAttackRange) ChaseCoopAI();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        if (CoopAIInSightRange && !CoopAIInAttackRange) ChaseCoopAI();
         if (CoopAIInAttackRange && CoopAIInSightRange) AttackCoopAI();
+      }
+      if (isFreandly == true)
+      {
+        gameObject.tag = "CoopAI";
+        gameObject.layer = 19;
+        Enemy = GameObject.FindWithTag("Enemy").transform;
+        EnemyInsightRange = Physics.CheckSphere(transform.position, sightRange, whatIsEnemy);
+        EnemyInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsEnemy);
+        if (!EnemyInsightRange && !EnemyInAttackRange) FolloPlayer();
+        if (EnemyInsightRange && !EnemyInAttackRange) ChaseEnemy();
+        if (EnemyInAttackRange && EnemyInsightRange) AttackEnemy();
+      }
+    }
+
+    private void FolloPlayer()
+    {
+      agent.SetDestination(player.position*2);
     }
 
     private void Patroling()
@@ -90,7 +108,10 @@ public class EnemyAiTutorial : MonoBehaviour
     {
       agent.SetDestination(CoopAI.position);
     }
-
+    private void ChaseEnemy()
+    {
+      agent.SetDestination(Enemy.position);
+    }
 
     private void AttackPlayer()
     {
@@ -109,8 +130,7 @@ public class EnemyAiTutorial : MonoBehaviour
               Debug.DrawLine(transform.position,transform.forward);
               if (hit.collider.GetComponent<Take>())
               {
-                Hp.currentHealth -= Damage;
-                Debug.Log("popal?");
+                hit.collider.gameObject.SendMessageUpwards("ChangeHealth", -Damage, SendMessageOptions.DontRequireReceiver);
               }
           }
             alreadyAttacked = true;
@@ -130,9 +150,31 @@ public class EnemyAiTutorial : MonoBehaviour
           RaycastHit hit;
           if (Physics.Raycast(ray, out hit, Distance))
           {
-            if (hit.collider.GetComponent<Coop>())
+            if ((hit.collider.GetComponent<EnemyAiTutorial>()) ^ (hit.collider.GetComponent<Coop>()))
             {
-              HPF.currentHealth -= Damage;
+              hit.collider.gameObject.SendMessageUpwards("ChangeHealth", -Damage, SendMessageOptions.DontRequireReceiver);
+            }
+        }
+          alreadyAttacked = true;
+          Invoke(nameof(ResetAttack), timeBetweenAttacks);
+      }
+    }
+    private void AttackEnemy()
+    {
+      agent.SetDestination(transform.position);
+
+      transform.LookAt(Enemy);
+
+      if (!alreadyAttacked)
+      {
+//            FR.SetActive(true);
+          Ray ray = new Ray(transform.position, transform.forward);
+          RaycastHit hit;
+          if (Physics.Raycast(ray, out hit, Distance))
+          {
+            if (hit.collider.GetComponent<EnemyAiTutorial>())
+            {
+              hit.collider.gameObject.SendMessageUpwards("ChangeHealth", -Damage, SendMessageOptions.DontRequireReceiver);
             }
         }
           alreadyAttacked = true;

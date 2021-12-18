@@ -45,9 +45,12 @@ public class Health : MonoBehaviour
 	{
 		if (currentHealth <= 0 && !dead && canDie)
 			Die();
+			if (isPlayer == true)
+			{
 			HpBar.fillAmount = fill;
 			fill = (currentHealth/100);
 			CountHP.text = currentHealth.ToString();
+		}
 	}
 
 	public void ChangeHealth(float amount)
@@ -75,11 +78,14 @@ public class Health : MonoBehaviour
 		if (makeExplosion)
 			Instantiate(explosion, transform.position, transform.rotation);
 
+		if (isPlayer == true)
+		{
 		if (isPlayer && deathCam != null)
 			Time.timeScale = 0f;
 			DeadC.SetActive(true);
 			deathCam.SetActive(true);
 			Cursor.lockState = CursorLockMode.None;
+		}
 		// Remove this GameObject from the scene
 		Destroy(gameObject);
 	}

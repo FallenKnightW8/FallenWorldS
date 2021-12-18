@@ -3,7 +3,14 @@ guid: 2fa35b3c8200736468e59f5a9be5f39f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Hp: {instanceID: 0}
+  - HPF: {instanceID: 0}
+  - HPE: {fileID: 3493069742144268664, guid: 655c6544b5ef1c541b76b06d585a7536, type: 3}
+  - agent: {instanceID: 0}
+  - player: {instanceID: 0}
+  - CoopAI: {instanceID: 0}
+  - Enemy: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
