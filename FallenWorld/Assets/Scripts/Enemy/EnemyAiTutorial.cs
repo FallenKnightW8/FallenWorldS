@@ -41,22 +41,23 @@ public class EnemyAiTutorial : MonoBehaviour
         //Check for sight and attack range
         if (isFreandly == false)
         {
-        player = GameObject.Find("PlayerObj").transform;
-        CoopAI = GameObject.FindWithTag("CoopAI").transform;
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-
-        CoopAIInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsCoop);
-        CoopAIInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsCoop);
+          player = GameObject.Find("PlayerObj").transform;
+          playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+          playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
 
-        if (!playerInSightRange && !playerInAttackRange && !CoopAIInSightRange && !CoopAIInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
-        if (CoopAIInSightRange && !CoopAIInAttackRange) ChaseCoopAI();
-        if (CoopAIInAttackRange && CoopAIInSightRange) AttackCoopAI();
+
+          if (!playerInSightRange && !playerInAttackRange && !CoopAIInSightRange && !CoopAIInAttackRange) Patroling();
+          if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+          if (playerInAttackRange && playerInSightRange) AttackPlayer();
+          CoopAI = GameObject.FindWithTag("CoopAI").transform;
+          CoopAIInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsCoop);
+          CoopAIInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsCoop);
+
+          if (CoopAIInSightRange && !CoopAIInAttackRange) ChaseCoopAI();
+          if (CoopAIInAttackRange && CoopAIInSightRange) AttackCoopAI();
       }
-      if (isFreandly == true)
+      else //(isFreandly == true)
       {
         gameObject.tag = "CoopAI";
         gameObject.layer = 19;

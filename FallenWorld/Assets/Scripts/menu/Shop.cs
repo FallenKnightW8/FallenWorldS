@@ -7,15 +7,18 @@ public class Shop : MonoBehaviour
 {
   public GameObject[] Weapons;
   public GameObject[] Upgrades;
+  public GameObject[] Helps;
   public GameObject Shops;
   public Take Mpoints;
   public int Tpoint;
   public int Upgrade;
   public int Weapon;
+  public int Help;
   void Update()
   {
     Weapons[Weapon].SetActive(true);
     Upgrades[Upgrade].SetActive(true);
+    Helps[Help].SetActive(true);
     if (PlayerPrefs.HasKey("Points"))
     {
       Tpoint = PlayerPrefs.GetInt("Points");
@@ -44,7 +47,7 @@ public class Shop : MonoBehaviour
     if (Tpoint>= 50000)
     {
       Tpoint -= 50000;
-      
+
       PlayerPrefs.SetInt("Points", Tpoint);
       Weapon = 2;
     }
@@ -74,5 +77,11 @@ public class Shop : MonoBehaviour
       PlayerPrefs.SetInt("AidHP", 35);
       Upgrade = 2;
     }
+  }
+  public void CallHelp1()
+  {
+    PlayerPrefs.SetInt("CountR", 1);
+    PlayerPrefs.SetInt("LevelGuy", 0);
+    Help = 1;
   }
 }
