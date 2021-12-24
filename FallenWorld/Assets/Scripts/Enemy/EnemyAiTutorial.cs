@@ -9,6 +9,7 @@ public class EnemyAiTutorial : MonoBehaviour
     public int Damage;
 
     public NavMeshAgent agent;
+//    public Animation anim;
 
     public Transform player;
 
@@ -33,6 +34,7 @@ public class EnemyAiTutorial : MonoBehaviour
     public bool CoopAIInSightRange, CoopAIInAttackRange,EnemyInAttackRange;
     private void Awake()
     {
+//        anim = GetComponent<Animation>();
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -68,20 +70,24 @@ public class EnemyAiTutorial : MonoBehaviour
         if (!EnemyInsightRange && !EnemyInAttackRange) FolloPlayer();
         if (EnemyInsightRange && !EnemyInAttackRange) ChaseEnemy();
         if (EnemyInAttackRange && EnemyInsightRange) AttackEnemy();
+        Enemy = GameObject.FindWithTag("Enemy").transform;
       }
     }
 
     private void FolloPlayer()
     {
-      agent.SetDestination(player.position*2);
+      agent.SetDestination(player.position);
+//      anim.Play("Move");
     }
 
     private void Patroling()
     {
         if (!walkPointSet) SearchWalkPoint();
+//        anim.Play("IdleSht");
 
         if (walkPointSet)
             agent.SetDestination(walkPoint);
+//            anim.Play("Move");
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 

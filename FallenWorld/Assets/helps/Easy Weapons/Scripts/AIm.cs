@@ -4,30 +4,32 @@ using UnityEngine;
 
 public class AIm : MonoBehaviour
 {
-  public Transform Camera1;
-  public bool aim = true;
+      public int zoom = 20;
+      public int normal = 60;
+      public float smooth = 5;
+      private bool isZoomed = false;
+      void Update()
+      {
+          if(Time.timeScale != 0)
+          {
 
-  void start()
-  {
-  Camera1.GetComponent<Camera>();
-  Debug.Log("1");
+              if(Input.GetMouseButtonDown(1))
+              {
+                  isZoomed = true;
+              }
+              else if(Input.GetMouseButtonUp(1))
+              {
+                  isZoomed = false;
+              }
+
+              if(isZoomed == true)
+              {
+                  GetComponent<Camera>().fieldOfView = Mathf.Lerp(GetComponent<Camera>().fieldOfView,zoom,Time.deltaTime*smooth);;
+              }
+              else
+              {
+                  GetComponent<Camera>().fieldOfView = Mathf.Lerp(GetComponent<Camera>().fieldOfView,normal,Time.deltaTime*smooth);
+              }
+          }
+      }
   }
-    void Update()
-    {
-      if (Input.GetMouseButtonDown(1) & aim==true)
-      {
-
-        CAM();
-      }
-    }
-
-    private void CAM()
-    {
-      if (aim = true)
-      {
-      Camera1.GetComponent<Camera>().fieldOfView = 10;
-      Camera1.GetComponent<Camera>().depth = 2;
-      Debug.Log("lol");
-      }
-    }
-}

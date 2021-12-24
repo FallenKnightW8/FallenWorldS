@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CallHekp : MonoBehaviour
 {
   public GameObject Guy0;
+  public float Distance;
   public int countR;
   public Text Counts;
 
@@ -16,12 +17,13 @@ public class CallHekp : MonoBehaviour
 
     void Update()
     {
-      ShowCounts();
        if (Input.GetKeyDown(KeyCode.G))
       {
          Call();
       }
+      ShowCounts();
     }
+
     private void Call()
     {
       if (countR>=1)
