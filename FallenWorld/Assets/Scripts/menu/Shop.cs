@@ -47,7 +47,6 @@ public class Shop : MonoBehaviour
     if (Tpoint>= 50000)
     {
       Tpoint -= 50000;
-
       PlayerPrefs.SetInt("Points", Tpoint);
       Weapon = 2;
     }
@@ -59,7 +58,7 @@ public class Shop : MonoBehaviour
       Tpoint-=200000;
       PlayerPrefs.SetInt("Points",Tpoint);
       Weapon = 3;
-      PlayerPrefs.SetInt("BuyedWeapon", 0);
+      PlayerPrefs.SetInt("BuyedWeapon", 2);
     }
   }
   public void Upgrade1()
@@ -82,6 +81,6 @@ public class Shop : MonoBehaviour
   {
     PlayerPrefs.SetInt("CountR", 1);
     PlayerPrefs.SetInt("LevelGuy", 0);
-    Help = 1;
+//    Help = 1;
   }
 }

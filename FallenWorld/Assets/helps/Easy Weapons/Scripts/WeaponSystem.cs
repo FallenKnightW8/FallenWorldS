@@ -13,7 +13,6 @@ public class WeaponSystem : MonoBehaviour
 	public GameObject[] weapons;				// The array that holds all the weapons that the player has
 	public int startingWeaponIndex = 0;			// The weapon index that the player will start with
 	private int weaponIndex;					// The current index of the active weapon
-	public int BuyedWeapon;
 
 	// Use this for initialization
 	void Start()
@@ -21,8 +20,6 @@ public class WeaponSystem : MonoBehaviour
 		// Make sure the starting active weapon is the one selected by the user in startingWeaponIndex
 		weaponIndex = startingWeaponIndex;
 		SetActiveWeapon(weaponIndex);
-		BuyedWeapon = 1;
-		BuyedWeapon = PlayerPrefs.GetInt("BuyedWeapon");
 
 	}
 
@@ -65,7 +62,7 @@ public class WeaponSystem : MonoBehaviour
 	public void SetActiveWeapon(int index)
 	{
 		// Make sure this weapon exists before trying to switch to it
-		if (index >= weapons.Length-BuyedWeapon || index < 0)
+		if (index >= weapons.Length || index < 0)
 		{
 			Debug.LogWarning("Tried to switch to a weapon that does not exist.  Make sure you have all the correct weapons in your weapons array.");
 			return;

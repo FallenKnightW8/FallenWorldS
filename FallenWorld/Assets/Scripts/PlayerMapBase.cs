@@ -8,6 +8,7 @@ public class PlayerMapBase : MonoBehaviour
     public GameObject TXT;
     public GameObject MapB;
     public GameObject Shops;
+    public GameObject Arsenal;
 
       void Update()
       {
@@ -26,6 +27,10 @@ public class PlayerMapBase : MonoBehaviour
           else if (hit.collider.GetComponent<PCSHOP>())
           {
             shop();
+          }
+          else if (hit.collider.GetComponent<ChangeWeaponOnBase>())
+          {
+            arsenary();
           }
         }
         else
@@ -57,5 +62,15 @@ public class PlayerMapBase : MonoBehaviour
           TXT.SetActive(false);
         }
       }
-
+      public void arsenary()
+      {
+        TXT.SetActive(true);
+        if (Input.GetKeyDown(JobButton))
+        {
+          Cursor.lockState = CursorLockMode.None;
+          Cursor.visible = true;
+          Arsenal.SetActive(true);
+          TXT.SetActive(false);
+        }
+      }
 }
