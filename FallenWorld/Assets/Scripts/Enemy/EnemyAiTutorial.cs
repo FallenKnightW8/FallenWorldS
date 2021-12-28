@@ -5,33 +5,34 @@ using UnityEngine.AI;
 public class EnemyAiTutorial : MonoBehaviour
 {
 //    public GameObject FR;
-    public float Distance;
+    public float Distance,visibl;
     public int Damage;
+
+    public float visibilityDistance;
+    public float fieldOfViewDegrees;
 
     public NavMeshAgent agent;
 //    public Animation anim;
 
-    public Transform player;
-
-    public Transform CoopAI,Enemy;
+    public Transform CoopAI,Enemy,player;
 
     public bool isFreandly = false;
-
+    //Ai search
     public LayerMask whatIsGround, whatIsPlayer, whatIsCoop,whatIsEnemy;
 
     //Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
-
     //Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
-
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange,EnemyInsightRange;
     public bool CoopAIInSightRange, CoopAIInAttackRange,EnemyInAttackRange;
+    public bool FalletSteals = false;
+
     private void Awake()
     {
 //        anim = GetComponent<Animation>();
@@ -40,48 +41,59 @@ public class EnemyAiTutorial : MonoBehaviour
 
     private void Update()
     {
-        //Check for sight and attack range
-        if (isFreandly == false)
-        {
-          player = GameObject.Find("PlayerObj").transform;
-          playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-          playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-
-
-
-          if (!playerInSightRange && !playerInAttackRange && !CoopAIInSightRange && !CoopAIInAttackRange) Patroling();
-          if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-          if (playerInAttackRange && playerInSightRange) AttackPlayer();
-          CoopAI = GameObject.FindWithTag("CoopAI").transform;
-          CoopAIInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsCoop);
-          CoopAIInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsCoop);
-
-          if (CoopAIInSightRange && !CoopAIInAttackRange) ChaseCoopAI();
-          if (CoopAIInAttackRange && CoopAIInSightRange) AttackCoopAI();
-      }
-      else //(isFreandly == true)
+      if (FalletSteals == false)
       {
-        gameObject.tag = "CoopAI";
-        gameObject.layer = 19;
-        player = GameObject.Find("PlayerObj").transform;
-        Enemy = GameObject.FindWithTag("Enemy").transform;
-        EnemyInsightRange = Physics.CheckSphere(transform.position, sightRange, whatIsEnemy);
-        EnemyInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsEnemy);
-        if (!EnemyInsightRange && !EnemyInAttackRange) FolloPlayer();
-        if (EnemyInsightRange && !EnemyInAttackRange) ChaseEnemy();
-        if (EnemyInAttackRange && EnemyInsightRange) AttackEnemy();
-        Enemy = GameObject.FindWithTag("Enemy").transform;
+      CanSeePlayer();
+      }
+      else{
+      if (isFreandly == false)
+        {
+          EnemyS();
+        }
+      else //(isFreandly == true)
+        {
+          FreandS();
+        }
       }
     }
 
-    private void FolloPlayer()
+    private void EnemyS()
     {
+      player = GameObject.Find("PlayerObj").transform;
+      playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+      playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+
+      if (!playerInSightRange && !playerInAttackRange && !CoopAIInSightRange && !CoopAIInAttackRange) Patroling();
+      if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+      if (playerInAttackRange && playerInSightRange) AttackPlayer();
+      CoopAI = GameObject.FindWithTag("CoopAI").transform;
+      CoopAIInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsCoop);
+      CoopAIInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsCoop);
+
+      if (CoopAIInSightRange && !CoopAIInAttackRange) ChaseCoopAI();
+      if (CoopAIInAttackRange && CoopAIInSightRange) AttackCoopAI();
+    }
+
+    private void FreandS()
+    {
+      gameObject.tag = "CoopAI";
+      gameObject.layer = 19;
+      player = GameObject.Find("PlayerObj").transform;
+      Enemy = GameObject.FindWithTag("Enemy").transform;
+      EnemyInsightRange = Physics.CheckSphere(transform.position, sightRange, whatIsEnemy);
+      EnemyInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsEnemy);
+      if (!EnemyInsightRange && !EnemyInAttackRange) FolloPlayer();
+      if (EnemyInsightRange && !EnemyInAttackRange) ChaseEnemy();
+      if (EnemyInAttackRange && EnemyInsightRange) AttackEnemy();
+      Enemy = GameObject.FindWithTag("Enemy").transform;
+    }
+
+    private void FolloPlayer(){
       agent.SetDestination(player.position);
 //      anim.Play("Move");
     }
 
-    private void Patroling()
-    {
+    private void Patroling(){
         if (!walkPointSet) SearchWalkPoint();
 //        anim.Play("IdleSht");
 
@@ -106,23 +118,17 @@ public class EnemyAiTutorial : MonoBehaviour
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
             walkPointSet = true;
     }
-
-    private void ChasePlayer()
-    {
+    private void ChasePlayer(){
         agent.SetDestination(player.position);
     }
-
-    private void ChaseCoopAI()
-    {
+    private void ChaseCoopAI(){
       agent.SetDestination(CoopAI.position);
     }
-    private void ChaseEnemy()
-    {
+    private void ChaseEnemy(){
       agent.SetDestination(Enemy.position);
     }
 
-    private void AttackPlayer()
-    {
+    private void AttackPlayer(){
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
 
@@ -194,4 +200,33 @@ public class EnemyAiTutorial : MonoBehaviour
 //        FR.SetActive(false);
         alreadyAttacked = false;
     }
+    protected bool CanSeePlayer()
+    {
+        RaycastHit hit;
+        Vector3 rayDirection = player.transform.position - transform.position;
+
+        if ((Vector3.Angle(rayDirection, transform.forward)) <= fieldOfViewDegrees * 0.5f)
+        {
+            // Detect if player is within the field of view
+            if (Physics.Raycast(transform.position, rayDirection, out hit, visibilityDistance))
+            {
+                if (hit.transform.CompareTag("Player"));
+                {
+                  visibl+=25 * Time.deltaTime;
+                  if (visibl >= 100)
+                  {
+                    FalletSteals = true;
+                  }
+                }
+            }
+        }
+
+        return false;
+    }
+
+
+
+
+
+
 }

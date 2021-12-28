@@ -580,7 +580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990a2fc893b01aa43b364fe13ead1e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Guy0: {fileID: 6625583731173254227, guid: 92b2713542f51cc46abdbf3f377468a2, type: 3}
+  Guy0: {fileID: 2345217938358572858, guid: 2f878cc50271fae4c8ebc8f1b76b5b32, type: 3}
   Distance: 0
   countR: 0
   Counts: {fileID: 0}
@@ -908,7 +908,6 @@ MonoBehaviour:
   - {fileID: 1680082402784404200}
   - {fileID: 5758379917743123152}
   startingWeaponIndex: 2
-  BuyedWeapon: 0
 --- !u!114 &3243091866123076300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -926,6 +925,8 @@ MonoBehaviour:
   Weapons: {fileID: 1680082402794608394}
   pp: {fileID: 5758379917743123152}
   PST: {fileID: 1680082402784404200}
+  SHT: {fileID: 1986566663576334669}
+  SNP: {fileID: 1986566662790438546}
 --- !u!1 &1680082402784404204
 GameObject:
   m_ObjectHideFlags: 0
