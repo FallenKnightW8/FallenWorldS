@@ -5918,7 +5918,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press E to choise the mission.
+  m_Text: Press E to Intorective.
 --- !u!222 &1171104451
 CanvasRenderer:
   m_ObjectHideFlags: 0

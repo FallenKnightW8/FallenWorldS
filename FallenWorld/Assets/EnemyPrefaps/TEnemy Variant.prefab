@@ -32,12 +32,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Distance: 99999
+  visibl: 0
   Damage: 15
+  visibilityDistance: 10
+  fieldOfViewDegrees: 90
   agent: {fileID: 652695798}
-  anim: {fileID: 0}
-  player: {fileID: 0}
   CoopAI: {fileID: 0}
   Enemy: {fileID: 0}
+  player: {fileID: 0}
   isFreandly: 0
   whatIsGround:
     serializedVersion: 2
@@ -62,6 +64,10 @@ MonoBehaviour:
   CoopAIInSightRange: 0
   CoopAIInAttackRange: 0
   EnemyInAttackRange: 0
+  FalletSteals: 0
+  Alarmed: {fileID: 0}
+  alarmed: 0
+  timeToAllarm: 5
 --- !u!195 &652695798
 NavMeshAgent:
   m_ObjectHideFlags: 0

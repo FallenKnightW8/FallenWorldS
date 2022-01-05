@@ -32,15 +32,25 @@ public class EnemyAiTutorial : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange,EnemyInsightRange;
     public bool CoopAIInSightRange, CoopAIInAttackRange,EnemyInAttackRange;
     public bool FalletSteals = false;
+//    public Alarm Alarmed;
+    public GameObject Alarmed;
+    public bool alarmedSignal = false;
+    public float timeToAllarm = 5f;
 
     private void Awake()
     {
-//        anim = GetComponent<Animation>();
+//        anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
     {
+      Alarmed = GameObject.FindWithTag("Dirt");
+      alarmedSignal = Alarmed.GetComponent<Alarm>().alarm;
+        if (alarmedSignal == true)
+        {
+          FalletSteals = true;
+        }
       if (FalletSteals == false)
       {
       CanSeePlayer();
@@ -216,15 +226,18 @@ public class EnemyAiTutorial : MonoBehaviour
                   if (visibl >= 100)
                   {
                     FalletSteals = true;
+                    CallAllarm();
                   }
                 }
             }
         }
-
         return false;
+      }
+
+    public void CallAllarm()
+    {
+      Alarmed.GetComponent<Alarm>().alarm = true;
     }
-
-
 
 
 
