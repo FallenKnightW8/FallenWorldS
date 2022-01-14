@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMapBase : MonoBehaviour
 {
     public KeyCode JobButton;
+    public int isTRue;
     public GameObject TXT;
     public GameObject MapB;
     public GameObject Shops;
@@ -13,8 +14,18 @@ public class PlayerMapBase : MonoBehaviour
 
       void Update()
       {
-        ray();
+        if (isTRue == 0)ray();
+        else
+        {
+          StartCoroutine(wait());
+        }
       }
+      IEnumerator wait()
+      {
+         yield return new WaitForSeconds(1);
+      }
+
+
       public void ray()
       {
         Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
@@ -46,6 +57,7 @@ public class PlayerMapBase : MonoBehaviour
         TXT.SetActive(true);
         if (Input.GetKeyDown(JobButton))
         {
+          isTRue = 1;
           PC.SetActive(true);
           Cursor.lockState = CursorLockMode.None;
           Cursor.visible = true;
@@ -57,6 +69,7 @@ public class PlayerMapBase : MonoBehaviour
         TXT.SetActive(true);
         if (Input.GetKeyDown(JobButton))
         {
+          isTRue = 1;
           Cursor.lockState = CursorLockMode.None;
           Cursor.visible = true;
           MapB.SetActive(true);
@@ -68,6 +81,7 @@ public class PlayerMapBase : MonoBehaviour
         TXT.SetActive(true);
         if (Input.GetKeyDown(JobButton))
         {
+          isTRue = 1;
           Cursor.lockState = CursorLockMode.None;
           Cursor.visible = true;
           Arsenal.SetActive(true);

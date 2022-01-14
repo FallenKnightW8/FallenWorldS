@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
+  public KeyCode jobButton;
+  public GameObject PC;
+  public GameObject UPG;
+
   public GameObject[] Weapons;
   public GameObject[] Upgrades;
   public GameObject[] Helps;
@@ -16,13 +20,27 @@ public class Shop : MonoBehaviour
   public int Help;
   void Update()
   {
-    Weapons[Weapon].SetActive(true);
-    Upgrades[Upgrade].SetActive(true);
-    Helps[Help].SetActive(true);
+    if (Input.GetKeyDown(jobButton))
+    {
+      Close();
+    }
+    UpdateSH();
     if (PlayerPrefs.HasKey("Points"))
     {
       Tpoint = PlayerPrefs.GetInt("Points");
     }
+  }
+  public void Close()
+  {
+//    PC.SetActive(true);
+    UPG.SetActive(false);
+  }
+  public void UpdateSH()
+  {
+//    while (Weapon !=0)
+    Weapons[Weapon].SetActive(true);
+    Upgrades[Upgrade].SetActive(true);
+    Helps[Help].SetActive(true);
   }
 
   public void cancell()

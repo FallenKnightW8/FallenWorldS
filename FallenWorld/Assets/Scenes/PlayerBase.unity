@@ -1221,7 +1221,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 167350350}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1289667313}
+        m_TargetAssemblyTypeName: PC, Assembly-CSharp
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &167350350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1790,6 +1802,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 300925906}
+  - component: {fileID: 300925907}
   m_Layer: 0
   m_Name: ShopW
   m_TagString: Untagged
@@ -1812,6 +1825,22 @@ Transform:
   m_Father: {fileID: 1575711386}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &300925907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300925905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c3379ecb4d5e446a9d92669f447348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TRUE: {fileID: 0}
+  jobKey: 101
+  Pc: {fileID: 891874441}
+  WeapS: {fileID: 794640297}
 --- !u!1 &303394519
 GameObject:
   m_ObjectHideFlags: 0
@@ -4746,7 +4775,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &891874442
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6173,6 +6202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JobButton: 101
+  isTRue: 0
   TXT: {fileID: 1171104448}
   MapB: {fileID: 663568737}
   Shops: {fileID: 599126473}
@@ -6192,8 +6222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   takeButton: 101
   TXT: {fileID: 1185619643}
-  Point: {fileID: 0}
-  Points: 0
+  Point: 0
   Sc: {fileID: 303968276}
   Tpoint: 0
   Chek: {fileID: 0}
@@ -6702,6 +6731,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1289667312}
+  - component: {fileID: 1289667313}
   m_Layer: 0
   m_Name: PC
   m_TagString: Untagged
@@ -6724,6 +6754,23 @@ Transform:
   m_Father: {fileID: 1575711386}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1289667313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289667311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87f6ac24f7291fc46a5f3fc0447cf5ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TRUE: {fileID: 1130553106}
+  JobKey: 101
+  SH: {fileID: 794640297}
+  Pc: {fileID: 891874441}
+  Upg: {fileID: 599126473}
 --- !u!1 &1301147275
 GameObject:
   m_ObjectHideFlags: 0
@@ -6957,6 +7004,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c53709cb417dd49bbfa260b5ebeaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jobButton: 101
+  PC: {fileID: 891874441}
+  UPG: {fileID: 599126473}
   Weapons:
   - {fileID: 467344209}
   - {fileID: 2007121474}
@@ -7265,7 +7315,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1384454828
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8082,7 +8132,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1525687682}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1289667313}
+        m_TargetAssemblyTypeName: PC, Assembly-CSharp
+        m_MethodName: Shop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1525687682
 MonoBehaviour:
   m_ObjectHideFlags: 0
