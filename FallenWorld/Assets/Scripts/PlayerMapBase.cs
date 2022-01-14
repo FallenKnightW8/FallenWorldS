@@ -8,6 +8,7 @@ public class PlayerMapBase : MonoBehaviour
     public GameObject TXT;
     public GameObject MapB;
     public GameObject Shops;
+    public GameObject PC;
     public GameObject Arsenal;
 
       void Update()
@@ -26,7 +27,7 @@ public class PlayerMapBase : MonoBehaviour
             }
           else if (hit.collider.GetComponent<PCSHOP>())
           {
-            shop();
+            pc();
           }
           else if (hit.collider.GetComponent<ChangeWeaponOnBase>())
           {
@@ -40,12 +41,12 @@ public class PlayerMapBase : MonoBehaviour
 
       }
 
-      public void shop()
+      public void pc()
       {
         TXT.SetActive(true);
         if (Input.GetKeyDown(JobButton))
         {
-          Shops.SetActive(true);
+          PC.SetActive(true);
           Cursor.lockState = CursorLockMode.None;
           Cursor.visible = true;
 
