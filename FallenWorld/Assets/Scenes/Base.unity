@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.008971013, g: 0.013054751, b: 0.020381842, a: 1}
+  m_IndirectSpecularColor: {r: 0.009008197, g: 0.013112808, b: 0.020462133, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1893,8 +1893,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   takeButton: 102
   TXT: {fileID: 0}
-  Point: {fileID: 0}
-  Points: 0
+  Point: 0
   Sc: {fileID: 0}
   Tpoint: 0
   Chek: {fileID: 0}
@@ -4757,7 +4756,8 @@ AudioSource:
   m_GameObject: {fileID: 389437942}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: bfb9e4662915854499ea8dc312fc6b2f,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 5dc41cc2806898b4eb6cd0e8628c085a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -28333,6 +28333,14 @@ PrefabInstance:
     - target: {fileID: 11400002, guid: f92ed867cffe5cc4c9e6ae62e180f5ea, type: 3}
       propertyPath: jumpLandTilt
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: f92ed867cffe5cc4c9e6ae62e180f5ea, type: 3}
+      propertyPath: runSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: f92ed867cffe5cc4c9e6ae62e180f5ea, type: 3}
+      propertyPath: strafeSpeed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11400008, guid: f92ed867cffe5cc4c9e6ae62e180f5ea, type: 3}
       propertyPath: weapons.Array.size

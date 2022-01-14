@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuControls : MonoBehaviour
 {
   public GameObject ConT;
+  public GameObject Check;
     void Update()
     {
       if (PlayerPrefs.HasKey("Points"))
@@ -15,7 +16,7 @@ public class MenuControls : MonoBehaviour
     }
   public void PlayPressed()
       {
-          SceneManager.LoadScene("Base");
+        Check.SetActive(true);
       }
   public void ExitPressed()
       {
@@ -26,6 +27,15 @@ public class MenuControls : MonoBehaviour
   public void Continue()
   {
     SceneManager.LoadScene("PlayerBase");
+  }
+  public void PlayerCLyess()
+  {
+    SceneManager.LoadScene("Base");
+    PlayerPrefs.DeleteAll();
+  }
+  public void PlayerCLNo()
+  {
+    Check.SetActive(false);
   }
 
 }

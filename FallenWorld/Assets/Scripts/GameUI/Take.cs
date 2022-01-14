@@ -7,8 +7,7 @@ public class Take : MonoBehaviour
 {
   public KeyCode takeButton;
   public GameObject TXT;
-  public Item Point;
-  public int Points;
+  public int Point;
   public Text Sc;
   public int Tpoint;
   public run Chek;
@@ -17,6 +16,10 @@ public class Take : MonoBehaviour
     void Update()
     {
       SCore();
+      Tak();
+    }
+    public void Tak()
+    {
       if (PlayerPrefs.HasKey("Points"))
       {
         Tpoint = PlayerPrefs.GetInt("Points");
@@ -30,12 +33,11 @@ public class Take : MonoBehaviour
             TXT.SetActive(true);
             if (Input.GetKeyDown(takeButton))
             {
-              Point.point();
-              Tpoint = Points + Tpoint;
+              Point = hit.collider.GetComponent<Item>().Point;
+              Tpoint += Point;
               Destroy(hit.collider.GetComponent<Item>().gameObject);
               TXT.SetActive(false);
               SCore();
-              Points = 0;
               Chek.point = Tpoint;
               PlayerPrefs.SetInt("Points", Tpoint);
           }
@@ -45,7 +47,8 @@ public class Take : MonoBehaviour
       {
         TXT.SetActive(false);
       }
-    }
+  }
+
     public void SCore()
     {
       Sc.text = Tpoint.ToString();

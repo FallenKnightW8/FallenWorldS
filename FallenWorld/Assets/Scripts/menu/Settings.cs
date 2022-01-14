@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using System.Collections.Generic;
 
 public class Settings : MonoBehaviour
@@ -9,7 +10,8 @@ public class Settings : MonoBehaviour
   public bool isFullScreen = true;
   Resolution[] rsl;
   List<string> resolutions;
-   public Dropdown dropdown;
+  public Dropdown dropdown;
+  public AudioMixer am;
 
    public void Awake()
        {
@@ -28,18 +30,19 @@ public class Settings : MonoBehaviour
                Screen.SetResolution(rsl[r].width, rsl[r].height, isFullScreen);
            }
 
-
-
-  public void FullScreenToggle()
-      {
+      public void FullScreenToggle()
+        {
           isFullScreen = !isFullScreen;
           Screen.fullScreen = isFullScreen;
-      }
+        }
       public void Quality(int q)
-    {
-        QualitySettings.SetQualityLevel(q);
-    }
-
+        {
+          QualitySettings.SetQualityLevel(q);
+        }
+      public void AudioVolume(float sliderValue)
+        {
+        am.SetFloat("masterVolume", sliderValue);
+        }
 
 
 }

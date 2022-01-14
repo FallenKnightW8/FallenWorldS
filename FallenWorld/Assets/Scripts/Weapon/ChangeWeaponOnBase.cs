@@ -20,7 +20,7 @@ public class ChangeWeaponOnBase : MonoBehaviour
       PlayerPrefs.SetInt("PrimaryW", 0);
     }
 
-    public  void SHT()
+    public void SHT()
     {
       PlayerPrefs.SetInt("PrimaryW", 1);
     }

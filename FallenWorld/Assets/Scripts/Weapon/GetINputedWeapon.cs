@@ -39,12 +39,4 @@ public class GetINputedWeapon : MonoBehaviour
       }
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
-    }
-  //      Weapons.weapons[0] = pp;
 }

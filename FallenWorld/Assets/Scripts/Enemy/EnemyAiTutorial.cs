@@ -14,7 +14,7 @@ public class EnemyAiTutorial : MonoBehaviour
     public NavMeshAgent agent;
 //    public Animation anim;
 
-    public Transform CoopAI,Enemy,player;
+    public Transform CoopAI,Enemy,player,FollowPL;
 
     public bool isFreandly = false;
     //Ai search
@@ -99,7 +99,8 @@ public class EnemyAiTutorial : MonoBehaviour
     }
 
     private void FolloPlayer(){
-      agent.SetDestination(player.position);
+      FollowPL = GameObject.FindWithTag("Follow").transform;
+      agent.SetDestination(FollowPL.position);
 //      anim.Play("Move");
     }
 
