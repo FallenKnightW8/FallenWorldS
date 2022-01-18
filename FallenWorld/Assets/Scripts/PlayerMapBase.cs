@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMapBase : MonoBehaviour
 {
     public KeyCode JobButton;
+    private float timeBetween = 1;
     public int isTRue;
     public GameObject TXT;
     public GameObject MapB;
@@ -17,12 +18,12 @@ public class PlayerMapBase : MonoBehaviour
         if (isTRue == 0)ray();
         else
         {
-          StartCoroutine(wait());
+          Invoke(nameof(wait), timeBetween);
         }
       }
-      IEnumerator wait()
+      private void wait()
       {
-         yield return new WaitForSeconds(1);
+
       }
 
 

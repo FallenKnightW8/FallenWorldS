@@ -10,11 +10,16 @@ public class PC : MonoBehaviour
   public GameObject SH;
   public GameObject Pc;
   public GameObject Upg;
+  private float timeBetween = 1;
   void Update()
   {
     if (Input.GetKeyDown(JobKey))
     {
-      Close();
+      Invoke(nameof(Close), timeBetween);
+      if (TRUE.isTRue == 1)
+      {
+        Pc.SetActive(false);
+      }
     }
   }
   public void Shop()
@@ -27,10 +32,8 @@ public class PC : MonoBehaviour
     Upg.SetActive(true);
     Pc.SetActive(false);
   }
-  IEnumerator Close()
+  private void Close()
   {
-    Pc.SetActive(false);
-    yield return new WaitForSeconds(1);
     TRUE.isTRue = 0;
   }
 }
