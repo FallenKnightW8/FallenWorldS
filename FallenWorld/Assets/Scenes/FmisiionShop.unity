@@ -5644,7 +5644,7 @@ PrefabInstance:
     - target: {fileID: 1205829658, guid: 655c6544b5ef1c541b76b06d585a7536, type: 3}
       propertyPath: Hp
       value: 
-      objectReference: {fileID: 698496782}
+      objectReference: {fileID: 0}
     - target: {fileID: 1205829658, guid: 655c6544b5ef1c541b76b06d585a7536, type: 3}
       propertyPath: health
       value: 100
@@ -8288,7 +8288,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Tk
       value: 
-      objectReference: {fileID: 3205621763325275465}
+      objectReference: {fileID: 0}
     - target: {fileID: 1571531601382603515, guid: 0040ee598a307f64ea0f652a51eb5151,
         type: 3}
       propertyPath: Point
@@ -16470,7 +16470,7 @@ PrefabInstance:
     - target: {fileID: 1205829658, guid: 655c6544b5ef1c541b76b06d585a7536, type: 3}
       propertyPath: Hp
       value: 
-      objectReference: {fileID: 698496782}
+      objectReference: {fileID: 0}
     - target: {fileID: 1205829658, guid: 655c6544b5ef1c541b76b06d585a7536, type: 3}
       propertyPath: Damage
       value: 5
@@ -16570,6 +16570,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TEnemy Variant (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493069742144268668, guid: 655c6544b5ef1c541b76b06d585a7536,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 655c6544b5ef1c541b76b06d585a7536, type: 3}
@@ -17481,7 +17486,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Tk
       value: 
-      objectReference: {fileID: 3205621763325275465}
+      objectReference: {fileID: 0}
     - target: {fileID: 1571531601382603515, guid: 0040ee598a307f64ea0f652a51eb5151,
         type: 3}
       propertyPath: Point
@@ -23795,7 +23800,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Tk
       value: 
-      objectReference: {fileID: 3205621763325275465}
+      objectReference: {fileID: 0}
     - target: {fileID: 1571531601382603515, guid: 0040ee598a307f64ea0f652a51eb5151,
         type: 3}
       propertyPath: Point
@@ -28262,18 +28267,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 695466026}
   m_CullTransparentMesh: 1
---- !u!114 &698496782 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1680082402794711938, guid: f18716ccefdf2434aa6bb0490c0bc5a9,
-    type: 3}
-  m_PrefabInstance: {fileID: 1680082402096225420}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11e1876ddae4a1046b64b5dd5c293c0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &710120643
 GameObject:
   m_ObjectHideFlags: 0
@@ -38884,7 +38877,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Tk
       value: 
-      objectReference: {fileID: 3205621763325275465}
+      objectReference: {fileID: 0}
     - target: {fileID: 1571531601382603515, guid: 0040ee598a307f64ea0f652a51eb5151,
         type: 3}
       propertyPath: Point
@@ -42858,7 +42851,7 @@ PrefabInstance:
     - target: {fileID: 1205829658, guid: 655c6544b5ef1c541b76b06d585a7536, type: 3}
       propertyPath: Hp
       value: 
-      objectReference: {fileID: 698496782}
+      objectReference: {fileID: 0}
     - target: {fileID: 1205829658, guid: 655c6544b5ef1c541b76b06d585a7536, type: 3}
       propertyPath: health
       value: 100
@@ -45258,7 +45251,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Tk
       value: 
-      objectReference: {fileID: 3205621763325275465}
+      objectReference: {fileID: 0}
     - target: {fileID: 1571531601382603515, guid: 0040ee598a307f64ea0f652a51eb5151,
         type: 3}
       propertyPath: Point
@@ -45915,7 +45908,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Tk
       value: 
-      objectReference: {fileID: 3205621763325275465}
+      objectReference: {fileID: 0}
     - target: {fileID: 1571531601382603515, guid: 0040ee598a307f64ea0f652a51eb5151,
         type: 3}
       propertyPath: Point
@@ -48892,7 +48885,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Tk
       value: 
-      objectReference: {fileID: 3205621763325275465}
+      objectReference: {fileID: 0}
     - target: {fileID: 1571531601382603515, guid: 0040ee598a307f64ea0f652a51eb5151,
         type: 3}
       propertyPath: Point
@@ -58004,7 +57997,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Tk
       value: 
-      objectReference: {fileID: 3205621763325275465}
+      objectReference: {fileID: 0}
     - target: {fileID: 1571531601382603515, guid: 0040ee598a307f64ea0f652a51eb5151,
         type: 3}
       propertyPath: Point
@@ -65372,7 +65365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MissionUI: {fileID: 1479188805}
-  Weapon: {fileID: 688782950}
+  Weapon: {fileID: 0}
 --- !u!4 &1676768104
 Transform:
   m_ObjectHideFlags: 0
@@ -66501,7 +66494,7 @@ PrefabInstance:
     - target: {fileID: 1205829658, guid: 655c6544b5ef1c541b76b06d585a7536, type: 3}
       propertyPath: Hp
       value: 
-      objectReference: {fileID: 698496782}
+      objectReference: {fileID: 0}
     - target: {fileID: 1205829658, guid: 655c6544b5ef1c541b76b06d585a7536, type: 3}
       propertyPath: health
       value: 100
@@ -71539,7 +71532,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Tk
       value: 
-      objectReference: {fileID: 3205621763325275465}
+      objectReference: {fileID: 0}
     - target: {fileID: 1571531601382603515, guid: 0040ee598a307f64ea0f652a51eb5151,
         type: 3}
       propertyPath: Point
@@ -73739,7 +73732,7 @@ PrefabInstance:
     - target: {fileID: 1205829658, guid: 655c6544b5ef1c541b76b06d585a7536, type: 3}
       propertyPath: Hp
       value: 
-      objectReference: {fileID: 698496782}
+      objectReference: {fileID: 0}
     - target: {fileID: 1205829658, guid: 655c6544b5ef1c541b76b06d585a7536, type: 3}
       propertyPath: health
       value: 100
@@ -79843,7 +79836,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Tk
       value: 
-      objectReference: {fileID: 3205621763325275465}
+      objectReference: {fileID: 0}
     - target: {fileID: 1571531601382603515, guid: 0040ee598a307f64ea0f652a51eb5151,
         type: 3}
       propertyPath: Point
@@ -84122,7 +84115,7 @@ PrefabInstance:
     - target: {fileID: 1680082402784771782, guid: f18716ccefdf2434aa6bb0490c0bc5a9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.33
+      value: -14.4
       objectReference: {fileID: 0}
     - target: {fileID: 1680082402784771782, guid: f18716ccefdf2434aa6bb0490c0bc5a9,
         type: 3}
@@ -84132,7 +84125,7 @@ PrefabInstance:
     - target: {fileID: 1680082402784771782, guid: f18716ccefdf2434aa6bb0490c0bc5a9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.635
+      value: -24.5
       objectReference: {fileID: 0}
     - target: {fileID: 1680082402784771782, guid: f18716ccefdf2434aa6bb0490c0bc5a9,
         type: 3}
@@ -84291,18 +84284,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2496521471681953848, guid: 016564a5a5f2b3e47bd26e71751ebe68, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 016564a5a5f2b3e47bd26e71751ebe68, type: 3}
---- !u!114 &3205621763325275465 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4263908331889308101, guid: f18716ccefdf2434aa6bb0490c0bc5a9,
-    type: 3}
-  m_PrefabInstance: {fileID: 1680082402096225420}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b1067bae83f62149967684541769e85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8256834359700971381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -84314,7 +84295,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Tk
       value: 
-      objectReference: {fileID: 3205621763325275465}
+      objectReference: {fileID: 0}
     - target: {fileID: 1571531601382603515, guid: 0040ee598a307f64ea0f652a51eb5151,
         type: 3}
       propertyPath: Point

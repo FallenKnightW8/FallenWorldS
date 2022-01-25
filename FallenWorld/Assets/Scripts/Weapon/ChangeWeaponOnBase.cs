@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ChangeWeaponOnBase : MonoBehaviour
 {
-  public int Cweap;
-  public KeyCode EscButton;
   public GameObject Arsenal;
   public GameObject[] ListWeapon;
 //second
@@ -27,21 +25,13 @@ public class ChangeWeaponOnBase : MonoBehaviour
 
     void Update()
     {
-      VieWeapon();
-      if (Input.GetKeyDown(EscButton))
-      {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        Arsenal.SetActive(false);
-      }
+//      VieWeapon();
     }
     public void VieWeapon()
     {
-      Cweap = PlayerPrefs.GetInt("BuyedWeapon");
-      while (Cweap != -1)
-      {
-        ListWeapon[Cweap].SetActive(true);
-        Cweap -= 1;
-      }
+      ListWeapon[0].SetActive(true);
+//PlayerPrefs.GetInt("PPUnlock") + PlayerPrefs.GetInt("SHTUnlock");
+      if (PlayerPrefs.HasKey("PPUnlock"))ListWeapon[1].SetActive(true);
+      if (PlayerPrefs.HasKey("SHTUnlock"))ListWeapon[2].SetActive(true);
     }
 }

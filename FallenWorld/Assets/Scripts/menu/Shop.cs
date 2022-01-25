@@ -13,6 +13,7 @@ public class Shop : MonoBehaviour
   public GameObject[] Upgrades;
   public GameObject[] Helps;
   public GameObject Shops;
+
   public Take Mpoints;
   public int Tpoint;
   public int Upgrade;
@@ -29,6 +30,9 @@ public class Shop : MonoBehaviour
     {
       Tpoint = PlayerPrefs.GetInt("Points");
     }
+    Weapon = PlayerPrefs.GetInt("Weapon");
+    Upgrade = PlayerPrefs.GetInt("Upgrade");
+    Help = PlayerPrefs.GetInt("Help");
   }
   public void Close()
   {
@@ -37,10 +41,21 @@ public class Shop : MonoBehaviour
   }
   public void UpdateSH()
   {
-//    while (Weapon !=0)
-    Weapons[Weapon].SetActive(true);
-    Upgrades[Upgrade].SetActive(true);
-    Helps[Help].SetActive(true);
+    while (Weapon !=0)
+    {
+      Weapon -= 1;
+      Weapons[Weapon].SetActive(true);
+    }
+    while (Upgrade != 0)
+    {
+      Upgrade -= 1;
+      Upgrades[Upgrade].SetActive(true);
+    }
+    while (Help != 0)
+    {
+      Help -= 1;
+      Helps[Help].SetActive(true);
+    }
   }
 
   public void cancell()
@@ -50,14 +65,15 @@ public class Shop : MonoBehaviour
     Cursor.lockState = CursorLockMode.Locked;
   }
 
+//ungrace damage to all Weapon
   public void Weapon1()
 {
-  if (Tpoint>= 0)
+  if (Tpoint>= 10000)
   {
-    Tpoint -= 0;
-    PlayerPrefs.SetInt("BuyedWeapon", 1);
+    Tpoint -= 10000;
+    PlayerPrefs.SetInt("BulletsUp", 1);
     PlayerPrefs.SetInt("Points", Tpoint);
-    Weapon = 1;
+    PlayerPrefs.SetInt("Weapon", 2);
   }
 }
   public void Weapon2()
@@ -66,7 +82,7 @@ public class Shop : MonoBehaviour
     {
       Tpoint -= 50000;
       PlayerPrefs.SetInt("Points", Tpoint);
-      Weapon = 2;
+      PlayerPrefs.SetInt("Weapon", 3);
     }
   }
   public void Weapon3()
@@ -75,15 +91,18 @@ public class Shop : MonoBehaviour
     {
       Tpoint-=200000;
       PlayerPrefs.SetInt("Points",Tpoint);
-      Weapon = 3;
-      PlayerPrefs.SetInt("BuyedWeapon", 2);
+      PlayerPrefs.SetInt("Weapon", 4);
     }
   }
   public void Upgrade1()
   {
+    if (Tpoint >= 10000 )
+    {
+      Tpoint -= 10000;
     PlayerPrefs.SetInt("CountsAid", 1);
     PlayerPrefs.SetInt("AidHP", 25);
-    Upgrade = 1;
+    PlayerPrefs.SetInt("Upgrade", 2);
+    }
   }
   public void Upgrade2()
   {
@@ -92,13 +111,17 @@ public class Shop : MonoBehaviour
       Tpoint -= 45000;
       PlayerPrefs.SetInt("CountsAid", 1);
       PlayerPrefs.SetInt("AidHP", 35);
-      Upgrade = 2;
+      PlayerPrefs.SetInt("Upgrade", 3);
     }
   }
   public void CallHelp1()
   {
+    if(Tpoint >= 10000)
+    {
+      Tpoint -= 10000;
     PlayerPrefs.SetInt("CountR", 1);
     PlayerPrefs.SetInt("LevelGuy", 0);
-//    Help = 1;
+    PlayerPrefs.SetInt("Help", 2);
+    }
   }
 }

@@ -39,9 +39,9 @@ public class PauseMenu : MonoBehaviour
     {
       Cursor.lockState = CursorLockMode.Locked;
       Time.timeScale = 1f;
+       Weapon.SetActive(true);
       PauseUI.SetActive(false);
       Cursor.visible = false;
-      Weapon.SetActive(true);
     }
 
     public void CancellMision()

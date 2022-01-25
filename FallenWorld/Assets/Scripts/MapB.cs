@@ -18,9 +18,7 @@ public class MapB : MonoBehaviour
   }
   public void FMission()
   {
-      Mission = 0;
-      PlayerPrefs.SetInt("Mission", Mission);
-      SceneManager.LoadScene("reading");
+      SceneManager.LoadScene("FmisiionShop");
 //    SceneManager.LoadScene("FmisiionShop");
   }
 

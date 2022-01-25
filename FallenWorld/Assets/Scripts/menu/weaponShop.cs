@@ -5,22 +5,47 @@ using UnityEngine.UI;
 
 public class weaponShop : MonoBehaviour
 {
-  public PlayerMapBase TRUE;
-  public KeyCode jobKey;
-  public GameObject Pc;
-  public GameObject WeapS;
-    // Start is called before the first frame update
+  public GameObject Weap;
+  public GameObject Arm;
+  public GameObject Intr;
     void Update()
     {
-      if (Input.GetKeyDown(jobKey))
-      {
-        Ex();
-      }
+
     }
-    public void Ex()
+    public void Weapons()
     {
-      WeapS.SetActive(false);
-      TRUE.isTRue = 0;
-      StopCoroutine ("Ex");
+      Weap.SetActive(true);
+      Arm.SetActive(false);
+      Intr.SetActive(false);
     }
+    public void Armor()
+    {
+      Arm.SetActive(true);
+      Weap.SetActive(false);
+      Intr.SetActive(false);
+    }
+    public void Instruments()
+    {
+      Intr.SetActive(true);
+      Weap.SetActive(false);
+      Arm.SetActive(false);
+    }
+
+    public void PP()
+    {
+      PlayerPrefs.SetInt("PPUnlock", 1);
+    }
+    public void SHT()
+    {
+      PlayerPrefs.SetInt("SHTUnlock", 1);
+    }
+
+
+//    public void Close()
+//    {
+//      Weap.SetActive(false);
+//      Arm.SetActive(false);
+//      Intr.SetActive(false);
+//    }
+//
 }

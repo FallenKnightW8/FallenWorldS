@@ -12,6 +12,10 @@ public class Take : MonoBehaviour
   public int Tpoint;
   public run Chek;
 
+    void Start()
+    {
+      TXT = GameObject.FindWithTag("Take");
+    }
 
     void Update()
     {

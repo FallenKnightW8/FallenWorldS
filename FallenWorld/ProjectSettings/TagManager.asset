@@ -23,6 +23,7 @@ TagManager:
   - CoopAI
   - Enemy
   - Follow
+  - Take
   layers:
   - Default
   - TransparentFX
