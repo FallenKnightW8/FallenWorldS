@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class Take : MonoBehaviour
 {
   public KeyCode takeButton;
+  public GameObject BFd;
   public GameObject TXT;
   public int Point;
   public Text Sc;
   public int Tpoint;
   public run Chek;
-
+  public int Card = 0;
     void Start()
     {
       TXT = GameObject.FindWithTag("Take");
@@ -46,13 +47,32 @@ public class Take : MonoBehaviour
               PlayerPrefs.SetInt("Points", Tpoint);
           }
         }
-      }
+      else if (hit.collider.GetComponent<Card>())
+      {
+        TXT.SetActive(true);
+          if (Input.GetKeyDown(takeButton))
+          {
+            Card += 1;
+            TXT.SetActive(false);
+              Destroy(hit.collider.GetComponent<Card>().gameObject);
+          }
+        }
+        else if (hit.collider.GetComponent<Unlock>())
+        {
+          if (Input.GetKeyDown(takeButton))
+            {
+              Card -= 1;
+              TXT.SetActive(false);
+              BFd = GameObject.FindWithTag("Finish");
+              Destroy(BFd);
+            }
+        }
       else
       {
         TXT.SetActive(false);
       }
+    }
   }
-
     public void SCore()
     {
       Sc.text = Tpoint.ToString();

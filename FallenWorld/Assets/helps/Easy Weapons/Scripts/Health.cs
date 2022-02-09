@@ -11,12 +11,13 @@ using System.Collections;
 using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
+
 	public Image HpBar;
 	public float fill;
 	public Text CountHP;
 
 	public GameObject DeadC;
-	public GameObject Dead;
+//	public GameObject Dead;
 
 	public bool canDie = true;					// Whether or not this health can die
 
@@ -30,6 +31,10 @@ public class Health : MonoBehaviour
 	public GameObject explosion;				// The explosion prefab to be instantiated
 
 	public bool isPlayer = false;				// Whether or not this health is the player
+	public bool isAI = false;
+
+	public GameObject AIweapon;
+
 	public GameObject deathCam;					// The camera to activate when the player dies
 
 	private bool dead = false;					// Used to make sure the Die() function isn't called twice
@@ -43,13 +48,13 @@ public class Health : MonoBehaviour
 
 	void Update()
 	{
-		if (currentHealth <= 0 && !dead && canDie)
-			Die();
+			if (currentHealth <= 0 && !dead && canDie)
+				Die();
 			if (isPlayer == true)
 			{
-			HpBar.fillAmount = fill;
-			fill = (currentHealth/100);
-			CountHP.text = currentHealth.ToString();
+				HpBar.fillAmount = fill;
+				fill = (currentHealth/100);
+				CountHP.text = currentHealth.ToString();
 		}
 	}
 
@@ -78,13 +83,18 @@ public class Health : MonoBehaviour
 		if (makeExplosion)
 			Instantiate(explosion, transform.position, transform.rotation);
 
+			if (isAI == true)
+			{
+				Destroy(AIweapon);
+			}
+
 		if (isPlayer == true)
 		{
-		if (isPlayer && deathCam != null)
-			Time.timeScale = 0f;
-			DeadC.SetActive(true);
-			deathCam.SetActive(true);
-			Cursor.lockState = CursorLockMode.None;
+			if (isPlayer && deathCam != null)
+				Time.timeScale = 0f;
+				DeadC.SetActive(true);
+				deathCam.SetActive(true);
+				Cursor.lockState = CursorLockMode.None;
 		}
 		// Remove this GameObject from the scene
 		Destroy(gameObject);

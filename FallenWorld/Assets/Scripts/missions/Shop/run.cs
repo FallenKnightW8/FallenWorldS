@@ -18,6 +18,7 @@ public void cheker()
 {
  if(point>=need)
  {
+   RunSCR = GameObject.FindWithTag("Run");
    RunSCR.SetActive(true);
  }
 

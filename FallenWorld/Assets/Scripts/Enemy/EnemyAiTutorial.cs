@@ -8,6 +8,8 @@ public class EnemyAiTutorial : MonoBehaviour
     public float Distance,visibl;
     public int Damage;
 
+    public GameObject Weapon;
+
     public float visibilityDistance;
     public float fieldOfViewDegrees;
 
@@ -69,7 +71,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
     private void EnemyS()
     {
-      player = GameObject.Find("PlayerObj").transform;
+      player = GameObject.FindWithTag("Player").transform;
       playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
       playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
@@ -88,7 +90,7 @@ public class EnemyAiTutorial : MonoBehaviour
     {
       gameObject.tag = "CoopAI";
       gameObject.layer = 19;
-      player = GameObject.Find("PlayerObj").transform;
+      player = GameObject.FindWithTag("Player").transform;
       Enemy = GameObject.FindWithTag("Enemy").transform;
       EnemyInsightRange = Physics.CheckSphere(transform.position, sightRange, whatIsEnemy);
       EnemyInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsEnemy);
@@ -148,7 +150,7 @@ public class EnemyAiTutorial : MonoBehaviour
         if (!alreadyAttacked)
         {
 //            FR.SetActive(true);
-            Ray ray = new Ray(transform.position, transform.forward);
+            Ray ray = new Ray(Weapon.transform.position, Weapon.transform.forward);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Distance))
             {
@@ -171,7 +173,7 @@ public class EnemyAiTutorial : MonoBehaviour
       if (!alreadyAttacked)
       {
 //            FR.SetActive(true);
-          Ray ray = new Ray(transform.position, transform.forward);
+          Ray ray = new Ray(Weapon.transform.position, Weapon.transform.forward);
           RaycastHit hit;
           if (Physics.Raycast(ray, out hit, Distance))
           {
@@ -193,7 +195,7 @@ public class EnemyAiTutorial : MonoBehaviour
       if (!alreadyAttacked)
       {
 //            FR.SetActive(true);
-          Ray ray = new Ray(transform.position, transform.forward);
+          Ray ray = new Ray(Weapon.transform.position, Weapon.transform.forward);
           RaycastHit hit;
           if (Physics.Raycast(ray, out hit, Distance))
           {

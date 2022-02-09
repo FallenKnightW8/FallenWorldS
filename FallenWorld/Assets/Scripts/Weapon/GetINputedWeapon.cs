@@ -11,6 +11,7 @@ public class GetINputedWeapon : MonoBehaviour
 
   public GameObject pp;
   public GameObject PST;
+  public GameObject PWS;
   public GameObject SHT;
   public GameObject SNP;
 
@@ -36,6 +37,10 @@ public class GetINputedWeapon : MonoBehaviour
       if (SecondW == 0)
       {
         Weapons.weapons[0] = PST;
+      }
+      else if (SecondW == 1)
+      {
+        Weapons.weapons[0] = PWS;
       }
 
     }

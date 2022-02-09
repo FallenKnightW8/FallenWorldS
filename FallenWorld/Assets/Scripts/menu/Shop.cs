@@ -5,9 +5,7 @@ using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
-  public KeyCode jobButton;
   public GameObject PC;
-  public GameObject UPG;
 
   public GameObject[] Weapons;
   public GameObject[] Upgrades;
@@ -21,10 +19,6 @@ public class Shop : MonoBehaviour
   public int Help;
   void Update()
   {
-    if (Input.GetKeyDown(jobButton))
-    {
-      Close();
-    }
     UpdateSH();
     if (PlayerPrefs.HasKey("Points"))
     {
@@ -33,11 +27,6 @@ public class Shop : MonoBehaviour
     Weapon = PlayerPrefs.GetInt("Weapon");
     Upgrade = PlayerPrefs.GetInt("Upgrade");
     Help = PlayerPrefs.GetInt("Help");
-  }
-  public void Close()
-  {
-//    PC.SetActive(true);
-    UPG.SetActive(false);
   }
   public void UpdateSH()
   {
@@ -99,9 +88,10 @@ public class Shop : MonoBehaviour
     if (Tpoint >= 10000 )
     {
       Tpoint -= 10000;
-    PlayerPrefs.SetInt("CountsAid", 1);
-    PlayerPrefs.SetInt("AidHP", 25);
-    PlayerPrefs.SetInt("Upgrade", 2);
+      PlayerPrefs.SetInt("Points",Tpoint);
+      PlayerPrefs.SetInt("CountsAid", 1);
+      PlayerPrefs.SetInt("AidHP", 25);
+      PlayerPrefs.SetInt("Upgrade", 2);
     }
   }
   public void Upgrade2()
@@ -109,6 +99,7 @@ public class Shop : MonoBehaviour
     if (Tpoint>=45000)
     {
       Tpoint -= 45000;
+      PlayerPrefs.SetInt("Points",Tpoint);
       PlayerPrefs.SetInt("CountsAid", 1);
       PlayerPrefs.SetInt("AidHP", 35);
       PlayerPrefs.SetInt("Upgrade", 3);
@@ -119,9 +110,10 @@ public class Shop : MonoBehaviour
     if(Tpoint >= 10000)
     {
       Tpoint -= 10000;
-    PlayerPrefs.SetInt("CountR", 1);
-    PlayerPrefs.SetInt("LevelGuy", 0);
-    PlayerPrefs.SetInt("Help", 2);
+      PlayerPrefs.SetInt("Points",Tpoint);
+      PlayerPrefs.SetInt("CountR", 1);
+      PlayerPrefs.SetInt("LevelGuy", 0);
+      PlayerPrefs.SetInt("Help", 2);
     }
   }
 }

@@ -62,7 +62,8 @@ public class FirstPersonCharacter : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-	}
+}
+
 
 
 	public void FixedUpdate ()

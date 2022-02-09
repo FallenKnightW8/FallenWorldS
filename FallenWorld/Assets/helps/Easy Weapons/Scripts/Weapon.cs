@@ -3,13 +3,13 @@
 /// Author: MutantGopher
 /// This is the core script that is used to create weapons.  There are 3 basic
 /// types of weapons that can be made with this script:
-/// 
+///
 /// Raycast - Uses raycasting to make instant hits where the weapon is pointed starting at
 /// the position of raycastStartSpot
-/// 
+///
 /// Projectile - Instantiates projectiles and lets them handle things like damage and accuracy.
-/// 
-/// Beam - Uses line renderers to create a beam effect.  This applies damage and force on 
+///
+/// Beam - Uses line renderers to create a beam effect.  This applies damage and force on
 /// every frame in small amounts, rather than all at once.  The beam type is limited by a
 /// heat variable (similar to ammo for raycast and projectile) unless otherwise specified.
 /// </summary>
@@ -44,7 +44,7 @@ public class SmartBulletHoleGroup
 	public Material material;
 	public PhysicMaterial physicMaterial;
 	public BulletHolePool bulletHole;
-	
+
 	public SmartBulletHoleGroup()
 	{
 		tag = "Everything";
@@ -68,9 +68,12 @@ public class SmartBulletHoleGroup
 // The Weapon class itself handles the weapon mechanics
 public class Weapon : MonoBehaviour
 {
+	//my
+	private float Upg;
+
 	// Weapon Type
 	public WeaponType type = WeaponType.Projectile;		// Which weapon system should be used
-	
+
 	// External Tools
 	public bool shooterAIEnabled = false;				// Enable features compatible with Shooter AI by Gateway Games
 	public bool bloodyMessEnabled = false;				// Enable features compatible with Bloody Mess by Heavy Diesel Softworks
@@ -169,7 +172,7 @@ public class Weapon : MonoBehaviour
 	public float shellTorqueRandom = 1.0f;				// The variant by which the spit torque can change + or - for each shot
 	public Transform shellSpitPosition;					// The spot where the weapon should spit shells from
 	public bool makeMuzzleEffects = true;				// Whether or not the weapon should make muzzle effects
-    public GameObject[] muzzleEffects = 
+    public GameObject[] muzzleEffects =
         new GameObject[] {null};			            // Effects to appear at the muzzle of the gun (muzzle flash, smoke, etc.)
 	public Transform muzzleEffectsPosition;				// The spot where the muzzle effects should appear from
 	public bool makeHitEffects = true;					// Whether or not the weapon should make hit effects
@@ -185,7 +188,7 @@ public class Weapon : MonoBehaviour
 		new List<string>();								// A list of strings holding the names of default bullet hole pools in the scene
 	public List<SmartBulletHoleGroup> bulletHoleGroups =
 		new List<SmartBulletHoleGroup>();				// A list of bullet hole groups.  Each one holds a tag for GameObjects that might be hit, as well as a corresponding bullet hole
-    public List<BulletHolePool> defaultBulletHoles = 
+    public List<BulletHolePool> defaultBulletHoles =
         new List<BulletHolePool>();                     // A list of default bullet holes to be instantiated when none of the custom parameters are met
 	public List<SmartBulletHoleGroup> bulletHoleExceptions =
 		new List<SmartBulletHoleGroup>();				// A list of SmartBulletHoleGroup objects that defines conditions for when no bullet hole will be instantiated.
@@ -219,7 +222,7 @@ public class Weapon : MonoBehaviour
 			actualROF = 1.0f / rateOfFire;
 		else
 			actualROF = 0.01f;
-		
+
 		// Initialize the current crosshair size variable to the starting value specified by the user
 		currentCrosshairSize = startingCrosshairSize;
 
@@ -265,7 +268,7 @@ public class Weapon : MonoBehaviour
 			else
 				Debug.LogWarning("Bullet Hole Pool does not exist or does not have a BulletHolePool component.  Please assign GameObjects in the inspector that have the BulletHolePool component.");
 		}
-		
+
 		// Initialize the default bullet hole pools list
 		for (int i = 0; i < defaultBulletHolePoolNames.Count; i++)
 		{
@@ -277,11 +280,10 @@ public class Weapon : MonoBehaviour
 				Debug.LogWarning("Default Bullet Hole Pool does not have a BulletHolePool component.  Please assign GameObjects in the inspector that have the BulletHolePool component.");
 		}
 	}
-	
+
 	// Update is called once per frame
 	void Update()
 	{
-		
 		// Calculate the current accuracy for this weapon
 		currentAccuracy = Mathf.Lerp(currentAccuracy, accuracy, accuracyRecoverRate * Time.deltaTime);
 
@@ -494,7 +496,7 @@ public class Weapon : MonoBehaviour
 
 		// Send a messsage so that users can do other actions whenever this happens
 		SendMessageUpwards("OnEasyWeaponsFire", SendMessageOptions.DontRequireReceiver);
-		
+
 		yield return new WaitForSeconds(delayBeforeFire);
 		Fire();
 	}
@@ -608,15 +610,19 @@ public class Weapon : MonoBehaviour
 			{
 				// Warmup heat
 				float damage = power;
+				if (PlayerPrefs.HasKey("BulletsUp"))
+				{
+					Upg = PlayerPrefs.GetInt("BulletsUp");
+					if (Upg == 1)damage+=10;
+				}
 				if (warmup)
 				{
 					damage *= heat * powerMultiplier;
 					heat = 0.0f;
 				}
-				
 				// Damage
-				hit.collider.gameObject.SendMessageUpwards("ChangeHealth", -damage, SendMessageOptions.DontRequireReceiver);
-				
+					hit.collider.gameObject.SendMessageUpwards("ChangeHealth", -damage, SendMessageOptions.DontRequireReceiver);
+
 				if (shooterAIEnabled)
 				{
 					hit.transform.SendMessageUpwards("Damage", damage / 100, SendMessageOptions.DontRequireReceiver);
@@ -690,7 +696,7 @@ public class Weapon : MonoBehaviour
 				{
 					// A list of the bullet hole prefabs to choose from
 					List<SmartBulletHoleGroup> holes = new List<SmartBulletHoleGroup>();
-					
+
 					// Display the bullet hole groups based on tags
                     if (bhSystem == BulletHoleSystem.Tag)
 					{
@@ -735,7 +741,7 @@ public class Weapon : MonoBehaviour
 
 
 					SmartBulletHoleGroup sbhg = null;
-					
+
 					// If no bullet holes were specified for this parameter, use the default bullet holes
 					if (holes.Count == 0)   // If no usable (for this hit GameObject) bullet holes were found...
 					{
@@ -744,11 +750,11 @@ public class Weapon : MonoBehaviour
 						{
 							defaultsToUse.Add(new SmartBulletHoleGroup("Default", null, null, h));
 						}
-						
+
 						// Choose a bullet hole at random from the list
 						sbhg = defaultsToUse[Random.Range(0, defaultsToUse.Count)];
 					}
-					
+
 					// Make the actual bullet hole GameObject
 					else
 					{
@@ -760,7 +766,7 @@ public class Weapon : MonoBehaviour
 					if (sbhg.bulletHole != null)
 						sbhg.bulletHole.PlaceBulletHole(hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
 				}
-				
+
 				// Hit Effects
 				if (makeHitEffects)
 				{
@@ -782,7 +788,7 @@ public class Weapon : MonoBehaviour
 		// Recoil
 		if (recoil)
 			Recoil();
-		
+
 		// Muzzle flash effects
 		if (makeMuzzleEffects)
 		{
@@ -826,7 +832,7 @@ public class Weapon : MonoBehaviour
 		// Subtract 1 from the current ammo
 		if (!infiniteAmmo)
 			currentAmmo--;
-		
+
 		// Fire once for each shotPerRound value
 		for (int i = 0; i < shotPerRound; i++)
 		{
@@ -851,7 +857,7 @@ public class Weapon : MonoBehaviour
 				Debug.Log("Projectile to be instantiated is null.  Make sure to set the Projectile field in the inspector.");
 			}
 		}
-		
+
 		// Recoil
 		if (recoil)
 			Recoil();
@@ -871,20 +877,20 @@ public class Weapon : MonoBehaviour
 			shellGO.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(shellSpitForce + Random.Range(0, shellForceRandom), 0, 0), ForceMode.Impulse);
 			shellGO.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(shellSpitTorqueX + Random.Range(-shellTorqueRandom, shellTorqueRandom), shellSpitTorqueY + Random.Range(-shellTorqueRandom, shellTorqueRandom), 0), ForceMode.Impulse);
 		}
-		
+
 		// Play the gunshot sound
 		GetComponent<AudioSource>().PlayOneShot(fireSound);
 	}
-	
+
 	// Beam system
 	void Beam()
 	{
 		// Send a messsage so that users can do other actions whenever this happens
 		SendMessageUpwards("OnEasyWeaponsBeaming", SendMessageOptions.DontRequireReceiver);
-		
+
 		// Set the beaming variable to true
 		beaming = true;
-		
+
 		// Make the beam weapon heat up as it is being used
 		if (!infiniteBeam)
 			beamHeat += Time.deltaTime;
@@ -921,7 +927,7 @@ public class Weapon : MonoBehaviour
 		// Raycasting (damgage, etc)
 		Ray ray = new Ray(lastPoint, raycastStartSpot.forward);
 		RaycastHit hit;
-		
+
 
 
 		do
@@ -938,7 +944,7 @@ public class Weapon : MonoBehaviour
 				incomingDirection = nextPoint - lastPoint;
 				reflectDirection = Vector3.Reflect(incomingDirection, hit.normal);
 				ray = new Ray(nextPoint, reflectDirection);
-				
+
 				// Update the lastPoint variable
 				lastPoint = hit.point;
 
@@ -974,7 +980,7 @@ public class Weapon : MonoBehaviour
 						if (hit.collider.gameObject.GetComponent<Limb>())
 						{
 							GameObject parent = hit.collider.gameObject.GetComponent<Limb>().parent;
-							
+
 							CharacterSetup character = parent.GetComponent<CharacterSetup>();
 							character.ApplyDamage(beamPower, hit.collider.gameObject, weaponType, directionShot, Camera.main.transform.position);
 						}
@@ -989,7 +995,7 @@ public class Weapon : MonoBehaviour
 			}
 			else
 			{
-				
+
 				keepReflecting = false;
 			}
 
@@ -1033,7 +1039,7 @@ public class Weapon : MonoBehaviour
 			GetComponent<AudioSource>().Play();
 		}
 	}
-	
+
 	public void StopBeam()
 	{
 		// Restart the beam timer
@@ -1041,7 +1047,7 @@ public class Weapon : MonoBehaviour
 		if (beamHeat < 0)
 			beamHeat = 0;
 		GetComponent<AudioSource>().Stop();
-		
+
 		// Remove the visible beam effect GameObject
 		if (beamGO != null)
 		{
@@ -1126,5 +1132,3 @@ public class Weapon : MonoBehaviour
         return hitMesh;
     }
 }
-
-

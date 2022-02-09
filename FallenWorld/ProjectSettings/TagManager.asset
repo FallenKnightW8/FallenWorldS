@@ -24,6 +24,7 @@ TagManager:
   - Enemy
   - Follow
   - Take
+  - Run
   layers:
   - Default
   - TransparentFX
