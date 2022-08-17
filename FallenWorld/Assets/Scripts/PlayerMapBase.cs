@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerMapBase : MonoBehaviour
 {
     public KeyCode JobButton;
+    public KeyCode CloseButon;
 
-    private float timeBetween = 1;
-    public int isTRue;
+    public int isTRue = 0;
 
     public GameObject TXT;
 
@@ -18,18 +18,22 @@ public class PlayerMapBase : MonoBehaviour
     public GameObject Arsenal;
     public ChangeWeaponOnBase job;
 
-      void Start()
-      {
-        timeBetween = 1 % 100000;
-      }
+    public GameObject player;
+    public GameObject playerC;
+    void Start()
+    {
+      player = GameObject.FindWithTag("Player");
+      playerC = GameObject.FindWithTag("MainCamera");
+    }
+
       void Update()
       {
         Check();
       }
       public void Check()
       {
-        if (Input.GetKeyDown(JobButton) && isTRue == 1)Close();//Invoke(nameof(Close2), timeBetween);
-        if (isTRue == 0)Invoke(nameof(ray), timeBetween);
+        if (Input.GetKeyDown(CloseButon) && isTRue == 1)Close();//Invoke(nameof(Close2), timeBetween);
+        if (isTRue == 0)ray();
 
       }
       public void ray()
@@ -67,7 +71,8 @@ public class PlayerMapBase : MonoBehaviour
           PC.SetActive(true);
           Cursor.lockState = CursorLockMode.None;
           Cursor.visible = true;
-
+          player.GetComponent<FirstPersonMovement>().CanMove = false;
+          player.GetComponent<FirstPersonLook>().canM = false;
         }
       }
       public void Map()
@@ -80,6 +85,8 @@ public class PlayerMapBase : MonoBehaviour
           Cursor.visible = true;
           MapB.SetActive(true);
           TXT.SetActive(false);
+          player.GetComponent<FirstPersonMovement>().CanMove = false;
+          player.GetComponent<FirstPersonLook>().canM = false;
         }
       }
       public void arsenary()
@@ -93,11 +100,9 @@ public class PlayerMapBase : MonoBehaviour
           Cursor.visible = true;
           Arsenal.SetActive(true);
           TXT.SetActive(false);
+          player.GetComponent<FirstPersonMovement>().CanMove = false;
+          player.GetComponent<FirstPersonLook>().canM = false;
         }
-      }
-      public void Close2()
-      {
-        isTRue = 0;
       }
       public void Close()
       {
@@ -108,5 +113,7 @@ public class PlayerMapBase : MonoBehaviour
         Shops.SetActive(false);
         Wshop.SetActive(false);
         Cursor.visible = false;
+        player.GetComponent<FirstPersonMovement>().CanMove = true;
+        player.GetComponent<FirstPersonLook>().canM = true;
       }
 }

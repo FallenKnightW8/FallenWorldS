@@ -5,19 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/enemyTest.unity
     guid: e38ac262127457a44a2ab6ae9b664385
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: ce2c77708c9497c42a905d4313dce508
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Base.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/PlayerBase.unity
     guid: cbb553bdbe5cf4943a47f1c4b1f3da14
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/FmisiionShop.unity
     guid: da9af5c085afff345b6538db2c91a6d6
   m_configObjects:

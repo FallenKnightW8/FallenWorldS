@@ -9,6 +9,7 @@ public class FirstPersonLook : MonoBehaviour
 
     Vector2 velocity;
     Vector2 frameVelocity;
+    public bool canM = true;
 
 
     void Reset()
@@ -33,7 +34,10 @@ public class FirstPersonLook : MonoBehaviour
         velocity.y = Mathf.Clamp(velocity.y, -90, 90);
 
         // Rotate camera up-down and controller left-right from velocity.
+        if (canM == true)
+        {
         transform.localRotation = Quaternion.AngleAxis(-velocity.y, Vector3.right);
         character.localRotation = Quaternion.AngleAxis(velocity.x, Vector3.up);
+        }
     }
 }
