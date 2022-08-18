@@ -30,7 +30,7 @@ public class MenuControls : MonoBehaviour
   }
   public void PlayerCLyess()
   {
-    SceneManager.LoadScene("Base");
+    SceneManager.LoadScene("tutorial");
     PlayerPrefs.DeleteAll();
   }
   public void PlayerCLNo()

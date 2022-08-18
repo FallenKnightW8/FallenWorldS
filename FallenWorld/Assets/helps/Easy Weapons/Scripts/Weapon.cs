@@ -136,6 +136,7 @@ public class Weapon : MonoBehaviour
 	// Ammo
 	public bool infiniteAmmo = false;					// Whether or not this weapon should have unlimited ammo
 	public int ammoCapacity = 12;						// The number of rounds this weapon can fire before it has to reload
+	public int maxAmmunition = 40;
 	public int shotPerRound = 1;						// The number of "bullets" that will be fired on each round.  Usually this will be 1, but set to a higher number for things like shotguns with spread
 	private int currentAmmo;							// How much ammo the weapon currently has
 	public float reloadTime = 2.0f;						// How much time it takes to reload the weapon
@@ -215,6 +216,7 @@ public class Weapon : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+		maxAmmunition = ammoCapacity * 4;
 		// Calculate the actual ROF to be used in the weapon systems.  The rateOfFire variable is
 		// designed to make it easier on the user - it represents the number of rounds to be fired
 		// per second.  Here, an actual ROF decimal value is calculated that can be used with timers.
@@ -300,7 +302,7 @@ public class Weapon : MonoBehaviour
 		}
 
 		// Reload if the weapon is out of ammo
-		if (reloadAutomatically && currentAmmo <= 0)
+		if (reloadAutomatically && currentAmmo <= 0 && maxAmmunition > 0)
 			Reload();
 
 		// Recoil Recovery
@@ -415,7 +417,7 @@ public class Weapon : MonoBehaviour
 		}
 
 		// Reload if the "Reload" button is pressed
-		if (Input.GetButtonDown("Reload"))
+		if (Input.GetButtonDown("Reload") && maxAmmunition > 0)
 			Reload();
 
 		// If the weapon is semi-auto and the user lets up on the button, set canFire to true
@@ -557,7 +559,7 @@ public class Weapon : MonoBehaviour
 		if (showCurrentAmmo)
 		{
 			if (type == WeaponType.Raycast || type == WeaponType.Projectile)
-				GUI.Label(new Rect(10, Screen.height - 30, 100, 20), "Ammo: " + currentAmmo);
+				GUI.Label(new Rect(10, Screen.height - 30, 100, 20), "Ammo: " + maxAmmunition);
 			else if (type == WeaponType.Beam)
 				GUI.Label(new Rect(10, Screen.height - 30, 100, 20), "Heat: " + (int)(beamHeat * 100) + "/" + (int)(maxBeamHeat * 100));
 		}
@@ -1062,13 +1064,25 @@ public class Weapon : MonoBehaviour
 	// Reload the weapon
 	void Reload()
 	{
+		if (maxAmmunition > 0)
+		{
+		maxAmmunition -= ammoCapacity - currentAmmo;
+		if (maxAmmunition > ammoCapacity )
+		{
 		currentAmmo = ammoCapacity;
+		}
+		else
+		{
+		currentAmmo = maxAmmunition;
+		maxAmmunition = 0;
+		}
 		fireTimer = -reloadTime;
 		GetComponent<AudioSource>().PlayOneShot(reloadSound);
 
 		// Send a messsage so that users can do other actions whenever this happens
 		SendMessageUpwards("OnEasyWeaponsReload", SendMessageOptions.DontRequireReceiver);
 	}
+}
 
 	// When the weapon tries to fire without any ammo
 	void DryFire()

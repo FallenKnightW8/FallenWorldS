@@ -8,6 +8,7 @@ using System.Collections.Generic;
 public class Settings : MonoBehaviour
 {
   public bool isFullScreen = true;
+  public bool counterFPS = false;
   Resolution[] rsl;
   List<string> resolutions;
   public Dropdown dropdown;
@@ -15,6 +16,7 @@ public class Settings : MonoBehaviour
 
    public void Awake()
        {
+         countF();
            resolutions = new List<string>();
            rsl = Screen.resolutions;
            foreach (var i in rsl)
@@ -23,6 +25,7 @@ public class Settings : MonoBehaviour
            }
            dropdown.ClearOptions();
            dropdown.AddOptions(resolutions);
+           am.SetFloat("masterVolume",-20);
        }
 
        public void Resolution(int r)
@@ -43,6 +46,13 @@ public class Settings : MonoBehaviour
         {
         am.SetFloat("masterVolume", sliderValue);
         }
+        public void countF()
+        {
+          counterFPS = !counterFPS;
+          if (counterFPS == true)Application.targetFrameRate = 30;
+          else Application.targetFrameRate = 120;
+        }
+
 
 
 }
