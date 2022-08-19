@@ -3754,11 +3754,11 @@ GameObject:
   - component: {fileID: 1600521958}
   m_Layer: 5
   m_Name: Take
-  m_TagString: Untagged
+  m_TagString: Take
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1600521957
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5268,6 +5268,7 @@ MonoBehaviour:
   rateOfFire: 12
   infiniteAmmo: 0
   ammoCapacity: 16
+  maxAmmunition: 40
   shotPerRound: 1
   reloadTime: 1.6
   showCurrentAmmo: 1
@@ -6148,6 +6149,7 @@ MonoBehaviour:
   rateOfFire: 7
   infiniteAmmo: 0
   ammoCapacity: 30
+  maxAmmunition: 40
   shotPerRound: 1
   reloadTime: 2.1
   showCurrentAmmo: 1
@@ -6476,6 +6478,7 @@ MonoBehaviour:
   rateOfFire: 1
   infiniteAmmo: 0
   ammoCapacity: 5
+  maxAmmunition: 40
   shotPerRound: 1
   reloadTime: 3
   showCurrentAmmo: 1

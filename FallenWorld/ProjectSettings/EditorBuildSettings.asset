@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/enemyTest.unity
     guid: e38ac262127457a44a2ab6ae9b664385
   - enabled: 0
-    path: Assets/Scenes/Base.unity
+    path: Assets/Scenes/Base/Base.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/Menu.unity
