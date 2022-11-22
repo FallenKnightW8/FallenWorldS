@@ -5011,7 +5011,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   takeButton: 101
-  BFd: {fileID: 0}
   TXT: {fileID: 1600521956}
   Point: 0
   Sc: {fileID: 59735324}
@@ -5526,7 +5525,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrimaryW: 1
   SecondW: 0
+  InMission: 1
   Weapons: {fileID: 1680082402794608394}
+  weapon: {fileID: 0}
   pp: {fileID: 5758379917743123152}
   PST: {fileID: 1680082402784404200}
   PWS: {fileID: 0}

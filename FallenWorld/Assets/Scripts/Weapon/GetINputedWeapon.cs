@@ -7,8 +7,11 @@ public class GetINputedWeapon : MonoBehaviour
   public int PrimaryW;
   public int SecondW;
 
+  public bool InMission = true;
+
   public WeaponSystem Weapons;
 
+  public GameObject weapon;
   public GameObject pp;
   public GameObject PST;
   public GameObject PWS;
@@ -17,31 +20,37 @@ public class GetINputedWeapon : MonoBehaviour
 
     void Start()
     {
-      PrimaryW = PlayerPrefs.GetInt("PrimaryW");
-      SecondW = PlayerPrefs.GetInt("SecondW");
+      if (InMission == true)
+      {
+        PrimaryW = PlayerPrefs.GetInt("PrimaryW");
+        SecondW = PlayerPrefs.GetInt("SecondW");
 //primary weapon check
-      if (PrimaryW == 0)
-      {
-        Weapons.weapons[1] = pp;
-      }
-      else if(PrimaryW == 1)
-      {
-        Weapons.weapons[1] = SHT;
-      }
-      else if(PrimaryW == 2)
-      {
-        Weapons.weapons[1] = SNP;
-      }
+        if (PrimaryW == 0)
+        {
+          Weapons.weapons[1] = pp;
+        }
+        else if(PrimaryW == 1)
+        {
+          Weapons.weapons[1] = SHT;
+        }
+        else if(PrimaryW == 2)
+        {
+          Weapons.weapons[1] = SNP;
+        }
 
 //secod weapon
-      if (SecondW == 0)
-      {
-        Weapons.weapons[0] = PST;
+        if (SecondW == 0)
+        {
+          Weapons.weapons[0] = PST;
+        }
+        else if (SecondW == 1)
+        {
+          Weapons.weapons[0] = PWS;
+        }
       }
-      else if (SecondW == 1)
+      else
       {
-        Weapons.weapons[0] = PWS;
+        weapon.SetActive(false);
       }
-
     }
 }

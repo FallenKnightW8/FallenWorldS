@@ -8,7 +8,7 @@ public class changeSC : MonoBehaviour
 
  private void OnTriggerEnter(Collider Other)
  {
-   SceneManager.LoadScene("PlayerBase");
+   SceneManager.LoadScene("RoomB");
    PlayerPrefs.SetInt("BuyedWeapon", 2);
  }
 
