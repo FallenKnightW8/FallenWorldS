@@ -24,12 +24,8 @@ public class FirstPersonAudio : MonoBehaviour
     public AudioSource jumpAudio;
     public AudioClip[] jumpSFX;
 
-    [Header("Crouch")]
-    public Crouch crouch;
-    public AudioSource crouchStartAudio, crouchedAudio, crouchEndAudio;
-    public AudioClip[] crouchStartSFX, crouchEndSFX;
 
-    AudioSource[] MovingAudios => new AudioSource[] { stepAudio, runningAudio, crouchedAudio };
+    AudioSource[] MovingAudios => new AudioSource[] { stepAudio, runningAudio };
 
 
     void Reset()
@@ -48,14 +44,6 @@ public class FirstPersonAudio : MonoBehaviour
             jumpAudio = GetOrCreateAudioSource("Jump audio");
         }
 
-        // Setup crouch audio.
-        crouch = GetComponentInParent<Crouch>();
-        if (crouch)
-        {
-            crouchStartAudio = GetOrCreateAudioSource("Crouch Start Audio");
-            crouchStartAudio = GetOrCreateAudioSource("Crouched Audio");
-            crouchStartAudio = GetOrCreateAudioSource("Crouch End Audio");
-        }
     }
 
     void OnEnable() => SubscribeToEvents();
@@ -68,11 +56,7 @@ public class FirstPersonAudio : MonoBehaviour
         float velocity = Vector3.Distance(CurrentCharacterPosition, lastCharacterPosition);
         if (velocity >= velocityThreshold && groundCheck && groundCheck.isGrounded)
         {
-            if (crouch && crouch.IsCrouched)
-            {
-                SetPlayingMovingAudio(crouchedAudio);
-            }
-            else if (character.IsRunning)
+            if (character.IsRunning)
             {
                 SetPlayingMovingAudio(runningAudio);
             }
@@ -113,8 +97,6 @@ public class FirstPersonAudio : MonoBehaviour
     #region Play instant-related audios.
     void PlayLandingAudio() => PlayRandomClip(landingAudio, landingSFX);
     void PlayJumpAudio() => PlayRandomClip(jumpAudio, jumpSFX);
-    void PlayCrouchStartAudio() => PlayRandomClip(crouchStartAudio, crouchStartSFX);
-    void PlayCrouchEndAudio() => PlayRandomClip(crouchEndAudio, crouchEndSFX);
     #endregion
 
     #region Subscribe/unsubscribe to events.
@@ -128,13 +110,6 @@ public class FirstPersonAudio : MonoBehaviour
         {
             jump.Jumped += PlayJumpAudio;
         }
-
-        // Play crouch audio on crouch start/end.
-        if (crouch)
-        {
-            crouch.CrouchStart += PlayCrouchStartAudio;
-            crouch.CrouchEnd += PlayCrouchEndAudio;
-        }
     }
 
     void UnsubscribeToEvents()
@@ -146,13 +121,6 @@ public class FirstPersonAudio : MonoBehaviour
         if (jump)
         {
             jump.Jumped -= PlayJumpAudio;
-        }
-
-        // Undo play crouch audio on crouch start/end.
-        if (crouch)
-        {
-            crouch.CrouchStart -= PlayCrouchStartAudio;
-            crouch.CrouchEnd -= PlayCrouchEndAudio;
         }
     }
     #endregion
@@ -193,5 +161,5 @@ public class FirstPersonAudio : MonoBehaviour
         audio.clip = clip;
         audio.Play();
     }
-    #endregion 
+    #endregion
 }

@@ -4918,8 +4918,7 @@ GameObject:
   - component: {fileID: 1680082402794608390}
   - component: {fileID: 1680082402794608384}
   - component: {fileID: 1680082402794711938}
-  - component: {fileID: 1680082403404621654}
-  - component: {fileID: 1455603342}
+  - component: {fileID: 3709731098551926453}
   m_Layer: 21
   m_Name: PlayerObj
   m_TagString: Player
@@ -5150,7 +5149,7 @@ MonoBehaviour:
   isAI: 0
   AIweapon: {fileID: 0}
   deathCam: {fileID: 2034271673}
---- !u!114 &1680082403404621654
+--- !u!114 &3709731098551926453
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5159,30 +5158,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1680082402784404198}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a7902843e41724c9a578333750312d, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f92d86b335fb4a40a76a268be961f5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Count: 1
+  Count: 0
   HealButton: 113
-  HealHp: 50
+  HealHp: 0
   Hp: {fileID: 1680082402794711938}
-  CountC: {fileID: 695466028}
---- !u!114 &1455603342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1680082402784404198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 990a2fc893b01aa43b364fe13ead1e58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  CountAids: {fileID: 695466028}
   Guy0: {fileID: 2345217938358572858, guid: 2f878cc50271fae4c8ebc8f1b76b5b32, type: 3}
-  Distance: 0
+  Distance: 1
   countR: 0
-  Counts: {fileID: 2087982866}
+  CountsCH: {fileID: 2087982866}
+  CallHelpButton: 103
 --- !u!1 &1680082402784404200
 GameObject:
   m_ObjectHideFlags: 0
