@@ -21,8 +21,8 @@ public class Health : MonoBehaviour
 
 	public bool canDie = true;					// Whether or not this health can die
 
-	public float startingHealth = 100.0f;		// The amount of health to start with
-	public float maxHealth = 100.0f;			// The maximum amount of health
+	public float startingHealth = 50.0f;		// The amount of health to start with
+	public float maxHealth = 50.0f;			// The maximum amount of health
 	public float currentHealth;				// The current ammount of health
 
 	public bool replaceWhenDead = false;		// Whether or not a dead replacement should be instantiated.  (Useful for breaking/shattering/exploding effects)

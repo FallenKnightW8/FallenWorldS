@@ -1,6 +1,7 @@
 ﻿
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class EnemyAiTutorial : MonoBehaviour
 {
@@ -157,7 +158,11 @@ public class EnemyAiTutorial : MonoBehaviour
               Debug.DrawLine(transform.position,transform.forward);
               if (hit.collider.GetComponent<Take>())
               {
+                for (int i=0; i<3;i++)
+                {
                 hit.collider.gameObject.SendMessageUpwards("ChangeHealth", -Damage, SendMessageOptions.DontRequireReceiver);
+                waiter();
+                }
               }
           }
             alreadyAttacked = true;
@@ -240,6 +245,11 @@ public class EnemyAiTutorial : MonoBehaviour
     public void CallAllarm()
     {
       Alarmed.GetComponent<Alarm>().alarm = true;
+    }
+
+    IEnumerator waiter()
+    {
+      yield return new WaitForSeconds(2);
     }
 
 
