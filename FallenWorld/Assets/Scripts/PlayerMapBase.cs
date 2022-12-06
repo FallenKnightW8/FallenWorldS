@@ -14,17 +14,12 @@ public class PlayerMapBase : MonoBehaviour
     public GameObject MapB;
 //    public GameObject Shops;
 //    public GameObject Wshop;
-//    public GameObject PC;
+      public GameObject Table;
 //    public GameObject Arsenal;
     public ChangeWeaponOnBase job;
 
     public GameObject player;
     public GameObject playerC;
-    void Start()
-    {
-      player = GameObject.FindWithTag("Player");
-      playerC = GameObject.FindWithTag("MainCamera");
-    }
 
       void Update()
       {
@@ -46,10 +41,10 @@ public class PlayerMapBase : MonoBehaviour
             {
               Map();
             }
-          // else if (hit.collider.GetComponent<PCSHOP>())
-          // {
-          //   pc();
-          // }
+          else if (hit.collider.GetComponent<PCSHOP>())
+          {
+            pc();
+          }
           // else if (hit.collider.GetComponent<ChangeWeaponOnBase>())
           // {
           //   arsenary();
@@ -62,19 +57,19 @@ public class PlayerMapBase : MonoBehaviour
 
       }
 
-      // public void pc()
-      // {
-      //   TXT.SetActive(true);
-      //   if (Input.GetKeyDown(JobButton))
-      //   {
-      //     isTRue = 1;
-      //     PC.SetActive(true);
-      //     Cursor.lockState = CursorLockMode.None;
-      //     Cursor.visible = true;
-      //     player.GetComponent<FirstPersonMovement>().CanMove = false;
-      //     player.GetComponent<FirstPersonLook>().canM = false;
-      //   }
-      // }
+      public void pc()
+      {
+        TXT.SetActive(true);
+        if (Input.GetKeyDown(JobButton))
+        {
+          isTRue = 1;
+          Table.SetActive(true);
+          Cursor.lockState = CursorLockMode.None;
+          Cursor.visible = true;
+          player.GetComponent<FirstPersonMovement>().CanMove = false;
+          player.GetComponent<FirstPersonLook>().canM = false;
+        }
+      }
       public void Map()
       {
         TXT.SetActive(true);
@@ -108,7 +103,7 @@ public class PlayerMapBase : MonoBehaviour
       {
         isTRue = 0;
         MapB.SetActive(false);
-        // PC.SetActive(false);
+        Table.SetActive(false);
         // Arsenal.SetActive(false);
         // Shops.SetActive(false);
         // Wshop.SetActive(false);
