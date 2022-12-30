@@ -190,6 +190,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1680082402794608392, guid: f18716ccefdf2434aa6bb0490c0bc5a9,
+        type: 3}
+      propertyPath: WeaponLvl
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1680082402794711938, guid: f18716ccefdf2434aa6bb0490c0bc5a9,
         type: 3}
       propertyPath: maxHealth
@@ -199,6 +204,16 @@ PrefabInstance:
         type: 3}
       propertyPath: startingHealth
       value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243091866123076300, guid: f18716ccefdf2434aa6bb0490c0bc5a9,
+        type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 355110259}
+    - target: {fileID: 3243091866123076300, guid: f18716ccefdf2434aa6bb0490c0bc5a9,
+        type: 3}
+      propertyPath: PrimaryW
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18716ccefdf2434aa6bb0490c0bc5a9, type: 3}
@@ -455,6 +470,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336760243}
   m_CullTransparentMesh: 1
+--- !u!1 &355110259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1680082402784404202, guid: f18716ccefdf2434aa6bb0490c0bc5a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 59215315}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &360980397
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,7 +973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &620378622
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1971,7 +1992,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1460088011
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2260,6 +2281,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TEnemy Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6915698731029895148, guid: 84ebb551dc4e591469fc7b7fff25e85a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84ebb551dc4e591469fc7b7fff25e85a, type: 3}
@@ -2886,6 +2912,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 3083717516614650463, guid: 55791d1bfdb173a44ae8287b6b125524,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4921674524298756716, guid: 55791d1bfdb173a44ae8287b6b125524,
         type: 3}
       propertyPath: m_RootOrder
@@ -3062,6 +3093,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152914410851172770, guid: 592add35691d1cc48b234f17099d09b7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6152914410851172774, guid: 592add35691d1cc48b234f17099d09b7,
         type: 3}

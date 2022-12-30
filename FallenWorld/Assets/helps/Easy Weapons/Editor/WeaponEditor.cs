@@ -52,6 +52,7 @@ public class WeaponEditor : Editor
 		showGeneral = EditorGUILayout.Foldout(showGeneral, "General");
 		if (showGeneral)
 		{
+			weapon.WeaponLvl = EditorGUILayout.IntField("Level of Geapon",weapon.WeaponLvl);
 			weapon.playerWeapon = EditorGUILayout.Toggle("Player's Weapon", weapon.playerWeapon);
 			if (weapon.type == WeaponType.Raycast || weapon.type == WeaponType.Projectile)
 				weapon.auto = (Auto)EditorGUILayout.EnumPopup("Auto Type", weapon.auto);
@@ -134,6 +135,7 @@ public class WeaponEditor : Editor
 					weapon.reloadTime = EditorGUILayout.FloatField("Reload Time", weapon.reloadTime);
 					weapon.showCurrentAmmo = EditorGUILayout.Toggle("Show Current Ammo", weapon.showCurrentAmmo);
 					weapon.reloadAutomatically = EditorGUILayout.Toggle("Reload Automatically", weapon.reloadAutomatically);
+					weapon.maxAmmunition = EditorGUILayout.IntField("Max Ammunition",weapon.maxAmmunition);
 				}
 				weapon.shotPerRound = EditorGUILayout.IntField("Shots Per Round", weapon.shotPerRound);
 			}
@@ -165,7 +167,7 @@ public class WeaponEditor : Editor
 				if (weapon.warmup)
 				{
 					weapon.maxWarmup = EditorGUILayout.FloatField("Max Warmup", weapon.maxWarmup);
-					
+
 					if (weapon.type == WeaponType.Projectile)
 					{
 						weapon.multiplyForce = EditorGUILayout.Toggle("Multiply Force", weapon.multiplyForce);
@@ -354,7 +356,7 @@ public class WeaponEditor : Editor
 						{
 							weapon.defaultBulletHoles.Remove(weapon.defaultBulletHoles[i]);
 							weapon.defaultBulletHolePoolNames.Remove(weapon.defaultBulletHolePoolNames[i]);
-							
+
 						}
 
 						EditorGUILayout.EndHorizontal();
@@ -423,7 +425,7 @@ public class WeaponEditor : Editor
 				weapon.startingCrosshairSize = EditorGUILayout.FloatField("Start Crosshair Size", weapon.startingCrosshairSize);
 			}
 		}
-		
+
 
 		// Audio
 		showAudio = EditorGUILayout.Foldout(showAudio, "Audio");
@@ -440,4 +442,3 @@ public class WeaponEditor : Editor
 			EditorUtility.SetDirty(target);
 	}
 }
-

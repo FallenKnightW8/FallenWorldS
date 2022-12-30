@@ -87,7 +87,7 @@ public class Weapon : MonoBehaviour
 	public GameObject weaponModel;						// The actual mesh for this weapon
 	public Transform raycastStartSpot;					// The spot that the raycasting weapon system should use as an origin for rays
 	public float delayBeforeFire = 0.0f;				// An optional delay that causes the weapon to fire a specified amount of time after it normally would (0 for no delay)
-
+	public int WeaponLvl = 1;
 	// Warmup
 	public bool warmup = false;							// Whether or not the shot will be allowed to "warmup" before firing - allows power to increase when the player holds down fire button longer
 														// Only works on semi-automatic raycast and projectile weapons
@@ -134,10 +134,11 @@ public class Weapon : MonoBehaviour
 	private float fireTimer;							// Timer used to fire at a set frequency
 
 	// Ammo
+	public int maxAmmunition = 40;
 	public bool infiniteAmmo = false;					// Whether or not this weapon should have unlimited ammo
 	public int ammoCapacity = 12;						// The number of rounds this weapon can fire before it has to reload
-	public int maxAmmunition = 40;
 	public int shotPerRound = 1;						// The number of "bullets" that will be fired on each round.  Usually this will be 1, but set to a higher number for things like shotguns with spread
+	private int currentMaxammmo;
 	private int currentAmmo;							// How much ammo the weapon currently has
 	public float reloadTime = 2.0f;						// How much time it takes to reload the weapon
 	public bool showCurrentAmmo = true;					// Whether or not the current ammo should be displayed in the GUI
@@ -216,7 +217,6 @@ public class Weapon : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		maxAmmunition = ammoCapacity * 4;
 		// Calculate the actual ROF to be used in the weapon systems.  The rateOfFire variable is
 		// designed to make it easier on the user - it represents the number of rounds to be fired
 		// per second.  Here, an actual ROF decimal value is calculated that can be used with timers.
@@ -233,7 +233,16 @@ public class Weapon : MonoBehaviour
 
 		// Start the weapon off with a full magazine
 		currentAmmo = ammoCapacity;
-
+		currentMaxammmo = maxAmmunition;
+		
+		if (WeaponLvl==2)
+		{
+			currentMaxammmo += 10;
+		}
+		else if (WeaponLvl==3)
+		{
+			currentMaxammmo += 20;
+		}
 		// Give this weapon an audio source component if it doesn't already have one
 		if (GetComponent<AudioSource>() == null)
 		{
@@ -281,6 +290,7 @@ public class Weapon : MonoBehaviour
 			else
 				Debug.LogWarning("Default Bullet Hole Pool does not have a BulletHolePool component.  Please assign GameObjects in the inspector that have the BulletHolePool component.");
 		}
+
 	}
 
 	// Update is called once per frame
@@ -302,7 +312,7 @@ public class Weapon : MonoBehaviour
 		}
 
 		// Reload if the weapon is out of ammo
-		if (reloadAutomatically && currentAmmo <= 0 && maxAmmunition > 0)
+		if (reloadAutomatically && currentAmmo <= 0 && currentMaxammmo > 0)
 			Reload();
 
 		// Recoil Recovery
@@ -559,7 +569,7 @@ public class Weapon : MonoBehaviour
 		if (showCurrentAmmo)
 		{
 			if (type == WeaponType.Raycast || type == WeaponType.Projectile)
-				GUI.Label(new Rect(10, Screen.height - 30, 100, 20), "Ammo: " + maxAmmunition);
+				GUI.Label(new Rect(10, Screen.height - 30, 100, 20), "Ammo: " + currentMaxammmo);
 			else if (type == WeaponType.Beam)
 				GUI.Label(new Rect(10, Screen.height - 30, 100, 20), "Heat: " + (int)(beamHeat * 100) + "/" + (int)(maxBeamHeat * 100));
 		}
@@ -1066,15 +1076,15 @@ public class Weapon : MonoBehaviour
 	{
 		if (maxAmmunition > 0)
 		{
-		maxAmmunition -= ammoCapacity - currentAmmo;
-		if (maxAmmunition > ammoCapacity )
+		currentMaxammmo -= ammoCapacity - currentAmmo;
+		if (currentMaxammmo > ammoCapacity )
 		{
 		currentAmmo = ammoCapacity;
 		}
 		else
 		{
-		currentAmmo = maxAmmunition;
-		maxAmmunition = 0;
+		currentAmmo = currentMaxammmo;
+		currentMaxammmo = 0;
 		}
 		fireTimer = -reloadTime;
 		GetComponent<AudioSource>().PlayOneShot(reloadSound);

@@ -4911,6 +4911,7 @@ GameObject:
   - component: {fileID: 1680082402785541858}
   - component: {fileID: 1680082402779234690}
   - component: {fileID: 1680082402788467010}
+  - component: {fileID: 4705735148760208904}
   - component: {fileID: 7700474576577959297}
   - component: {fileID: 4263908331889308101}
   - component: {fileID: 1680082402786671650}
@@ -4984,6 +4985,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4705735148760208904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680082402784404198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e60c33e4217be44b0cbb9914e041e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Playerclan: 1
 --- !u!114 &7700474576577959297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5229,6 +5243,7 @@ MonoBehaviour:
   weaponModel: {fileID: 1680082402784404214}
   raycastStartSpot: {fileID: 1680082402784771788}
   delayBeforeFire: 0
+  WeaponLvl: 1
   warmup: 0
   maxWarmup: 2
   multiplyForce: 1
@@ -5253,9 +5268,9 @@ MonoBehaviour:
   beamPower: 1
   range: 9999
   rateOfFire: 12
+  maxAmmunition: 40
   infiniteAmmo: 0
   ammoCapacity: 16
-  maxAmmunition: 40
   shotPerRound: 1
   reloadTime: 1.6
   showCurrentAmmo: 1
@@ -6112,6 +6127,7 @@ MonoBehaviour:
   weaponModel: {fileID: 7357888084823427476}
   raycastStartSpot: {fileID: 1307092748}
   delayBeforeFire: 0
+  WeaponLvl: 1
   warmup: 0
   maxWarmup: 2
   multiplyForce: 1
@@ -6136,9 +6152,9 @@ MonoBehaviour:
   beamPower: 1
   range: 9999
   rateOfFire: 7
+  maxAmmunition: 40
   infiniteAmmo: 0
   ammoCapacity: 30
-  maxAmmunition: 40
   shotPerRound: 1
   reloadTime: 2.1
   showCurrentAmmo: 1
@@ -6441,6 +6457,7 @@ MonoBehaviour:
   weaponModel: {fileID: 7357888084062676555}
   raycastStartSpot: {fileID: 1680082403043330140}
   delayBeforeFire: 0
+  WeaponLvl: 1
   warmup: 0
   maxWarmup: 2
   multiplyForce: 1
@@ -6465,9 +6482,9 @@ MonoBehaviour:
   beamPower: 1
   range: 9999
   rateOfFire: 1
+  maxAmmunition: 40
   infiniteAmmo: 0
   ammoCapacity: 5
-  maxAmmunition: 40
   shotPerRound: 1
   reloadTime: 3
   showCurrentAmmo: 1

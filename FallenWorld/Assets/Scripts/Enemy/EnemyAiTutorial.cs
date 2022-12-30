@@ -34,31 +34,38 @@ public class EnemyAiTutorial : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange,EnemyInsightRange;
     public bool CoopAIInSightRange, CoopAIInAttackRange,EnemyInAttackRange;
-    public bool FalletSteals = false;
+
+    //clan sistem for batls
+    public int Clan = 1;
+    private int MyClan;
+    private int PlClan;
+
+    // public bool FalletSteals = false;
 //    public Alarm Alarmed;
-    public GameObject Alarmed;
-    public bool alarmedSignal = false;
-    public float timeToAllarm = 5f;
+    // public GameObject Alarmed;
+    // public bool alarmedSignal = false;
+    // public float timeToAllarm = 5f;
 
     private void Awake()
     {
 //        anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        MyClan = Clan;
     }
 
     private void Update()
     {
-      Alarmed = GameObject.FindWithTag("Dirt");
-      alarmedSignal = Alarmed.GetComponent<Alarm>().alarm;
-        if (alarmedSignal == true)
-        {
-          FalletSteals = true;
-        }
-      if (FalletSteals == false)
-      {
-      CanSeePlayer();
-      }
-      else{
+      // Alarmed = GameObject.FindWithTag("Dirt");
+      // alarmedSignal = Alarmed.GetComponent<Alarm>().alarm;
+      //   if (alarmedSignal == true)
+      //   {
+      //     FalletSteals = true;
+      //   }
+      // if (FalletSteals == false)
+      // {
+      // CanSeePlayer();
+      // }
+      // else{
       if (isFreandly == false)
         {
           EnemyS();
@@ -67,7 +74,7 @@ public class EnemyAiTutorial : MonoBehaviour
         {
           FreandS();
         }
-      }
+      // }
     }
 
     private void EnemyS()
@@ -218,35 +225,35 @@ public class EnemyAiTutorial : MonoBehaviour
 //        FR.SetActive(false);
         alreadyAttacked = false;
     }
-    protected bool CanSeePlayer()
-    {
-        RaycastHit hit;
-        Vector3 rayDirection = player.transform.position - transform.position;
+    // protected bool CanSeePlayer()
+    // {
+    //     RaycastHit hit;
+    //     Vector3 rayDirection = player.transform.position - transform.position;
+    //
+    //     if ((Vector3.Angle(rayDirection, transform.forward)) <= fieldOfViewDegrees * 0.5f)
+    //     {
+    //         // Detect if player is within the field of view
+    //         if (Physics.Raycast(transform.position, rayDirection, out hit, visibilityDistance))
+    //         {
+    //             if (hit.transform.CompareTag("Player"));
+    //             {
+    //               visibl+=25 * Time.deltaTime;
+    //               if (visibl >= 100)
+    //               {
+    //                 FalletSteals = true;
+    //                 CallAllarm();
+    //               }
+    //             }
+    //         }
+    //     }
+    //     return false;
+    //   }
 
-        if ((Vector3.Angle(rayDirection, transform.forward)) <= fieldOfViewDegrees * 0.5f)
-        {
-            // Detect if player is within the field of view
-            if (Physics.Raycast(transform.position, rayDirection, out hit, visibilityDistance))
-            {
-                if (hit.transform.CompareTag("Player"));
-                {
-                  visibl+=25 * Time.deltaTime;
-                  if (visibl >= 100)
-                  {
-                    FalletSteals = true;
-                    CallAllarm();
-                  }
-                }
-            }
-        }
-        return false;
-      }
-
-    public void CallAllarm()
-    {
-      Alarmed.GetComponent<Alarm>().alarm = true;
-    }
-
+    // public void CallAllarm()
+    // {
+    //   Alarmed.GetComponent<Alarm>().alarm = true;
+    // }
+    //
     IEnumerator waiter()
     {
       yield return new WaitForSeconds(2);
