@@ -45,7 +45,7 @@ public class Take : MonoBehaviour
               PlayerPrefs.SetInt("Points", Point);
           }
         }
-      else if (hit.collider.GetComponent<Card>())
+        else if (hit.collider.GetComponent<Card>())
       {
         TXT.SetActive(true);
           if (Input.GetKeyDown(takeButton))
@@ -79,10 +79,10 @@ public class Take : MonoBehaviour
             hit.collider.gameObject.SendMessageUpwards("ChageWeapon", SendMessageOptions.DontRequireReceiver);
           }
         }
-      else
-      {
-        TXT.SetActive(false);
-      }
+    }
+    else
+    {
+      TXT.SetActive(false);
     }
   }
     public void SCore()
