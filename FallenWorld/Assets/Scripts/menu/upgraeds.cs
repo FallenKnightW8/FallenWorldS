@@ -11,7 +11,7 @@ public class upgraeds : MonoBehaviour
   public Text DescriptionP;
   private string nameP = "one";
   private string desc = "two";
-
+  public Transform[] SkillsButons;
 
   public void test()
   {
