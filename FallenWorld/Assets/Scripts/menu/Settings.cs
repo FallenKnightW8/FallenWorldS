@@ -25,6 +25,10 @@ public class Settings : MonoBehaviour
            }
            dropdown.ClearOptions();
            dropdown.AddOptions(resolutions);
+           if (PlayerPrefs.HasKey("VolumeMax"))
+           {
+             am.SetFloat("masterVolume",PlayerPrefs.GetFloat("VolumeMax"));
+           }
            am.SetFloat("masterVolume",-20);
        }
 
@@ -37,6 +41,7 @@ public class Settings : MonoBehaviour
         {
           isFullScreen = !isFullScreen;
           Screen.fullScreen = isFullScreen;
+//          PlayerPrefs.SetBool("FullScreenMax",isFullScreen);
         }
       public void Quality(int q)
         {
@@ -45,6 +50,7 @@ public class Settings : MonoBehaviour
       public void AudioVolume(float sliderValue)
         {
         am.SetFloat("masterVolume", sliderValue);
+        PlayerPrefs.SetFloat("VolumeMax",sliderValue);
         }
         public void countF()
         {
