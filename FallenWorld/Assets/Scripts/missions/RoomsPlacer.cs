@@ -11,15 +11,18 @@ public class RoomsPlacer : MonoBehaviour
 
     private Room[,] spawnedRooms;
 
+    public int RoomsAera;
+    public int CountOfRooms;
+
     private IEnumerator Start()
     {
-        spawnedRooms = new Room[11, 11];
-        spawnedRooms[5, 5] = StartingRoom;
+        spawnedRooms = new Room[RoomsAera, RoomsAera];
+        spawnedRooms[0, 1] = StartingRoom;
 
-        for (int i = 0; i < 12; i++)
+        for (int i = 0; i < CountOfRooms; i++)
         {
             // Это вот просто убрать чтобы подземелье генерировалось мгновенно на старте
-            yield return new WaitForSecondsRealtime(0.5f);
+            yield return new WaitForSecondsRealtime(0f);
 
             PlaceOneRoom();
         }
@@ -57,7 +60,7 @@ public class RoomsPlacer : MonoBehaviour
 
             if (ConnectToSomething(newRoom, position))
             {
-                newRoom.transform.position = new Vector3(position.x - 5, 0, position.y - 5) * 12;
+                newRoom.transform.position = new Vector3(position.x - 5, 0, position.y - 5) * 10;
                 spawnedRooms[position.x, position.y] = newRoom;
                 return;
             }

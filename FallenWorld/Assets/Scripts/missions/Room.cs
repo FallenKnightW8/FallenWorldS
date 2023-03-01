@@ -7,10 +7,14 @@ public class Room : MonoBehaviour
     public GameObject DoorD;
     public GameObject DoorL;
 
+    public GameObject[] spawns;
+    private int RandomSp;
+
     public Mesh[] BlockMeshes;
 
     private void Start()
     {
+      RandomSp = Random.range(0,RandomSp.length);
         foreach (var  filter in GetComponentsInChildren<MeshFilter>())
         {
             if (filter.sharedMesh == BlockMeshes[0])
