@@ -14,7 +14,7 @@ public class Room : MonoBehaviour
 
     private void Start()
     {
-      RandomSp = Random.range(0,RandomSp.length);
+      RandomSp = Random.Range(0,spawns.Length);
         foreach (var  filter in GetComponentsInChildren<MeshFilter>())
         {
             if (filter.sharedMesh == BlockMeshes[0])
@@ -23,6 +23,11 @@ public class Room : MonoBehaviour
                 filter.transform.rotation = Quaternion.Euler(-90, 0, 90  * Random.Range (0, 4));
             }
         }
+    }
+
+    public void SetSpawn()
+    {
+
     }
 
     public void RotateRandomly()
