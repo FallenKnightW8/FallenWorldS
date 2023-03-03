@@ -48,6 +48,7 @@ public class Health : MonoBehaviour
 		// Initialize the currentHealth variable to the value specified by the user in startingHealth
 		currentHealth = startingHealth;
 		fill = 1f;
+		Mscore = GameObject.Find("PlayerObj").GetComponent<Take>();
 	}
 
 	void Update()
@@ -82,7 +83,7 @@ public class Health : MonoBehaviour
 		dead = true;
 		if(player==false)
 		{
-		Take.Point += MoneyForDead;
+		Mscore.PlayerGM(MoneyForDead);
 		Destroy(gameObject);
 		}
 

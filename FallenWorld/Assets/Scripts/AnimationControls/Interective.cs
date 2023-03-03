@@ -5,6 +5,12 @@ using UnityEngine;
 public class Interective : MonoBehaviour
 {
   public float Distance = 5f;
+  public FirstPersonCharacter MousLoker;
+
+    void Awake()
+    {
+      MousLoker = GameObject.Find("PlayerObj").GetComponent<FirstPersonCharacter>();
+    }
 
     void Update()
     {
@@ -19,6 +25,12 @@ public class Interective : MonoBehaviour
           {
             hit.collider.gameObject.SendMessageUpwards("CHS", SendMessageOptions.DontRequireReceiver);
           }
+          else if (hit.collider.GetComponent<Map>())
+          {
+            hit.collider.gameObject.SendMessageUpwards("QuestM",SendMessageOptions.DontRequireReceiver);
+            MousLoker.lockCursor = false;
+          }
+
       }
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
   public GameObject PauseUI;
+  public FirstPersonCharacter MousLoker;
   //public GameObject  GameUI;
   public bool isPaused = false;
   public GameObject Weapon;
@@ -15,12 +16,14 @@ public class PauseMenu : MonoBehaviour
     {
       PauseUI = transform.GetChild(0).gameObject;
       Points = PlayerPrefs.GetInt("Points");
+      MousLoker = GameObject.Find("PlayerObj").GetComponent<FirstPersonCharacter>();
     }
 
     void Update()
     {
       if (Input.GetKeyDown(KeyCode.Escape))
       {
+        MousLoker.lockCursor = false;
         PauseGame();
       }
 
@@ -38,6 +41,7 @@ public class PauseMenu : MonoBehaviour
     public void ResumeGame()
     {
       Cursor.lockState = CursorLockMode.Locked;
+      MousLoker.lockCursor = true;
       Time.timeScale = 1f;
        Weapon.SetActive(true);
       PauseUI.SetActive(false);

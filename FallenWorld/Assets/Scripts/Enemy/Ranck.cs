@@ -30,12 +30,14 @@ public class Ranck : MonoBehaviour
           RankH.maxHealth += 100;
           RankH.startingHealth +=100;
           Damag.Damage = 10;
+          MFD.MoneyForDead = 10;
             break;
 
           case 3:
           RankH.maxHealth += 150;
           RankH.startingHealth +=150;
           Damag.Damage = 15;
+          MFD.MoneyForDead = 15;
             break;
 
           default:

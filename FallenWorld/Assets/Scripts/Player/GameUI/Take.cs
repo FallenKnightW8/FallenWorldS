@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Take : MonoBehaviour
 {
   public KeyCode takeButton;
   public GameObject TXT;
-  public static int Point;
+  public int Point;
+  // public TMP_Text test;
   public Text Sc;
   public int Tpoint;
-  public int MoneyFDead;
+  // public int MoneyFDead;
     void Start()
     {
       TXT = GameObject.FindWithTag("Take");
@@ -64,6 +66,11 @@ public class Take : MonoBehaviour
     {
       TXT.SetActive(false);
     }
+  }
+  public void PlayerGM(int Mon)
+  {
+    Point += Mon;
+
   }
 
     public void SCore()

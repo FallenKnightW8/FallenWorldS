@@ -52,16 +52,20 @@ public class FirstPersonCharacter : MonoBehaviour
 
 	void Update()
 	{
-		if (Input.GetMouseButtonUp(0))
+		if (lockCursor)
+		{
+		if (Input.GetMouseButtonUp(0) && lockCursor == true)
 		{
 			Cursor.lockState = CursorLockMode.Locked;
 			Cursor.visible = false;
 		}
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
+
+    else if (Input.GetMouseButtonUp(0) && lockCursor == false)
+      {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+      }
+		}
 }
 
 
