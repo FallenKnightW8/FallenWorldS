@@ -7,11 +7,10 @@ public class Take : MonoBehaviour
 {
   public KeyCode takeButton;
   public GameObject TXT;
-  public int Point;
+  public static int Point;
   public Text Sc;
   public int Tpoint;
-  public run Chek;
-  public int Card = 0;
+  public int MoneyFDead;
     void Start()
     {
       TXT = GameObject.FindWithTag("Take");
@@ -41,27 +40,8 @@ public class Take : MonoBehaviour
               Destroy(hit.collider.GetComponent<Item>().gameObject);
               TXT.SetActive(false);
               SCore();
-              Chek.point = Point;
               PlayerPrefs.SetInt("Points", Point);
           }
-        }
-        else if (hit.collider.GetComponent<Card>())
-      {
-        TXT.SetActive(true);
-          if (Input.GetKeyDown(takeButton))
-          {
-            Card += 1;
-            TXT.SetActive(false);
-              Destroy(hit.collider.GetComponent<Card>().gameObject);
-          }
-        }
-        else if (hit.collider.GetComponent<Unlock>())
-        {
-          if (Input.GetKeyDown(takeButton))
-            {
-              Card -= 1;
-              TXT.SetActive(false);
-            }
         }
         else if(hit.collider.GetComponent<CaseRandomWeapon>())
         {
@@ -85,6 +65,7 @@ public class Take : MonoBehaviour
       TXT.SetActive(false);
     }
   }
+
     public void SCore()
     {
       Sc.text = Point.ToString();

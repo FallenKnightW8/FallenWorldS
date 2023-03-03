@@ -10,6 +10,7 @@ public class Ranck : MonoBehaviour
   public int Rank = 1;
   public Health RankH;
   public EnemyAiTutorial Damag;
+  public Health MFD;
 
 
     // Start is called before the first frame update
@@ -22,6 +23,7 @@ public class Ranck : MonoBehaviour
           RankH.startingHealth +=50;
           RankH.maxHealth += 50;
           Damag.Damage = 5;
+          MFD.MoneyForDead = 5;
             break;
 
           case 2:

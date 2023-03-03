@@ -11,6 +11,7 @@ using System.Collections;
 using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
+	public bool player = false;
 
 	public Image HpBar;
 	public float fill;
@@ -32,6 +33,9 @@ public class Health : MonoBehaviour
 
 	public bool isPlayer = false;				// Whether or not this health is the player
 	public bool isAI = false;
+
+	public int MoneyForDead;
+	public Take Mscore;
 
 	public GameObject AIweapon;
 
@@ -76,7 +80,12 @@ public class Health : MonoBehaviour
 	{
 		// This GameObject is officially dead.  This is used to make sure the Die() function isn't called again
 		dead = true;
+		if(player==false)
+		{
+		Take.Point += MoneyForDead;
 		Destroy(gameObject);
+		}
+
 		// Make death effects
 		if (replaceWhenDead)
 			Instantiate(deadReplacement, transform.position, transform.rotation);

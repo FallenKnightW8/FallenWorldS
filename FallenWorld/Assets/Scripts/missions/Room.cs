@@ -6,8 +6,13 @@ public class Room : MonoBehaviour
     public GameObject DoorR;
     public GameObject DoorD;
     public GameObject DoorL;
+    //1-money clear,2weapon,318+,4drugs farm,
+    public int TypeOfRoom;
+
 
     public GameObject[] spawns;
+    private GameObject ActiveSpawn;
+    public GameObject prefabToSpawn;
     private int RandomSp;
 
     public Mesh[] BlockMeshes;
@@ -15,6 +20,8 @@ public class Room : MonoBehaviour
     private void Start()
     {
       RandomSp = Random.Range(0,spawns.Length);
+      SetSpawn(RandomSp);
+
         foreach (var  filter in GetComponentsInChildren<MeshFilter>())
         {
             if (filter.sharedMesh == BlockMeshes[0])
@@ -25,9 +32,11 @@ public class Room : MonoBehaviour
         }
     }
 
-    public void SetSpawn()
+    public void SetSpawn(int RandomSp)
     {
-
+     spawns[RandomSp].SetActive(true);
+     ActiveSpawn = spawns[RandomSp];
+     Spawn();
     }
 
     public void RotateRandomly()
@@ -44,5 +53,13 @@ public class Room : MonoBehaviour
             DoorR = DoorU;
             DoorU = tmp;
         }
+    }
+    void Spawn()
+    {
+      if (prefabToSpawn != null)
+      {
+        // Instantiate the prefab
+        Instantiate(prefabToSpawn, ActiveSpawn.transform.position, Quaternion.identity);
+      }
     }
 }

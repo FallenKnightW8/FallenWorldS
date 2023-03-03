@@ -333,7 +333,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 18
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1380913499838862412, guid: 12274a07b6d5cfd499bc1efbdd5a9f01, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 12274a07b6d5cfd499bc1efbdd5a9f01, type: 3}
 --- !u!4 &6915698730847130470 stripped
 Transform:
@@ -367,18 +368,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6915698731029895144 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1380913499838862412, guid: 12274a07b6d5cfd499bc1efbdd5a9f01,
-    type: 3}
-  m_PrefabInstance: {fileID: 5535067806863180708}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6915698731029895148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11e1876ddae4a1046b64b5dd5c293c0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6915698731029895148 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1380913499838862408, guid: 12274a07b6d5cfd499bc1efbdd5a9f01,
@@ -420,6 +409,8 @@ MonoBehaviour:
   Distance: 99999
   visibl: 0
   Damage: 15
+  MyTime: 3
+  timeRound: 0
   Weapon: {fileID: 3180876179520997822}
   visibilityDistance: 10
   fieldOfViewDegrees: 90
@@ -429,33 +420,6 @@ MonoBehaviour:
   player: {fileID: 0}
   FollowPL: {fileID: 0}
   isFreandly: 0
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 2147483647
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 2097152
-  whatIsCoop:
-    serializedVersion: 2
-    m_Bits: 524288
-  whatIsEnemy:
-    serializedVersion: 2
-    m_Bits: 262144
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 0
-  timeBetweenAttacks: 0.5
-  sightRange: 20
-  attackRange: 12
-  playerInSightRange: 0
-  playerInAttackRange: 0
-  EnemyInsightRange: 0
-  CoopAIInSightRange: 0
-  CoopAIInAttackRange: 0
-  EnemyInAttackRange: 0
-  FalletSteals: 0
-  Alarmed: {fileID: 0}
-  alarmedSignal: 0
-  timeToAllarm: 5
 --- !u!195 &652695798
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -490,8 +454,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f3d65b96cc3f7f43beba4b5ad55d727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RankH: {fileID: 6915698731029895144}
+  Rank: 1
+  RankH: {fileID: 1893341097663547558}
   Damag: {fileID: 652695797}
+  MFD: {fileID: 1893341097663547558}
+--- !u!114 &1893341097663547558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6915698731029895148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e1876ddae4a1046b64b5dd5c293c0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: 0
+  HpBar: {fileID: 0}
+  fill: 0
+  CountHP: {fileID: 0}
+  DeadC: {fileID: 0}
+  canDie: 1
+  startingHealth: 100
+  maxHealth: 100
+  currentHealth: 0
+  replaceWhenDead: 0
+  deadReplacement: {fileID: 0}
+  makeExplosion: 0
+  explosion: {fileID: 0}
+  isPlayer: 0
+  isAI: 1
+  MoneyForDead: 0
+  Mscore: {fileID: 4263908331889308101, guid: f18716ccefdf2434aa6bb0490c0bc5a9, type: 3}
+  AIweapon: {fileID: 0}
+  deathCam: {fileID: 0}
 --- !u!1001 &8034596792012228004
 PrefabInstance:
   m_ObjectHideFlags: 0
