@@ -17,6 +17,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public float visibilityDistance;
     public float fieldOfViewDegrees;
+    private int RandomRotate;
 
     public NavMeshAgent agent;
 //    public Animation anim;
@@ -76,6 +77,11 @@ public class EnemyAiTutorial : MonoBehaviour
                     AttackPlayer();
                 }
             }
+        }
+        else
+        {
+          RandomRotate = Random.Range(1,5);
+          transform.Rotate(0f,RandomRotate,0f,Space.Self);
         }
       }
 }

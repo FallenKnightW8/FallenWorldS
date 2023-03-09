@@ -17,13 +17,14 @@ public class GetINputedWeapon : MonoBehaviour
   public GameObject PWS;
   public GameObject SHT;
   public GameObject SNP;
+  public GameObject SHG;
 
     void Start()
     {
       if (InMission == true)
       {
-        PrimaryW = PlayerPrefs.GetInt("PrimaryW");
-        SecondW = PlayerPrefs.GetInt("SecondW");
+        // PrimaryW = PlayerPrefs.GetInt("PrimaryW");
+        // SecondW = PlayerPrefs.GetInt("SecondW");
 //primary weapon check
         if (PrimaryW == 0)
         {
@@ -36,6 +37,10 @@ public class GetINputedWeapon : MonoBehaviour
         else if(PrimaryW == 2)
         {
           Weapons.weapons[1] = SNP;
+        }
+        else if (PrimaryW == 3)
+        {
+            Weapons.weapons[1] = SHG;
         }
 
 //secod weapon

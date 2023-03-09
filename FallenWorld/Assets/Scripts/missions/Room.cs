@@ -6,9 +6,6 @@ public class Room : MonoBehaviour
     public GameObject DoorR;
     public GameObject DoorD;
     public GameObject DoorL;
-    //1-money clear,2weapon,318+,4drugs farm,
-    public int TypeOfRoom;
-
 
     public GameObject[] spawns;
     private GameObject ActiveSpawn;
