@@ -214,7 +214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 363650280}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -90.53, y: -10.02, z: -78.14}
+  m_LocalPosition: {x: -86.44, y: -10.02, z: -79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -331,7 +331,7 @@ GameObject:
   m_Layer: 0
   m_Name: RoomPlacer
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -348,7 +348,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoomPrefabs:
-  - {fileID: 8421143775597486715, guid: 780282341c83d4b4e8ca3388b0dd8511, type: 3}
+  - {fileID: 0}
+  RoomPrGuns:
+  - {fileID: 6760929642240244141}
+  RoomPrCooc:
+  - {fileID: 6760929642240244141}
   StartingRoom: {fileID: 3218031289068859790}
   RoomsAera: 5
   CountOfRooms: 24
@@ -484,6 +488,32 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3218031289068859778}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1113513620 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2003182552294927527, guid: 97b2ec0d466e1254fb198597a76f28fa,
+    type: 3}
+  m_PrefabInstance: {fileID: 8986087125511798190}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1113513625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113513620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee5157c7284f6e14faaea8ac85fc9f47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoorU: {fileID: 0}
+  DoorR: {fileID: 0}
+  DoorD: {fileID: 0}
+  DoorL: {fileID: 0}
+  TypeOfRoom: 0
+  spawns: []
+  prefabToSpawn: {fileID: 0}
+  BlockMeshes: []
 --- !u!1 &1239612315
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,7 +531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1239612316
 AudioListener:
   m_ObjectHideFlags: 0
@@ -857,6 +887,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 780282341c83d4b4e8ca3388b0dd8511, type: 3}
+--- !u!114 &6760929642240244141 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8421143775597486715, guid: 780282341c83d4b4e8ca3388b0dd8511,
+    type: 3}
+  m_PrefabInstance: {fileID: 6760929642240244140}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee5157c7284f6e14faaea8ac85fc9f47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8986087125511798190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -924,5 +966,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8039057563173422956, guid: 97b2ec0d466e1254fb198597a76f28fa,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7f8823fd93625b343a3c64b426bc7d88, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97b2ec0d466e1254fb198597a76f28fa, type: 3}

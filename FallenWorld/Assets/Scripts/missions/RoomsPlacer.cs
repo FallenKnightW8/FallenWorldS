@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 public class RoomsPlacer : MonoBehaviour
 {
     public Room[] RoomPrefabs;
+    public Room[] RoomPrGuns;
+    public Room[] RoomPrCooc;
+    private int TypeRoom;
+
     public Room StartingRoom;
 
     private Room[,] spawnedRooms;
@@ -18,6 +22,27 @@ public class RoomsPlacer : MonoBehaviour
     {
         spawnedRooms = new Room[RoomsAera, RoomsAera];
         spawnedRooms[0, 1] = StartingRoom;
+
+        TypeRoom = Random.Range(0,1);
+        switch (TypeRoom)
+        {
+          case 0:
+          for (int i=0;i != RoomPrGuns.Length;i++)
+          {
+            RoomPrefabs[i] = RoomPrGuns[i];
+          }
+          break;
+          case 1:
+          {
+            for (int i=0; i!= RoomPrCooc.Length;i++)
+            {
+              RoomPrefabs[i] = RoomPrGuns[i];
+            }
+            break;
+          }
+          default:
+            break;
+        }
 
         for (int i = 0; i < CountOfRooms; i++)
         {
