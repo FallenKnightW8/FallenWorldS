@@ -35,7 +35,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
     private void FixedUpdate()
     {
-          EnemyS();
+        EnemyS();
     }
 
     private void AttackPlayer(){
@@ -72,7 +72,7 @@ public class EnemyAiTutorial : MonoBehaviour
             // Detect if player is within the field of view
             if (Physics.Raycast(transform.position, rayDirection, out hit, visibilityDistance))
             {
-                if (hit.transform.CompareTag("Player"));
+                if (hit.transform.CompareTag("Player")) 
                 {
                     AttackPlayer();
                 }
