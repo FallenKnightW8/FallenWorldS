@@ -7,40 +7,53 @@ using UnityEngine;
 
 public class Ranck : MonoBehaviour
 {
-  public int Rank = 1;
-  public Health RankH;
-  public EnemyAiTutorial Damag;
-  public Health MFD;
+    [SerializeField]private int Rank = 1;   //lvl of enemy treath
+    public Health RankH;                    //Url to chage Hp
+    public EnemyAiTutorial Damag;           //Url to Chage Dm
+    public Health MFD;                      //URl o Chage MFD
 
-
-    // Start is called before the first frame update
+    public GameObject[] EnemyModels;        //or prefabs?
     void Start()
     {
 //      maxHealth = GetComponent<Health>().maxHealth;
-      switch (Rank)
+        switch (Rank)
         {
-          case 1:
-          RankH.startingHealth +=50;
-          RankH.maxHealth += 50;
-          Damag.Damage = 5;
-          MFD.MoneyForDead = 5;
-            break;
+            case 1:
+                RankH.startingHealth +=50;
+                RankH.maxHealth += 50;
+                Damag.Damage = 5;
+                MFD.MoneyForDead = 5;
+                break;
 
-          case 2:
-          RankH.maxHealth += 100;
-          RankH.startingHealth +=100;
-          Damag.Damage = 10;
-          MFD.MoneyForDead = 10;
-            break;
+            case 2:
+                RankH.maxHealth += 100;
+                RankH.startingHealth +=100;
+                Damag.Damage = 10;
+                MFD.MoneyForDead = 10;
+                break;
 
-          case 3:
-          RankH.maxHealth += 150;
-          RankH.startingHealth +=150;
-          Damag.Damage = 15;
-          MFD.MoneyForDead = 15;
-            break;
+            case 3:
+                RankH.maxHealth += 150;
+                RankH.startingHealth +=150;
+                Damag.Damage = 15;
+                MFD.MoneyForDead = 30;
+                break;
 
-          default:
+            case 4:
+                RankH.maxHealth += 200;
+                RankH.startingHealth += 200;
+                Damag.Damage = 20;
+                MFD.MoneyForDead = 60;
+                break;
+
+            case 5:
+                RankH.maxHealth += 300;
+                RankH.startingHealth += 300;
+                Damag.Damage = 30;
+                MFD.MoneyForDead = 120;
+                break;
+
+            default:
             break;
         }
     }

@@ -11,14 +11,11 @@ using System.Collections;
 using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
-	public bool player = false;
-
 	public Image HpBar;
 	public float fill;
 	public Text CountHP;
 
 	public GameObject DeadC;
-//	public GameObject Dead;
 
 	public bool canDie = true;					// Whether or not this health can die
 
@@ -26,20 +23,14 @@ public class Health : MonoBehaviour
 	public float maxHealth = 50.0f;			// The maximum amount of health
 	public float currentHealth;				// The current ammount of health
 
-	public bool replaceWhenDead = false;		// Whether or not a dead replacement should be instantiated.  (Useful for breaking/shattering/exploding effects)
 	public GameObject deadReplacement;			// The prefab to instantiate when this GameObject dies
-	public bool makeExplosion = false;			// Whether or not an explosion prefab should be instantiated
-	public GameObject explosion;				// The explosion prefab to be instantiated
 
 	public bool isPlayer = false;				// Whether or not this health is the player
-	public bool isAI = false;
 
 	public int MoneyForDead;
 	public Take Mscore;
 
-	public GameObject AIweapon;
-
-	public GameObject deathCam;					// The camera to activate when the player dies
+	[SerializeField]private GameObject deathCam;					// The camera to activate when the player dies
 
 	private bool dead = false;					// Used to make sure the Die() function isn't called twice
 	// Use this for initialization
@@ -81,22 +72,11 @@ public class Health : MonoBehaviour
 	{
 		// This GameObject is officially dead.  This is used to make sure the Die() function isn't called again
 		dead = true;
-		if(player==false)
+		if(isPlayer == false)
 		{
 		Mscore.PlayerGM(MoneyForDead);
 		Destroy(gameObject);
 		}
-
-		// Make death effects
-		if (replaceWhenDead)
-			Instantiate(deadReplacement, transform.position, transform.rotation);
-		if (makeExplosion)
-			Instantiate(explosion, transform.position, transform.rotation);
-
-			if (isAI == true)
-			{
-				Destroy(AIweapon);
-			}
 
 		if (isPlayer == true)
 		{

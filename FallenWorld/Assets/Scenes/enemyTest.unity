@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 165806468, guid: f18716ccefdf2434aa6bb0490c0bc5a9, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 210456663, guid: f18716ccefdf2434aa6bb0490c0bc5a9, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.39990234
@@ -1017,6 +1021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e1876ddae4a1046b64b5dd5c293c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: 0
   HpBar: {fileID: 0}
   fill: 0
   CountHP: {fileID: 0}
@@ -1031,6 +1036,8 @@ MonoBehaviour:
   explosion: {fileID: 0}
   isPlayer: 0
   isAI: 0
+  MoneyForDead: 0
+  Mscore: {fileID: 0}
   AIweapon: {fileID: 0}
   deathCam: {fileID: 0}
 --- !u!114 &620378624
@@ -2193,6 +2200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e1876ddae4a1046b64b5dd5c293c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: 0
   HpBar: {fileID: 0}
   fill: 0
   CountHP: {fileID: 0}
@@ -2207,6 +2215,8 @@ MonoBehaviour:
   explosion: {fileID: 0}
   isPlayer: 0
   isAI: 0
+  MoneyForDead: 0
+  Mscore: {fileID: 0}
   AIweapon: {fileID: 0}
   deathCam: {fileID: 0}
 --- !u!114 &1460088016

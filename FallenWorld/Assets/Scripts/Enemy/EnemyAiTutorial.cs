@@ -2,12 +2,13 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
-
 public class EnemyAiTutorial : MonoBehaviour
-{
+{   //^^^abstract
 //    public GameObject FR;
     public float Distance,visibl;
+
     public int Damage;
+
     private float Reloadtime;
     public float MyTime = 3;
     public float timeRound;
