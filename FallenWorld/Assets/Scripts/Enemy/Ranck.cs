@@ -15,6 +15,7 @@ public class Ranck : MonoBehaviour
     public GameObject[] EnemyModels;        //or prefabs?
     void Start()
     {
+//Rank = Random.Range(1,5);
 //      maxHealth = GetComponent<Health>().maxHealth;
         switch (Rank)
         {
@@ -24,6 +25,7 @@ public class Ranck : MonoBehaviour
                 Damag.Damage = 5;
                 MFD.MoneyForDead = 5;
                 break;
+//spawn enemy
 
             case 2:
                 RankH.maxHealth += 100;
