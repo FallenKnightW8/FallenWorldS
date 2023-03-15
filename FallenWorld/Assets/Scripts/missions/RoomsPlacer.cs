@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class RoomsPlacer : MonoBehaviour
 {
+//private int RangOfMission = 1;
     public Room[] RoomPrefabs;
     public Room[] RoomPrGuns;
     public Room[] RoomPrCooc;
