@@ -77,6 +77,7 @@ public class EnemyAiTutorial : MonoBehaviour
                 {
                     AttackPlayer();
                 }
+//else if (hit.transform.CompareTag(""))
             }
         }
         else
