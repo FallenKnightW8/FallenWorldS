@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 using UnityEngine;
+=======
+﻿using UnityEngine;
+>>>>>>> Stashed changes
 using System.Collections;
 using UnityEngine.UI;
 public class Health : MonoBehaviour
@@ -39,13 +43,13 @@ public class Health : MonoBehaviour
 
 	void Update()
 	{
-			if (currentHealth <= 0 && !dead && canDie)
-				Die();
-			if (isPlayer == true)
-			{
-				HpBar.fillAmount = fill;
-				fill = (currentHealth/100);
-				CountHP.text = currentHealth.ToString();
+		if (currentHealth <= 0 && !dead && canDie)
+			Die();
+		if (isPlayer == true)
+		{
+			HpBar.fillAmount = fill;
+			fill = (currentHealth/100);
+			CountHP.text = currentHealth.ToString();
 		}
 	}
 
