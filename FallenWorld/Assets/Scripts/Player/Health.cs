@@ -7,6 +7,8 @@ public class Health : MonoBehaviour
 	public float fill;
 	public Text CountHP;
 
+	private Mission countOfdeads;
+
 	public GameObject DeadC;
 
 	public bool canDie = true;					// Whether or not this health can die
@@ -32,6 +34,7 @@ public class Health : MonoBehaviour
 		currentHealth = startingHealth;
 		fill = 1f;
 		Mscore = GameObject.Find("PlayerObj").GetComponent<Take>();
+		countOfdeads = GameObject.Find("MissionManager").GetComponent<Mission>();
 	}
 
 	void Update()
@@ -66,17 +69,20 @@ public class Health : MonoBehaviour
 		dead = true;
 		if(isPlayer == false)
 		{
-		Mscore.PlayerGM(MoneyForDead);
-		Destroy(gameObject);
+			countOfdeads.CountOfComplitM++;
+			Mscore.PlayerGM(MoneyForDead);
+			Destroy(gameObject);
 		}
 
 		if (isPlayer == true)
 		{
 			if (isPlayer && deathCam != null)
+			{
 				Time.timeScale = 0f;
 				DeadC.SetActive(true);
 				deathCam.SetActive(true);
 				Cursor.lockState = CursorLockMode.None;
+			}
 		}
 		// Remove this GameObject from the scene
 		Destroy(gameObject);

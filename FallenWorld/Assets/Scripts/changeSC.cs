@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class changeSC : MonoBehaviour
 {
 
- private void OnTriggerEnter(Collider Other)
- {
-   SceneManager.LoadScene("RoomB");
-   PlayerPrefs.SetInt("BuyedWeapon", 2);
- }
+    private void OnTriggerEnter(Collider Other)
+    {
+        SceneManager.LoadScene("RoomB");
+        PlayerPrefs.SetInt("BuyedWeapon", 2);
+    }
 
 }

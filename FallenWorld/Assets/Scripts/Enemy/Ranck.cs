@@ -13,10 +13,15 @@ public class Ranck : MonoBehaviour
     public Health MFD;                      //URl o Chage MFD
 
     public GameObject[] EnemyModels;        //or prefabs?
+
+    public Mission countOFEnemis;
     void Start()
     {
-//Rank = Random.Range(1,5);
-//      maxHealth = GetComponent<Health>().maxHealth;
+        countOFEnemis = GameObject.Find("MissionManager").GetComponent<Mission>();
+        countOFEnemis.NeededVaule +=1;
+        Debug.Log("work");
+        //Rank = Random.Range(1,5);
+        //      maxHealth = GetComponent<Health>().maxHealth;
         switch (Rank)
         {
             case 1:

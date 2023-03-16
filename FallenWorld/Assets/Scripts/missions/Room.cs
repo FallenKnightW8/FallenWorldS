@@ -16,8 +16,8 @@ public class Room : MonoBehaviour
 
     private void Start()
     {
-      RandomSp = Random.Range(0,spawns.Length);
-      SetSpawn(RandomSp);
+        RandomSp = Random.Range(0,spawns.Length);
+        SetSpawn(RandomSp);
 
         foreach (var  filter in GetComponentsInChildren<MeshFilter>())
         {
@@ -31,9 +31,9 @@ public class Room : MonoBehaviour
 
     public void SetSpawn(int RandomSp)
     {
-     spawns[RandomSp].SetActive(true);
-     ActiveSpawn = spawns[RandomSp];
-     Spawn();
+        spawns[RandomSp].SetActive(true);
+        ActiveSpawn = spawns[RandomSp];
+        Spawn();
     }
 
     public void RotateRandomly()
@@ -53,10 +53,10 @@ public class Room : MonoBehaviour
     }
     void Spawn()
     {
-      if (prefabToSpawn != null)
-      {
-        // Instantiate the prefab
-        Instantiate(prefabToSpawn, ActiveSpawn.transform.position, Quaternion.identity);
-      }
+        if (prefabToSpawn != null)
+        {
+            // Instantiate the prefab
+            Instantiate(prefabToSpawn, ActiveSpawn.transform.position, Quaternion.identity);
+        }
     }
 }
