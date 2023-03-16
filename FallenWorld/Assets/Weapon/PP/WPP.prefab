@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.102, z: 1.0020056}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3045359968473858418}
   m_RootOrder: 0
@@ -58,6 +59,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.231, y: -0.13, z: 0.42}
   m_LocalScale: {x: 1.3000002, y: 1.3000002, z: 1.3000002}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3045359968437540082}
   - {fileID: 3045359968954564203}
@@ -87,6 +89,7 @@ MonoBehaviour:
   weaponModel: {fileID: 0}
   raycastStartSpot: {fileID: 3045359969622534437}
   delayBeforeFire: 0
+  WeaponLvl: 1
   warmup: 0
   maxWarmup: 2
   multiplyForce: 1
@@ -111,6 +114,7 @@ MonoBehaviour:
   beamPower: 1
   range: 9999
   rateOfFire: 26
+  maxAmmunition: 240
   infiniteAmmo: 0
   ammoCapacity: 26
   shotPerRound: 1
@@ -338,6 +342,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.092068374, y: -0.101, z: -0.045}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3045359968473858418}
   m_RootOrder: 1
@@ -368,6 +373,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.19946535, y: 0.20072562, z: -0.0560098}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3045359968473858418}
   m_RootOrder: 2

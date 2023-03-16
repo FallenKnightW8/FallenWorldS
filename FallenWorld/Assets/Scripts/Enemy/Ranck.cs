@@ -19,7 +19,6 @@ public class Ranck : MonoBehaviour
     {
         countOFEnemis = GameObject.Find("MissionManager").GetComponent<Mission>();
         countOFEnemis.NeededVaule +=1;
-        Debug.Log("work");
         //Rank = Random.Range(1,5);
         //      maxHealth = GetComponent<Health>().maxHealth;
         switch (Rank)

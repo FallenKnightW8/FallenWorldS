@@ -45,22 +45,6 @@ public class Take : MonoBehaviour
                     PlayerPrefs.SetInt("Points", Point);
                 }
             }
-            else if(hit.collider.GetComponent<CaseRandomWeapon>())
-            {
-                TXT.SetActive(true);
-                if (Input.GetKeyDown(takeButton))
-                {
-                    hit.collider.gameObject.SendMessageUpwards("ChangeIsopen", true, SendMessageOptions.DontRequireReceiver);
-                }
-            }
-            else if(hit.collider.GetComponent<CaseWeapon>())
-            {
-                TXT.SetActive(true);
-                if (Input.GetKeyDown(takeButton))
-                {
-                    hit.collider.gameObject.SendMessageUpwards("ChageWeapon", SendMessageOptions.DontRequireReceiver);
-                }
-            }
         }
         else
         {

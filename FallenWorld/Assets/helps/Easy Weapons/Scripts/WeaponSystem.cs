@@ -1,11 +1,4 @@
-﻿/// <summary>
-/// WeaponSystem.cs
-/// Author: MutantGopher
-/// This script manages weapon switching.  It's recommended that you attach this to a parent GameObject of all your weapons, but this is not necessary.
-/// This script allows the player to switch weapons in two ways, by pressing the numbers corresponding to each weapon, or by scrolling with the mouse.
-/// </summary>
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class WeaponSystem : MonoBehaviour
@@ -14,42 +7,63 @@ public class WeaponSystem : MonoBehaviour
 	public int startingWeaponIndex = 0;			// The weapon index that the player will start with
 	private int weaponIndex;					// The current index of the active weapon
 	// Use this for initialization
+	private int PrimaryHave;
+	public int PrimaryW;
+    public int SecondW;
+
+    public bool InMission = true;
+    public GameObject pp;
+    public GameObject PST;
+//    public GameObject PWS;
+    public GameObject SHT;
+    public GameObject SNP;
+    public GameObject SHG;
+
 	void Start()
 	{
 		// Make sure the starting active weapon is the one selected by the user in startingWeaponIndex
 		weaponIndex = startingWeaponIndex;
 		SetActiveWeapon(weaponIndex);
+		PrimaryHave = PrimaryW;
 
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		// Allow the user to instantly switch to any weapon
-		if (Input.GetButtonDown("Weapon 1"))
-			SetActiveWeapon(0);
-		if (Input.GetButtonDown("Weapon 2"))
-			SetActiveWeapon(1);
-		if (Input.GetButtonDown("Weapon 3"))
-			SetActiveWeapon(2);
-		// if (Input.GetButtonDown("Weapon 4"))
-		// 	SetActiveWeapon(3);
-		// if (Input.GetButtonDown("Weapon 5"))
-		// 	SetActiveWeapon(4);
-		// if (Input.GetButtonDown("Weapon 6"))
-		// 	SetActiveWeapon(5);
-		// if (Input.GetButtonDown("Weapon 7"))
-		// 	SetActiveWeapon(6);
-		// if (Input.GetButtonDown("Weapon 8"))
-		// 	SetActiveWeapon(7);
-		// if (Input.GetButtonDown("Weapon 9"))
-		// 	SetActiveWeapon(8);
+		if (InMission)
+		{
+			// Allow the user to instantly switch to any weapon
+			if (Input.GetButtonDown("Weapon 1"))
+				SetActiveWeapon(0);
+			if (Input.GetButtonDown("Weapon 2"))
+				SetActiveWeapon(1);
+			if (Input.GetButtonDown("Weapon 3"))
+				SetActiveWeapon(2);
+			// if (Input.GetButtonDown("Weapon 4"))
+			// 	SetActiveWeapon(3);
+			// if (Input.GetButtonDown("Weapon 5"))
+			// 	SetActiveWeapon(4);
+			// if (Input.GetButtonDown("Weapon 6"))
+			// 	SetActiveWeapon(5);
+			// if (Input.GetButtonDown("Weapon 7"))
+			// 	SetActiveWeapon(6);
+			// if (Input.GetButtonDown("Weapon 8"))
+			// 	SetActiveWeapon(7);
+			// if (Input.GetButtonDown("Weapon 9"))
+			// 	SetActiveWeapon(8);
 
-		// Allow the user to scroll through the weapons
-		if (Input.GetAxis("Mouse ScrollWheel") > 0)
-			NextWeapon();
-		if (Input.GetAxis("Mouse ScrollWheel") < 0)
-			PreviousWeapon();
+			// Allow the user to scroll through the weapons
+			if (Input.GetAxis("Mouse ScrollWheel") > 0)
+				NextWeapon();
+			if (Input.GetAxis("Mouse ScrollWheel") < 0)
+				PreviousWeapon();
+			if (PrimaryW != PrimaryHave) ChangeWeaponOnM();
+		}
+		else
+        {
+			for(int i=0; i < weapons.Length; i++)weapons[i].SetActive(false);
+		}
 	}
 
 	void OnGUI()
@@ -93,12 +107,42 @@ public class WeaponSystem : MonoBehaviour
 			weaponIndex = 0;
 		SetActiveWeapon(weaponIndex);
 	}
-
 	public void PreviousWeapon()
 	{
 		weaponIndex--;
 		if (weaponIndex < 0)
 			weaponIndex = weapons.Length - 1;
 		SetActiveWeapon(weaponIndex);
+	}
+	private void ChangeWeaponOnM()
+    {
+		PrimaryHave = PrimaryW;
+		weapons[1].SetActive(false);
+		switch (PrimaryW)
+		{
+			case 1:
+				weapons[1] = pp;//micro PP
+				break;
+			case 2:
+				weapons[1] = SHT;//strum
+				break;
+			case 3:
+				weapons[1] = SNP;//snayp rifle
+				break;
+			case 4:
+				weapons[1] = SHG;//shotgan
+				break;
+			default:
+				break;
+		}
+		switch (SecondW)
+		{
+			case 1:
+				weapons[0] = PST;//pistol
+				break;
+			default:
+				break;
+		}
+		weapons[1].SetActive(true);
 	}
 }

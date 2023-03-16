@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
 using UnityEngine;
-=======
-﻿using UnityEngine;
->>>>>>> Stashed changes
 using System.Collections;
 using UnityEngine.UI;
 public class Health : MonoBehaviour

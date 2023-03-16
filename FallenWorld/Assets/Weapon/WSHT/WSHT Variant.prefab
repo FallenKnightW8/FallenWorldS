@@ -315,7 +315,7 @@ MonoBehaviour:
   beamPower: 1
   range: 9999
   rateOfFire: 7
-  maxAmmunition: 40
+  maxAmmunition: 100
   infiniteAmmo: 0
   ammoCapacity: 30
   shotPerRound: 1
