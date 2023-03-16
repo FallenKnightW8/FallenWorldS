@@ -9,6 +9,7 @@ public class Mission : MonoBehaviour
 {
     private int countOFmissionReady;
     private int TypeOfMission;
+    private int RangOfM = 1;
 
     public int CountOfComplitM = 0;
     public int NeededVaule = 2;
@@ -22,6 +23,11 @@ public class Mission : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("CountOfreadM")) countOFmissionReady = PlayerPrefs.GetInt("CountOfreadM");
         TypeOfMission = Random.Range(0, 0);
+        if (countOFmissionReady == 5)
+        {
+            countOFmissionReady = 0;
+            RangOfM += 1;
+        }
         RandomType();
 
     }
@@ -53,8 +59,6 @@ public class Mission : MonoBehaviour
 
     private void CTheMission()
     {
-        CountOfComplitM = 0;
-        NeededVaule = 2;
         countOFmissionReady++;
         PlayerPrefs.SetInt("CountOfreadM", countOFmissionReady);
         SceneManager.LoadScene("RoomB");
