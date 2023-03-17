@@ -14,7 +14,7 @@ public class Ranck : MonoBehaviour
 
     public GameObject[] EnemyModels;        //or prefabs?
 
-    public Mission countOFEnemis;
+    public Mission countOFEnemis;           //The First Type of mission
     void Start()
     {
         countOFEnemis = GameObject.Find("MissionManager").GetComponent<Mission>();
@@ -23,7 +23,7 @@ public class Ranck : MonoBehaviour
         //      maxHealth = GetComponent<Health>().maxHealth;
         switch (Rank)
         {
-            case 1:
+            case 1: //pistol,PP
                 RankH.startingHealth +=50;
                 RankH.maxHealth += 50;
                 Damag.Damage = 5;
@@ -31,14 +31,14 @@ public class Ranck : MonoBehaviour
                 break;
 //spawn enemy
 
-            case 2:
+            case 2://shield,Rifle,shotgan
                 RankH.maxHealth += 100;
                 RankH.startingHealth +=100;
                 Damag.Damage = 10;
                 MFD.MoneyForDead = 10;
                 break;
 
-            case 3:
+            case 3://long rifle,medic,shotgan
                 RankH.maxHealth += 150;
                 RankH.startingHealth +=150;
                 Damag.Damage = 15;
@@ -52,7 +52,7 @@ public class Ranck : MonoBehaviour
                 MFD.MoneyForDead = 60;
                 break;
 
-            case 5:
+            case 5://bosses,jager,fireman
                 RankH.maxHealth += 300;
                 RankH.startingHealth += 300;
                 Damag.Damage = 30;

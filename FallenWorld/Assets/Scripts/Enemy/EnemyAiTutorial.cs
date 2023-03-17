@@ -1,5 +1,4 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 public class EnemyAiTutorial : MonoBehaviour
@@ -41,28 +40,28 @@ public class EnemyAiTutorial : MonoBehaviour
 
     private void AttackPlayer(){
         //Make sure enemy doesn't move
-        agent.SetDestination(transform.position);
+//        agent.SetDestination(transform.position);
         Reloadtime -= Time.deltaTime;
         timeRound = Mathf.Round(Reloadtime);
         transform.LookAt(player);
         if (timeRound == 0)
         {
-          for (int i = 3; i!=0;i--)
-          {
+            for (int i = 3; i!=0;i--)
+            {
             timeToShot -= Time.deltaTime;
             if (timeToShot <= 0)
-              {
-              Ray ray = new Ray(Weapon.transform.position, Weapon.transform.forward);
-              RaycastHit hit;
-              if (Physics.Raycast(ray, out hit, Distance))
-              {
-                hit.collider.gameObject.SendMessageUpwards("ChangeHealth", -Damage, SendMessageOptions.DontRequireReceiver);
-                Reloadtime = MyTime;
-                timeToShot = 0.1f;
-              }
+                {
+                    Ray ray = new Ray(Weapon.transform.position, Weapon.transform.forward);
+                    RaycastHit hit;
+                    if (Physics.Raycast(ray, out hit, Distance))
+                    {
+                        hit.collider.gameObject.SendMessageUpwards("ChangeHealth", -Damage, SendMessageOptions.DontRequireReceiver);
+                        Reloadtime = MyTime;
+                        timeToShot = 0.1f;
+                    }
+                }
             }
-          }
-      }
+        }
     }
     protected void EnemyS()
     {
@@ -82,8 +81,8 @@ public class EnemyAiTutorial : MonoBehaviour
         }
         else
         {
-          RandomRotate = Random.Range(1,5);
-          transform.Rotate(0f,RandomRotate,0f,Space.Self);
+            RandomRotate = Random.Range(1,5);
+            transform.Rotate(0f,RandomRotate,0f,Space.Self);
         }
-      }
+    }
 }

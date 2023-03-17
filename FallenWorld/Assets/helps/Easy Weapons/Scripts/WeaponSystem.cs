@@ -66,12 +66,6 @@ public class WeaponSystem : MonoBehaviour
 		}
 	}
 
-	void OnGUI()
-	{
-
-
-	}
-
 	public void SetActiveWeapon(int index)
 	{
 		// Make sure this weapon exists before trying to switch to it

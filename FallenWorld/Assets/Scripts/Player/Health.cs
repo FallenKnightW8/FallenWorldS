@@ -28,7 +28,7 @@ public class Health : MonoBehaviour
 
 	private bool dead = false;					// Used to make sure the Die() function isn't called twice
 	// Use this for initialization
-	void Start()
+	void Start() 
 	{
 		// Initialize the currentHealth variable to the value specified by the user in startingHealth
 		currentHealth = startingHealth;
@@ -67,7 +67,7 @@ public class Health : MonoBehaviour
 	{
 		// This GameObject is officially dead.  This is used to make sure the Die() function isn't called again
 		dead = true;
-		if(isPlayer == false)
+		if(isPlayer == false) // IF, ELSE IF
 		{
 			countOfdeads.CountOfComplitM++;
 			Mscore.PlayerGM(MoneyForDead);
