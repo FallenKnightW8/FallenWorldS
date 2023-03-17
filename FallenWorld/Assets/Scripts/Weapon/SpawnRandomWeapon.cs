@@ -1,14 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnRandomWeapon : MonoBehaviour
 {
-    [SerializeField]private WeaponSystem NWeapon;
-    // Start is called before the first frame update
+    public int IdOfWeapon;
+    [SerializeField] private GameObject[] ModelsWeapons;
     void Start()
     {
-
+        IdOfWeapon = Random.Range(0, 4);
+        Instantiate(ModelsWeapons[IdOfWeapon], transform.position, transform.rotation);
+    }
+    public void destroy()
+    {
+        Destroy(gameObject);
     }
 
 }

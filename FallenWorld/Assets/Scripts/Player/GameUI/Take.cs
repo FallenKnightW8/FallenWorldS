@@ -6,13 +6,16 @@ using TMPro;
 
 public class Take : MonoBehaviour
 {
-  public KeyCode takeButton;
-  public GameObject TXT;
-  public int Point;
-  // public TMP_Text test;
-  public Text Sc;
-  public int Tpoint;
-  // public int MoneyFDead;
+    public KeyCode takeButton;
+    public GameObject TXT;
+    public int Point;
+    // public TMP_Text test;
+    public Text Sc;
+    public int Tpoint;
+    // public int MoneyFDead;
+
+    private int IdOfweapon;
+    [SerializeField] public WeaponSystem WEap;
     void Start()
     {
         TXT = GameObject.FindWithTag("Take");
@@ -43,6 +46,16 @@ public class Take : MonoBehaviour
                     TXT.SetActive(false);
                     SCore();
                     PlayerPrefs.SetInt("Points", Point);
+                }
+            }
+            else if (hit.collider.GetComponent<SpawnRandomWeapon>())
+            {
+                TXT.SetActive(true);
+                if (Input.GetKeyDown(takeButton))
+                {
+                    hit.collider.gameObject.SendMessageUpwards("destroy", SendMessageOptions.DontRequireReceiver);
+                    IdOfweapon = hit.collider.GetComponent<SpawnRandomWeapon>().IdOfWeapon;
+                    WEap.PrimaryW = IdOfweapon+1;
                 }
             }
         }
