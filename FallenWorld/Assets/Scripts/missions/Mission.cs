@@ -14,9 +14,15 @@ public class Mission : MonoBehaviour
     public int CountOfComplitM = 0; 
     public int NeededVaule = 2;     //the vaule what need the player to win
 
+    [SerializeField] private GameObject Stats;
+    [SerializeField] private TMP_Text Timer;
+    private bool onMisssion = true;
+
     [SerializeField]private TMP_Text CountCom;
     [SerializeField]private TMP_Text CountNeed;
     [SerializeField]private GameObject IMageKE;
+
+    [SerializeField]private float time = 0f;
 
     private void Start()
     {
@@ -33,6 +39,7 @@ public class Mission : MonoBehaviour
 
     private void Update()
     {
+        TimerOnMisssion();
         MissionC();
     }
 
@@ -50,10 +57,16 @@ public class Mission : MonoBehaviour
     {
         CountCom.text = CountOfComplitM.ToString();
         CountNeed.text = NeededVaule.ToString();
-        if (CountOfComplitM == NeededVaule)
+        Timer.text = time.ToString();
+        if (CountOfComplitM == NeededVaule & time >=10)
         {
-            CTheMission();
+            Statistic();
         }
+    }
+
+    private void Statistic()
+    {
+
     }
 
     private void CTheMission()
@@ -62,5 +75,9 @@ public class Mission : MonoBehaviour
         PlayerPrefs.SetInt("CountOfreadM", countOFmissionReady);
         SceneManager.LoadScene("RoomB");
     }
+    private void TimerOnMisssion()
+    {if(onMisssion) time += Time.deltaTime;
+    }
+
 
 }
