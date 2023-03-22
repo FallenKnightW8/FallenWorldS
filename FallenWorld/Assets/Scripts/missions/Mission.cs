@@ -82,8 +82,10 @@ public class Mission : MonoBehaviour
     public void NweRang()
    {
    if(countOFmissionReady = 5)//and boss killed
-   countOFmissionReady = 0;
-   RangOfM ++;
+    {
+      countOFmissionReady = 0;
+      RangOfM ++;
+    }
    }
 
 
