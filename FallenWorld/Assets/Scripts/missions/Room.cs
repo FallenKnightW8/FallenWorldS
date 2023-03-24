@@ -1,4 +1,6 @@
 using UnityEngine;
+//using UnityEngine.AI;
+using UnityEditor.AI;
 
 public class Room : MonoBehaviour
 {
@@ -12,10 +14,13 @@ public class Room : MonoBehaviour
     public GameObject prefabToSpawn;
     private int RandomSp;
 
+    public NavMeshBuilder NavMeshBuilder;
+
     public Mesh[] BlockMeshes;
 
     private void Start()
     {
+        NavMeshBuilder.BuildNavMesh();
         RandomSp = Random.Range(0,spawns.Length);
         SetSpawn(RandomSp);
 

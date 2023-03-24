@@ -46,7 +46,7 @@ PrefabInstance:
     - target: {fileID: 1380913499613728962, guid: 12274a07b6d5cfd499bc1efbdd5a9f01,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.71
+      value: -10.66
       objectReference: {fileID: 0}
     - target: {fileID: 1380913499613728963, guid: 12274a07b6d5cfd499bc1efbdd5a9f01,
         type: 3}
@@ -333,6 +333,41 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 8985405290307825570, guid: 12274a07b6d5cfd499bc1efbdd5a9f01,
+        type: 3}
+      propertyPath: Damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985405290307825570, guid: 12274a07b6d5cfd499bc1efbdd5a9f01,
+        type: 3}
+      propertyPath: Weapon
+      value: 
+      objectReference: {fileID: 3180876179520997822}
+    - target: {fileID: 8985405290307825570, guid: 12274a07b6d5cfd499bc1efbdd5a9f01,
+        type: 3}
+      propertyPath: visibl
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985405290307825570, guid: 12274a07b6d5cfd499bc1efbdd5a9f01,
+        type: 3}
+      propertyPath: Distance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985405290307825570, guid: 12274a07b6d5cfd499bc1efbdd5a9f01,
+        type: 3}
+      propertyPath: TimeReload
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985405290307825570, guid: 12274a07b6d5cfd499bc1efbdd5a9f01,
+        type: 3}
+      propertyPath: fieldOfViewDegrees
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985405290307825570, guid: 12274a07b6d5cfd499bc1efbdd5a9f01,
+        type: 3}
+      propertyPath: visibilityDistance
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1380913499838862412, guid: 12274a07b6d5cfd499bc1efbdd5a9f01, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 12274a07b6d5cfd499bc1efbdd5a9f01, type: 3}
@@ -394,33 +429,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &652695797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6915698731029895148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fa35b3c8200736468e59f5a9be5f39f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Distance: 99999
-  visibl: 0
-  Damage: 1
-  MyTime: 3
-  timeRound: 0
-  timeToShot: 1.5
-  Weapon: {fileID: 3180876179520997822}
-  visibilityDistance: 10
-  fieldOfViewDegrees: 90
-  agent: {fileID: 652695798}
-  CoopAI: {fileID: 0}
-  Enemy: {fileID: 0}
-  player: {fileID: 0}
-  FollowPL: {fileID: 0}
-  isFreandly: 0
 --- !u!195 &652695798
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -457,7 +465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rank: 1
   RankH: {fileID: 1893341097663547558}
-  Damag: {fileID: 652695797}
+  Damag: {fileID: 0}
   MFD: {fileID: 1893341097663547558}
   EnemyModels: []
   countOFEnemis: {fileID: 0}

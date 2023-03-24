@@ -13,6 +13,9 @@ public class RoomsPlacer : MonoBehaviour
     public Room[] RoomPrGuns;
     public Room[] RoomPrCooc;
     private int TypeRoom;
+    private int RandomChoiseRoom;
+    private bool spwnedBossRoom = false;
+    private bool FirstRoom = false;
 
     public Room StartingRoom;
 
@@ -30,11 +33,11 @@ public class RoomsPlacer : MonoBehaviour
         switch (TypeRoom)
         {
         case 0:
-        for (int i=0;i != RoomPrGuns.Length;i++)
-        {
-        RoomPrefabs[i] = RoomPrGuns[i];
-        }
-        break;
+            for (int i=0;i != RoomPrGuns.Length;i++)
+            {
+                RoomPrefabs[i] = RoomPrGuns[i];
+            }
+            break;
         case 1:
         {
             for (int i=0; i!= RoomPrCooc.Length;i++)
@@ -76,7 +79,25 @@ public class RoomsPlacer : MonoBehaviour
         }
 
         // Эту строчку можно заменить на выбор комнаты с учётом её вероятности, вроде как в ChunksPlacer.GetRandomChunk()
-        Room newRoom = Instantiate(RoomPrefabs[Random.Range(0, RoomPrefabs.Length)]);
+        if (!FirstRoom)
+        {
+            RandomChoiseRoom = 1;
+            FirstRoom = true;
+        }
+        else RandomChoiseRoom = Random.Range(0, RoomPrefabs.Length);
+        if (RoomPrefabs[RandomChoiseRoom].CompareTag("BossRoom") && !spwnedBossRoom)
+        {
+            spwnedBossRoom = true;
+            RandomChoiseRoom = 2;
+        }
+        else
+        {
+            RandomChoiseRoom = Random.Range(0, RoomPrefabs.Length-1);
+        }
+
+        Room newRoom = Instantiate(RoomPrefabs[RandomChoiseRoom]);
+        //RandomChoiseRoom = Random.Range(0,100);
+
 
         int limit = 500;
         while (limit-- > 0)

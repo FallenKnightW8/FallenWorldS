@@ -1,29 +1,26 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
-public class EnemyAiTutorial : MonoBehaviour
+public abstract class EnemyAiTutorial : MonoBehaviour
 {   //^^^abstract
 //    public GameObject FR;
-    public float Distance,visibl;
+    public float Distance;
 
     public int Damage;
 
-    private float Reloadtime;
-    private IEnumerator CorotineAttack;
-    public float MyTime = 3;
-    public float timeRound;
-    [SerializeField]private float timeToShot = 2f;
+    public float TimeReload = 3;
+    protected bool canShot = true;
 
     public GameObject Weapon;
 
-    public float visibilityDistance;
-    public float fieldOfViewDegrees;
-    private int RandomRotate;
+    private float visibilityDistance = 50;
+    private float fieldOfViewDegrees = 180;
+    public int queue;
 
     public NavMeshAgent agent;
 //    public Animation anim;
 
-    public Transform CoopAI,Enemy,player,FollowPL;
+    public Transform CoopAI,Enemy, FollowPL,player;
 
     public bool isFreandly = false;
 
@@ -31,35 +28,27 @@ public class EnemyAiTutorial : MonoBehaviour
     {
 //        anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindWithTag("Player").transform;
-        CorotineAttack = AttackPlayer(timeToShot);
+        player = GameObject.FindWithTag("MainCamera").transform;
 //        StartCoroutine(CorotineAttack);
     }
     private void FixedUpdate()
     {
+        transform.LookAt(player);
         EnemyS();
     }
 
-    IEnumerator AttackPlayer(float timeToShot)
+    //    IEnumerator AttackPlayer(float timeToShot)
+    protected virtual void AttacPlayer()
     {
-        //Make sure enemy doesn't move
-//        agent.SetDestination(transform.position);
-        transform.LookAt(player);
-//        for (int i = 3; i!=0;i--)
-//        {
         Ray ray = new Ray(Weapon.transform.position, Weapon.transform.forward);
         RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Distance))
             {
-            yield return new WaitForSeconds(timeToShot);
             hit.collider.gameObject.SendMessageUpwards("ChangeHealth", -Damage, SendMessageOptions.DontRequireReceiver);
-            Reloadtime = MyTime;
-            StopAllCoroutines();
-//            StopCoroutine(CorotineAttack);
+            canShot = false;
             }
-//        }
     }
-    protected void EnemyS()
+    protected virtual void EnemyS()
     {
         RaycastHit hit;
         Vector3 rayDirection = player.transform.position - transform.position;
@@ -68,17 +57,26 @@ public class EnemyAiTutorial : MonoBehaviour
             // Detect if player is within the field of view
             if (Physics.Raycast(transform.position, rayDirection, out hit, visibilityDistance))
             {
-                if (hit.transform.CompareTag("Player")) 
+                if ((hit.transform.CompareTag("Player") || hit.transform.CompareTag("CoopAi")) && canShot) 
                 {
-                    StartCoroutine(AttackPlayer(timeToShot));
+                    //                    StartCoroutine(AttackPlayer(timeToShot));
+                    Debug.Log("attack");
+                    AttacPlayer();
+                }
+                else
+                {
+                    Debug.Log("reload");
+                    StartCoroutine(Reload(TimeReload));
                 }
 //else if (hit.transform.CompareTag(""))
             }
         }
-        else
-        {
-            RandomRotate = Random.Range(1,5);
-            transform.Rotate(0f,RandomRotate,0f,Space.Self);
-        }
+    }
+
+    IEnumerator Reload(float TimeReload)
+    {
+        yield return new WaitForSeconds(TimeReload);
+        canShot = true;
+        StopAllCoroutines();
     }
 }

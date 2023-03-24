@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.3800001, y: 0.91, z: 1.2329998}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1487108167384905262}
   - {fileID: 1487108167558385101}
@@ -47,6 +48,7 @@ GameObject:
   - component: {fileID: 1380913499838862415}
   - component: {fileID: 1380913499838862414}
   - component: {fileID: 1380913499838862413}
+  - component: {fileID: 8985405290307825570}
   - component: {fileID: 1380913499838862412}
   m_Layer: 0
   m_Name: TEnemy
@@ -65,6 +67,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.04, y: -6, z: -15.313}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1380913499613728962}
   m_Father: {fileID: 0}
@@ -100,6 +103,33 @@ CapsuleCollider:
   m_Height: 1.8034801
   m_Direction: 1
   m_Center: {x: -0.12672853, y: 10.794976, z: 0}
+--- !u!114 &8985405290307825570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380913499838862408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d856a924998c74e45956467bd8679ae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Distance: 0
+  visibl: 0
+  Damage: 0
+  MyTime: 3
+  timeRound: 0
+  timeToShot: 2
+  Weapon: {fileID: 0}
+  visibilityDistance: 0
+  fieldOfViewDegrees: 0
+  agent: {fileID: 0}
+  CoopAI: {fileID: 0}
+  Enemy: {fileID: 0}
+  player: {fileID: 0}
+  FollowPL: {fileID: 0}
+  isFreandly: 0
 --- !u!114 &1380913499838862412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,17 +142,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e1876ddae4a1046b64b5dd5c293c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HpBar: {fileID: 0}
+  fill: 0
+  CountHP: {fileID: 0}
+  DeadC: {fileID: 0}
   canDie: 1
   startingHealth: 100
   maxHealth: 100
   currentHealth: 0
-  replaceWhenDead: 0
   deadReplacement: {fileID: 0}
-  makeExplosion: 0
-  explosion: {fileID: 0}
   isPlayer: 0
+  MoneyForDead: 0
+  Mscore: {fileID: 0}
   deathCam: {fileID: 0}
-  TR: {fileID: 0}
 --- !u!1001 &1380913498428221990
 PrefabInstance:
   m_ObjectHideFlags: 0
