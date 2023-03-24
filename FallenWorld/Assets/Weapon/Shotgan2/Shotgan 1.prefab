@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6137977546866781076}
   m_Layer: 0
   m_Name: Shotgan 1
-  m_TagString: Untagged
+  m_TagString: Shotgan
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,9 +181,12 @@ MonoBehaviour:
   range: 9999
   rateOfFire: 10
   maxAmmunition: 28
+  TypeOfAmmo: 4
   infiniteAmmo: 0
   ammoCapacity: 7
   shotPerRound: 8
+  currentMaxammmo: 0
+  currentAmmo: 0
   reloadTime: 2
   showCurrentAmmo: 1
   reloadAutomatically: 1

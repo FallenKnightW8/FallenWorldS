@@ -25,6 +25,12 @@ TagManager:
   - Follow
   - Take
   - Run
+  - Pistol
+  - PP
+  - SHT
+  - SNP
+  - Shotgan
+  - AmmoBag
   layers:
   - Default
   - TransparentFX

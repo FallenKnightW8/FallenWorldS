@@ -11,7 +11,6 @@ public class Take : MonoBehaviour
     public int Point;
     // public TMP_Text test;
     public Text Sc;
-    public int Tpoint;
     // public int MoneyFDead;
 
     private int IdOfweapon;
@@ -28,24 +27,19 @@ public class Take : MonoBehaviour
     }
     public void Tak()
     {
-        if (PlayerPrefs.HasKey("Points"))
-        {
-            Tpoint = PlayerPrefs.GetInt("Points");
-        }
         Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 2f))
         {
             if (hit.collider.GetComponent<Item>())
             {
-            TXT.SetActive(true);
-            if (Input.GetKeyDown(takeButton))
+                TXT.SetActive(true);
+                if (Input.GetKeyDown(takeButton))
                 {
                     Point += hit.collider.GetComponent<Item>().Point;
                     Destroy(hit.collider.GetComponent<Item>().gameObject);
                     TXT.SetActive(false);
                     SCore();
-                    PlayerPrefs.SetInt("Points", Point);
                 }
             }
             else if (hit.collider.GetComponent<SpawnRandomWeapon>())
@@ -55,8 +49,14 @@ public class Take : MonoBehaviour
                 {
                     hit.collider.gameObject.SendMessageUpwards("destroy", SendMessageOptions.DontRequireReceiver);
                     IdOfweapon = hit.collider.GetComponent<SpawnRandomWeapon>().IdOfWeapon;
-                    WEap.PrimaryW = IdOfweapon+1;
+                    WEap.PrimaryW = IdOfweapon + 1;
                 }
+            }
+            else if (hit.collider.CompareTag("AmmoBag"))
+            {
+                TXT.SetActive(true);
+                if (Input.GetKeyDown(takeButton))
+                    hit.collider.gameObject.SendMessageUpwards("GiveAmmo", SendMessageOptions.DontRequireReceiver);
             }
         }
         else
@@ -67,6 +67,11 @@ public class Take : MonoBehaviour
     public void PlayerGM(int Mon)
     {
         Point += Mon;
+    }
+
+    public void SaveMoney()
+    {
+        PlayerPrefs.SetInt("Points", Point);
     }
 
     public void SCore()

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1680082402518914824
+--- !u!1 &7112403713596435081
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1680082402518914825}
-  m_Layer: 21
-  m_Name: Shell_Spit_Spot (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1680082402518914825
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1680082402518914824}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: -5.9872575, y: 0.8377172, z: 0.38205028}
-  m_LocalScale: {x: 13, y: 13, z: 13}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7295527946199787234}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1680082403043330115
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1680082403043330140}
+  - component: {fileID: 7112403713596435094}
   m_Layer: 21
   m_Name: ShootSpot (1)
   m_TagString: Untagged
@@ -47,22 +16,53 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1680082403043330140
+--- !u!4 &7112403713596435094
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1680082403043330115}
+  m_GameObject: {fileID: 7112403713596435081}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: -0.7071068}
   m_LocalPosition: {x: -6.2304854, y: 1.2410523, z: 3.720001}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7295527946199787234}
+  m_Father: {fileID: 7818165870704564084}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &7112403715416457481
+--- !u!1 &7112403715228415426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7112403715228415427}
+  m_Layer: 21
+  m_Name: Shell_Spit_Spot (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7112403715228415427
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7112403715228415426}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: -5.9872575, y: 0.8377172, z: 0.38205028}
+  m_LocalScale: {x: 13, y: 13, z: 13}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7818165870704564084}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &7779138305011019935
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -142,7 +142,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 119adb1ae9377bc459d868eaf57a8be9,
         type: 3}
       propertyPath: m_Name
-      value: WSN Variant
+      value: WSN
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 119adb1ae9377bc459d868eaf57a8be9,
         type: 3}
@@ -156,31 +156,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 119adb1ae9377bc459d868eaf57a8be9, type: 3}
---- !u!1 &1439172000986645633 stripped
+--- !u!1 &1925762880758527255 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: 119adb1ae9377bc459d868eaf57a8be9,
     type: 3}
-  m_PrefabInstance: {fileID: 7112403715416457481}
+  m_PrefabInstance: {fileID: 7779138305011019935}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7295527946199787234 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 119adb1ae9377bc459d868eaf57a8be9,
-    type: 3}
-  m_PrefabInstance: {fileID: 7112403715416457481}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7959334639177055320 stripped
+--- !u!1 &7436679674532318670 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 119adb1ae9377bc459d868eaf57a8be9,
     type: 3}
-  m_PrefabInstance: {fileID: 7112403715416457481}
+  m_PrefabInstance: {fileID: 7779138305011019935}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &1680082403037229972
+--- !u!82 &7112403713606996318
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7959334639177055320}
+  m_GameObject: {fileID: 7436679674532318670}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: bfb9e4662915854499ea8dc312fc6b2f,
@@ -271,13 +265,13 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1680082403037229978
+--- !u!114 &7112403713606996304
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7959334639177055320}
+  m_GameObject: {fileID: 7436679674532318670}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cfdbd9104e186642943082e0cd11378, type: 3}
@@ -289,8 +283,8 @@ MonoBehaviour:
   weaponType: 0
   auto: 0
   playerWeapon: 1
-  weaponModel: {fileID: 1439172000986645633}
-  raycastStartSpot: {fileID: 1680082403043330140}
+  weaponModel: {fileID: 1925762880758527255}
+  raycastStartSpot: {fileID: 7112403713596435094}
   delayBeforeFire: 0
   WeaponLvl: 1
   warmup: 0
@@ -345,7 +339,7 @@ MonoBehaviour:
   shellSpitTorqueX: 0
   shellSpitTorqueY: 0
   shellTorqueRandom: 1
-  shellSpitPosition: {fileID: 1680082402518914825}
+  shellSpitPosition: {fileID: 7112403715228415427}
   makeMuzzleEffects: 1
   muzzleEffects:
   - {fileID: 100002, guid: e840492206edf364baccc15150e2cc63, type: 3}
@@ -400,3 +394,9 @@ MonoBehaviour:
   fireSound: {fileID: 8300000, guid: 55056eeb82dabdf41bcac9a0121f4fb8, type: 3}
   reloadSound: {fileID: 8300000, guid: 1537cce04898a374db9cabf70b0206fc, type: 3}
   dryFireSound: {fileID: 0}
+--- !u!4 &7818165870704564084 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 119adb1ae9377bc459d868eaf57a8be9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7779138305011019935}
+  m_PrefabAsset: {fileID: 0}

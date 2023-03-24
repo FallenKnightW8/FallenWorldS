@@ -134,12 +134,13 @@ public class Weapon : MonoBehaviour
 	private float fireTimer;							// Timer used to fire at a set frequency
 
 	// Ammo
-	public int maxAmmunition = 40;
+	public int maxAmmunition;
+	public int TypeOfAmmo;								//0 - Pistol,1 - PP,2 - SHWT,3 - SNP,4 - Shotgan;
 	public bool infiniteAmmo = false;					// Whether or not this weapon should have unlimited ammo
 	public int ammoCapacity = 12;						// The number of rounds this weapon can fire before it has to reload
 	public int shotPerRound = 1;						// The number of "bullets" that will be fired on each round.  Usually this will be 1, but set to a higher number for things like shotguns with spread
-	private int currentMaxammmo;
-	private int currentAmmo;							// How much ammo the weapon currently has
+	public int currentMaxammmo;
+	public int currentAmmo;							// How much ammo the weapon currently has
 	public float reloadTime = 2.0f;						// How much time it takes to reload the weapon
 	public bool showCurrentAmmo = true;					// Whether or not the current ammo should be displayed in the GUI
 	public bool reloadAutomatically = true;				// Whether or not the weapon should reload automatically when out of ammo
@@ -235,14 +236,6 @@ public class Weapon : MonoBehaviour
 		currentAmmo = ammoCapacity;
 		currentMaxammmo = maxAmmunition;
 
-		if (WeaponLvl==2)
-		{
-			currentMaxammmo += 10;
-		}
-		else if (WeaponLvl==3)
-		{
-			currentMaxammmo += 20;
-		}
 		// Give this weapon an audio source component if it doesn't already have one
 		if (GetComponent<AudioSource>() == null)
 		{

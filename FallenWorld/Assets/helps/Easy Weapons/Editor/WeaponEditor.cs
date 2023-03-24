@@ -136,6 +136,7 @@ public class WeaponEditor : Editor
 					weapon.showCurrentAmmo = EditorGUILayout.Toggle("Show Current Ammo", weapon.showCurrentAmmo);
 					weapon.reloadAutomatically = EditorGUILayout.Toggle("Reload Automatically", weapon.reloadAutomatically);
 					weapon.maxAmmunition = EditorGUILayout.IntField("Max Ammunition",weapon.maxAmmunition);
+					weapon.TypeOfAmmo = EditorGUILayout.IntField("Type Of Ammo", weapon.TypeOfAmmo);
 				}
 				weapon.shotPerRound = EditorGUILayout.IntField("Shots Per Round", weapon.shotPerRound);
 			}

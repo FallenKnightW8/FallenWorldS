@@ -408,9 +408,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 99999
   visibl: 0
-  Damage: 15
+  Damage: 1
   MyTime: 3
   timeRound: 0
+  timeToShot: 1.5
   Weapon: {fileID: 3180876179520997822}
   visibilityDistance: 10
   fieldOfViewDegrees: 90
@@ -458,6 +459,8 @@ MonoBehaviour:
   RankH: {fileID: 1893341097663547558}
   Damag: {fileID: 652695797}
   MFD: {fileID: 1893341097663547558}
+  EnemyModels: []
+  countOFEnemis: {fileID: 0}
 --- !u!114 &1893341097663547558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,7 +473,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e1876ddae4a1046b64b5dd5c293c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: 0
   HpBar: {fileID: 0}
   fill: 0
   CountHP: {fileID: 0}
@@ -479,15 +481,10 @@ MonoBehaviour:
   startingHealth: 100
   maxHealth: 100
   currentHealth: 0
-  replaceWhenDead: 0
   deadReplacement: {fileID: 0}
-  makeExplosion: 0
-  explosion: {fileID: 0}
   isPlayer: 0
-  isAI: 1
   MoneyForDead: 0
   Mscore: {fileID: 4263908331889308101, guid: f18716ccefdf2434aa6bb0490c0bc5a9, type: 3}
-  AIweapon: {fileID: 0}
   deathCam: {fileID: 0}
 --- !u!1001 &8034596792012228004
 PrefabInstance:

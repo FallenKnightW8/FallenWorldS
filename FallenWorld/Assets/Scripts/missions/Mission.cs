@@ -12,21 +12,28 @@ public class Mission : MonoBehaviour
     private int RangOfM = 1;        //every 5 complit mission = nwe rang? the final rang is 5? when final boss
     public bool BossOfRangKilled = false;
 
+    private FirstPersonCharacter Locks;
+
     public int CountOfComplitM = 0; 
     public int NeededVaule = 2;     //the vaule what need the player to win
+    private Take SavePlPoints;
 
     [SerializeField] private GameObject Stats;
     [SerializeField] private TMP_Text Timer;
+    [SerializeField] private TMP_Text TimerStats;
     private bool onMisssion = true;
 
     [SerializeField]private TMP_Text CountCom;
     [SerializeField]private TMP_Text CountNeed;
     [SerializeField]private GameObject IMageKE;
-
+    
     [SerializeField]private float time = 0f;
 
     private void Start()
     {
+        SavePlPoints = GameObject.Find("PlayerObj").GetComponent<Take>();
+        Locks = GameObject.Find("PlayerObj").GetComponent<FirstPersonCharacter>();
+
         if (PlayerPrefs.HasKey("CountOfreadM")) countOFmissionReady = PlayerPrefs.GetInt("CountOfreadM");
         TypeOfMission = Random.Range(0, 0);
         if (countOFmissionReady == 5)
@@ -41,7 +48,7 @@ public class Mission : MonoBehaviour
     private void Update()
     {
         TimerOnMisssion();
-        MissionC();
+        StartCoroutine(MissionC());
     }
 
     public void RandomType()
@@ -54,39 +61,47 @@ public class Mission : MonoBehaviour
         }
     }
 
-    private void MissionC()
+    IEnumerator MissionC()
     {
         CountCom.text = CountOfComplitM.ToString();
         CountNeed.text = NeededVaule.ToString();
         Timer.text = time.ToString();
-        if (CountOfComplitM == NeededVaule & time >=10)
+        yield return new WaitForSeconds(10f);
+        if (CountOfComplitM == NeededVaule)
         {
             Statistic();
+//            CTheMission();
         }
     }
 
     private void Statistic()
     {
-
+        Stats.SetActive(true);
+        Locks.lockCursor = false;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        onMisssion = false;
+        TimerStats.text = time.ToString();
     }
 
-    private void CTheMission()
+    public void CTheMission()
     {
         countOFmissionReady++;
         PlayerPrefs.SetInt("CountOfreadM", countOFmissionReady);
         SceneManager.LoadScene("RoomB");
     }
     private void TimerOnMisssion()
-    {if(onMisssion) time += Time.deltaTime;
+    {
+        if(onMisssion) time += Time.deltaTime;
     }
     public void NweRang()
-   {
-   if(countOFmissionReady = 5)//and boss killed
     {
-      countOFmissionReady = 0;
-      RangOfM ++;
+    if(countOFmissionReady == 5 & BossOfRangKilled)//and boss killed
+        {
+        countOFmissionReady = 0;
+        RangOfM ++;
+        }
     }
-   }
 
 
 }

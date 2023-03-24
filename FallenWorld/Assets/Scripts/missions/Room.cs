@@ -31,9 +31,12 @@ public class Room : MonoBehaviour
 
     public void SetSpawn(int RandomSp)
     {
-        spawns[RandomSp].SetActive(true);
-        ActiveSpawn = spawns[RandomSp];
-        Spawn();
+        if (spawns[0] != null)
+        {
+            spawns[RandomSp].SetActive(true);
+            ActiveSpawn = spawns[RandomSp];
+            Spawn();
+        }
     }
 
     public void RotateRandomly()

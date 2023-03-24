@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 3045359968473858419}
   m_Layer: 0
   m_Name: WPP
-  m_TagString: Untagged
+  m_TagString: PP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,9 +115,12 @@ MonoBehaviour:
   range: 9999
   rateOfFire: 26
   maxAmmunition: 240
+  TypeOfAmmo: 1
   infiniteAmmo: 0
   ammoCapacity: 26
   shotPerRound: 1
+  currentMaxammmo: 0
+  currentAmmo: 0
   reloadTime: 2
   showCurrentAmmo: 1
   reloadAutomatically: 1

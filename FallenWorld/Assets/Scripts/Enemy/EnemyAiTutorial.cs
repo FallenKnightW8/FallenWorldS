@@ -9,9 +9,10 @@ public class EnemyAiTutorial : MonoBehaviour
     public int Damage;
 
     private float Reloadtime;
+    private IEnumerator CorotineAttack;
     public float MyTime = 3;
     public float timeRound;
-    private float timeToShot = 0.1f;
+    [SerializeField]private float timeToShot = 2f;
 
     public GameObject Weapon;
 
@@ -31,37 +32,32 @@ public class EnemyAiTutorial : MonoBehaviour
 //        anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player").transform;
+        CorotineAttack = AttackPlayer(timeToShot);
+//        StartCoroutine(CorotineAttack);
     }
-
     private void FixedUpdate()
     {
         EnemyS();
     }
 
-    private void AttackPlayer(){
+    IEnumerator AttackPlayer(float timeToShot)
+    {
         //Make sure enemy doesn't move
 //        agent.SetDestination(transform.position);
-        Reloadtime -= Time.deltaTime;
-        timeRound = Mathf.Round(Reloadtime);
         transform.LookAt(player);
-        if (timeRound == 0)
-        {
-            for (int i = 3; i!=0;i--)
+//        for (int i = 3; i!=0;i--)
+//        {
+        Ray ray = new Ray(Weapon.transform.position, Weapon.transform.forward);
+        RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, Distance))
             {
-            timeToShot -= Time.deltaTime;
-            if (timeToShot <= 0)
-                {
-                    Ray ray = new Ray(Weapon.transform.position, Weapon.transform.forward);
-                    RaycastHit hit;
-                    if (Physics.Raycast(ray, out hit, Distance))
-                    {
-                        hit.collider.gameObject.SendMessageUpwards("ChangeHealth", -Damage, SendMessageOptions.DontRequireReceiver);
-                        Reloadtime = MyTime;
-                        timeToShot = 0.1f;
-                    }
-                }
+            yield return new WaitForSeconds(timeToShot);
+            hit.collider.gameObject.SendMessageUpwards("ChangeHealth", -Damage, SendMessageOptions.DontRequireReceiver);
+            Reloadtime = MyTime;
+            StopAllCoroutines();
+//            StopCoroutine(CorotineAttack);
             }
-        }
+//        }
     }
     protected void EnemyS()
     {
@@ -74,7 +70,7 @@ public class EnemyAiTutorial : MonoBehaviour
             {
                 if (hit.transform.CompareTag("Player")) 
                 {
-                    AttackPlayer();
+                    StartCoroutine(AttackPlayer(timeToShot));
                 }
 //else if (hit.transform.CompareTag(""))
             }

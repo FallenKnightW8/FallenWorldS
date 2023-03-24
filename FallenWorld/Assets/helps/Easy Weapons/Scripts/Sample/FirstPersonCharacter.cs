@@ -61,11 +61,11 @@ public class FirstPersonCharacter : MonoBehaviour
 		}
 
     else if (Input.GetMouseButtonUp(0) && lockCursor == false)
-      {
+    {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-      }
 		}
+	}
 }
 
 

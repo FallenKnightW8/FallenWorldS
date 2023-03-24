@@ -21,7 +21,7 @@ public class RoomsPlacer : MonoBehaviour
     public int RoomsAera;
     public int CountOfRooms;
 
-    private IEnumerator Start()
+    private void Start()
     {
         spawnedRooms = new Room[RoomsAera, RoomsAera];
         spawnedRooms[0, 1] = StartingRoom;
@@ -50,7 +50,7 @@ public class RoomsPlacer : MonoBehaviour
         for (int i = 0; i < CountOfRooms; i++)
         {
             // Это вот просто убрать чтобы подземелье генерировалось мгновенно на старте
-            yield return new WaitForSecondsRealtime(0f);
+//            yield return new WaitForSecondsRealtime(0f);
 
             PlaceOneRoom();
         }

@@ -149,6 +149,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 31973233f6c86ff47be83838869a18e7,
+        type: 3}
+      propertyPath: m_TagString
+      value: SHT
+      objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: 31973233f6c86ff47be83838869a18e7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -316,9 +321,12 @@ MonoBehaviour:
   range: 9999
   rateOfFire: 7
   maxAmmunition: 100
+  TypeOfAmmo: 2
   infiniteAmmo: 0
   ammoCapacity: 30
   shotPerRound: 1
+  currentMaxammmo: 0
+  currentAmmo: 0
   reloadTime: 2.1
   showCurrentAmmo: 1
   reloadAutomatically: 1
