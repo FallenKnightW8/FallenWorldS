@@ -12,103 +12,87 @@ public class PlayerMapBase : MonoBehaviour
     public GameObject TXT;
 
     public GameObject MapB;
-//    public GameObject Shops;
-//    public GameObject Wshop;
-      public GameObject Table;
-//    public GameObject Arsenal;
+    public GameObject Table;
+
     public ChangeWeaponOnBase job;
 
     public GameObject player;
     public GameObject playerC;
 
-      void Update()
-      {
-        Check();
-      }
-      public void Check()
-      {
-        if (Input.GetKeyDown(CloseButon) && isTRue == 1)Close();//Invoke(nameof(Close2), timeBetween);
-        if (isTRue == 0)ray();
+    void Update()
+    {
+        StartCoroutine(Check());
+    }
+    public IEnumerator Check()
+    {
+        if (isTRue == 0) ray();
+        else if (Input.GetKeyDown(CloseButon) && isTRue == 1)
+        { 
+            Close();
+            yield return new WaitForSeconds(0.1f);
+        }
 
-      }
-      public void ray()
-      {
+    }
+    public void ray()
+    {
         Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
         RaycastHit hit;
-          if (Physics.Raycast(ray, out hit, 2f))
-          {
+        if (Physics.Raycast(ray, out hit, 2f))
+        {
             if (hit.collider.GetComponent<Map>())
             {
-              Map();
+                Map();
             }
-          else if (hit.collider.GetComponent<PCSHOP>())
-          {
-            pc();
-          }
-          // else if (hit.collider.GetComponent<ChangeWeaponOnBase>())
-          // {
-          //   arsenary();
-          // }
+            else if (hit.collider.GetComponent<PCSHOP>())
+            {
+                pc();
+            }
         }
         else
         {
-          TXT.SetActive(false);
+            TXT.SetActive(false);
         }
 
-      }
+    }
 
-      public void pc()
-      {
+    public void pc()
+    {
         TXT.SetActive(true);
         if (Input.GetKeyDown(JobButton))
         {
-          isTRue = 1;
-          Table.SetActive(true);
-          Cursor.lockState = CursorLockMode.None;
-          Cursor.visible = true;
-          player.GetComponent<FirstPersonMovement>().CanMove = false;
-          player.GetComponent<FirstPersonLook>().canM = false;
+
+            isTRue = 1;
+            Table.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            player.GetComponent<FirstPersonCharacter>().lockCursor = false;
+            player.GetComponent<FirstPersonCharacter>().lockMove = true;
         }
-      }
-      public void Map()
-      {
+    }
+        public void Map()
+        {
         TXT.SetActive(true);
         if (Input.GetKeyDown(JobButton))
         {
-          isTRue = 1;
-          Cursor.lockState = CursorLockMode.None;
-          Cursor.visible = true;
-          MapB.SetActive(true);
-          TXT.SetActive(false);
-          player.GetComponent<FirstPersonMovement>().CanMove = false;
-          player.GetComponent<FirstPersonLook>().canM = false;
+            isTRue = 1;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            MapB.SetActive(true);
+            TXT.SetActive(false);
+            player.GetComponent<FirstPersonCharacter>().lockCursor = true;
+//            player.GetComponent<FirstPersonMovement>().CanMove = false;
+//            player.GetComponent<FirstPersonLook>().canM = false;
         }
-      }
-      // public void arsenary()
-      // {
-      //   TXT.SetActive(true);
-      //   if (Input.GetKeyDown(JobButton))
-      //   {
-      //     job.VieWeapon();
-      //     isTRue = 1;
-      //     Cursor.lockState = CursorLockMode.None;
-      //     Cursor.visible = true;
-      //     Arsenal.SetActive(true);
-      //     TXT.SetActive(false);
-      //     player.GetComponent<FirstPersonMovement>().CanMove = false;
-      //     player.GetComponent<FirstPersonLook>().canM = false;
-      //   }
-      // }
-      public void Close()
-      {
+    }
+
+    public void Close()
+    {
         isTRue = 0;
         MapB.SetActive(false);
         Table.SetActive(false);
-        // Arsenal.SetActive(false);
-        // Shops.SetActive(false);
-        // Wshop.SetActive(false);
         Cursor.visible = false;
-        player.GetComponent<FirstPersonMovement>().CanMove = true;
-        player.GetComponent<FirstPersonLook>().canM = true;
-      }
+        Cursor.lockState = CursorLockMode.Locked;
+        player.GetComponent<FirstPersonCharacter>().lockCursor = true;
+        player.GetComponent<FirstPersonCharacter>().lockMove = false;
+    }
 }

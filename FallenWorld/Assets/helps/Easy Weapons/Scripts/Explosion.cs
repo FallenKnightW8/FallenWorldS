@@ -11,8 +11,6 @@ using System.Collections.Generic;
 
 public class Explosion : MonoBehaviour
 {
-	public bool shooterAISupport = false;		// Enable compatibility with Shooter AI by Gateway Games
-	public bool bloodyMessSupport = false;		// Enable compatibility with Bloody Mess by Heavy Diesel Softworks
 	public int weaponType = 0;					// Bloody Mess property
 
 	public float explosionForce = 5.0f;			// The force with which nearby objects will be blasted outwards
@@ -40,40 +38,6 @@ public class Explosion : MonoBehaviour
 
 				// The Easy Weapons health system
 				col.GetComponent<Collider>().gameObject.SendMessageUpwards("ChangeHealth", -damageAmount, SendMessageOptions.DontRequireReceiver);
-
-				// The Shooter AI health system
-				if (shooterAISupport)
-				{
-					col.transform.SendMessageUpwards("Damage", damageAmount, SendMessageOptions.DontRequireReceiver);
-				}
-
-				// Bloody Mess damage
-				if (bloodyMessSupport)
-				{
-					//call the ApplyDamage() function on the enenmy CharacterSetup script
-					if (col.gameObject.layer == LayerMask.NameToLayer("Limb"))
-					{
-						Vector3 directionShot = col.transform.position - transform.position;
-
-						//  Un-comment the following section to enable Bloody Mess support
-						/*
-						if (col.gameObject.GetComponent<Limb>())
-						{
-							RaycastHit limbHit;
-
-							if (Physics.Raycast(transform.position, directionShot, out limbHit))
-							{
-								if (limbHit.collider.gameObject.tag == col.gameObject.tag)
-								{
-									GameObject parent = col.gameObject.GetComponent<Limb>().parent;
-									CharacterSetup character = parent.GetComponent<CharacterSetup>();
-									character.ApplyDamage(damage, col.gameObject, weaponType, directionShot, Camera.main.transform.position);
-								}
-							}
-						}
-						*/
-					}
-				}
 
 
 			}

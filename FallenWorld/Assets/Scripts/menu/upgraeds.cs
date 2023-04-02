@@ -1,34 +1,120 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class upgraeds : MonoBehaviour
 {
-  private bool HaveM;
-  public  GameObject Rpanel;
-  public Text NameofP;
-  public Text DescriptionP;
-  private string nameP = "one";
-  private string desc = "two";
-  public Transform[] SkillsButons;
+    [Header("NeededToWork")]
 
-  public void test()
-  {
-    Debug.Log("1");
-    nameP = "work";
-    desc = "yea";
-    OpenDes(false);
-  }
+    private bool HaveM;
+    public  GameObject Rpanel;
+    [SerializeField] private GameObject ButtonOfBuy;
+    public Text NameofP;
+    public Text DescriptionP;
+    public Text PriceText;
+    private string nameP = "one";
+    private string desc = "two";
+    private int Price = 0;
+
+    [Header("Save")]
+
+    public GameObject[] SkillsButons;
+    public int[] ListHasBuyed = new int[50];
+    private int CountOfBuyed;
+    private int Selected;
+
+    [Header("Animation")]
+
+    [SerializeField]private Animator anim;
+
+    private void Awake()
+    {
+        CountOfBuyed = PlayerPrefs.GetInt("ListHasBuyed_count");
+        for (int i = 0; i < CountOfBuyed; i++)
+            ListHasBuyed[i] = PlayerPrefs.GetInt("ListHasBuyed_" + i);
+        for (int i = 0; i != ListHasBuyed.Length; i++)
+        {
+            SkillsButons[ListHasBuyed[i]].SetActive(true);
+        }
+    }
 
 
+    public void OpenDes(bool HaveM)
+    {
+        anim.SetBool("OpenedShop", true);
+        NameofP.text = nameP;
+        DescriptionP.text = desc;
+        PriceText.text = Price.ToString();
+        ButtonOfBuy.SetActive(true);
+    }
 
-  public void OpenDes(bool HaveM)
-  {
-    Rpanel.SetActive(true);
-    NameofP.text = nameP;
-    DescriptionP.text = desc;
+    private void SaveBuyed()
+    {
+        PlayerPrefs.SetInt("ListHasBuyed_count", ListHasBuyed.Length);
 
+        for (int i = 0; i < ListHasBuyed.Length; i++)
+            PlayerPrefs.SetInt("ListHasBuyed_" + i, ListHasBuyed[i]);
+    }
+    //button to buy
+    public void ButtonTobuy()
+    {
+        ListHasBuyed[Selected] = Selected;
+        SkillsButons[ListHasBuyed[Selected]].SetActive(true);
+        SaveBuyed();
+    }
+    // Skills to buy
+    public void FirstAid()
+    {
+        nameP = "FirstAid";
+        desc = "You take one First aid, to reastore you health. Press Q to use it.";
+        Price = 0;
+        Selected = 1;
+        OpenDes(true);//+buff damage,+buff speed,+more health
+    }
 
-  }
+    public void AnubitionOnmission()
+    {
+        nameP = "AnubitionOnmission";
+        desc = "Now In Mission Spawn Ammunition";
+        Selected = 0;
+        Price = 100;
+        OpenDes(false);
+    }
+
+    public void Rober()
+    {
+        nameP = "Master of robery";
+        desc = "you get more money";
+        Selected = 0;
+        Price = 50;
+        OpenDes(false);
+    }
+
+    public void ChangeWeaponOnBase()
+    {
+        nameP = "ArmoryOnBase";
+        desc = "you can change secondory weapon on base";
+        Selected = 0;
+        Price = 50;
+        OpenDes(false);
+    }
+
+    public void Crew()
+    {
+        nameP = "Crew";
+        desc = "You start with member of you band";
+        Selected = 0;
+        Price = 50;
+        OpenDes(true);//more damag,more defens,
+    }
+
+    public void SwanSong()
+    {
+        nameP = "Swan Song";
+        desc = "When you health = 0, you not die. You have 4 seconds to kill 3 enemis and restor health, else you die.";
+        Selected = 0;
+        Price = 200;
+        OpenDes(true);//kill 1 enemy but heath 25% and less time, restore no 50% heatl them 100% and less time, 
+    }
+
 }

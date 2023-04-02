@@ -484,16 +484,16 @@ MonoBehaviour:
   HpBar: {fileID: 0}
   fill: 0
   CountHP: {fileID: 0}
-  DeadC: {fileID: 0}
   canDie: 1
   startingHealth: 100
   maxHealth: 100
   currentHealth: 0
   deadReplacement: {fileID: 0}
   isPlayer: 0
-  MoneyForDead: 0
+  MoneyForDead: 10
   Mscore: {fileID: 4263908331889308101, guid: f18716ccefdf2434aa6bb0490c0bc5a9, type: 3}
-  deathCam: {fileID: 0}
+  Cursor: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1001 &8034596792012228004
 PrefabInstance:
   m_ObjectHideFlags: 0

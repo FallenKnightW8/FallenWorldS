@@ -18,6 +18,7 @@ public class Take : MonoBehaviour
     void Start()
     {
         TXT = GameObject.FindWithTag("Take");
+        Point = PlayerPrefs.GetInt("Points");
     }
 
     void Update()
@@ -61,6 +62,7 @@ public class Take : MonoBehaviour
         }
         else
         {
+            if (TXT != null)
             TXT.SetActive(false);
         }
     }

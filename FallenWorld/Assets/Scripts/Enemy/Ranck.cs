@@ -26,36 +26,31 @@ public class Ranck : MonoBehaviour
             case 1: //pistol,PP
                 RankH.startingHealth +=50;
                 RankH.maxHealth += 50;
-                Damag.Damage = 5;
-                MFD.MoneyForDead = 5;
+                MFD.MoneyForDead *= 2;
                 break;
 //spawn enemy
 
             case 2://shield,Rifle,shotgan
                 RankH.maxHealth += 100;
                 RankH.startingHealth +=100;
-                Damag.Damage = 10;
                 MFD.MoneyForDead = 10;
                 break;
 
             case 3://long rifle,medic,shotgan
                 RankH.maxHealth += 150;
                 RankH.startingHealth +=150;
-                Damag.Damage = 15;
                 MFD.MoneyForDead = 30;
                 break;
 
             case 4:
                 RankH.maxHealth += 200;
                 RankH.startingHealth += 200;
-                Damag.Damage = 20;
                 MFD.MoneyForDead = 60;
                 break;
 
             case 5://bosses,jager,fireman
                 RankH.maxHealth += 300;
                 RankH.startingHealth += 300;
-                Damag.Damage = 30;
                 MFD.MoneyForDead = 120;
                 break;
 

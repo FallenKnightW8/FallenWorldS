@@ -6,28 +6,28 @@ using UnityEngine.SceneManagement;
 
 public class Map : MonoBehaviour
 {
-  public GameObject Question;
+    public GameObject Question;
 
 
-  public void QuestM()
-  {
+    public void QuestM()
+    {
     Question.SetActive(true);
-  }
+    }
 
-  public void ButtonCan()
-  {
+    public void ButtonCan()
+    {
     Question.SetActive(false);
-  }
+    }
 
-  public void ButtonYes()
-  {
+    public void ButtonYes()
+    {
     Question.SetActive(false);
     StartMission();
-  }
+    }
 
-  private void StartMission()
-  {
-   SceneManager.LoadScene("Mission");
-  }
+    private void StartMission()
+    {
+    SceneManager.LoadScene("Mission");
+    }
 
 }

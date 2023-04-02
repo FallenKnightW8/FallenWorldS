@@ -9,6 +9,7 @@ public class FirstPersonCharacter : MonoBehaviour
 
 	[SerializeField] private AdvancedSettings advanced = new AdvancedSettings();        // The container for the advanced settings ( done this way so that the advanced setting are exposed under a foldout
 	[SerializeField] public bool lockCursor = true;
+	public bool lockMove = false;
 
 	[System.Serializable]
 	public class AdvancedSettings                                                       // The advanced settings
@@ -72,13 +73,18 @@ public class FirstPersonCharacter : MonoBehaviour
 
 	public void FixedUpdate ()
 	{
+		if (lockMove == false)MovePL();
+	}
+
+	public void MovePL()
+    {
 		float speed = runSpeed;
 
 		float h = Input.GetAxis("Horizontal");
 		float v = Input.GetAxis("Vertical");
 		bool jump = Input.GetButton("Jump");
 
-		input = new Vector2( h, v );
+		input = new Vector2(h, v);
 
 		// normalize input if it exceeds 1 in combined length:
 		if (input.sqrMagnitude > 1) input.Normalize();
@@ -90,7 +96,8 @@ public class FirstPersonCharacter : MonoBehaviour
 		float yv = GetComponent<Rigidbody>().velocity.y;
 
 		// add jump power
-		if (grounded && jump) {
+		if (grounded && jump)
+		{
 			yv += jumpPower;
 			grounded = false;
 		}
@@ -102,7 +109,9 @@ public class FirstPersonCharacter : MonoBehaviour
 		if (desiredMove.magnitude > 0 || !grounded)
 		{
 			GetComponent<Collider>().material = advanced.zeroFrictionMaterial;
-		} else {
+		}
+		else
+		{
 			GetComponent<Collider>().material = advanced.highFrictionMaterial;
 		}
 
@@ -113,8 +122,8 @@ public class FirstPersonCharacter : MonoBehaviour
 		Ray ray = new Ray(transform.position, -transform.up);
 
 		// Raycast slightly further than the capsule (as determined by jumpRayLength)
-		RaycastHit[] hits = Physics.RaycastAll(ray, capsule.height * jumpRayLength );
-		System.Array.Sort (hits, rayHitComparer);
+		RaycastHit[] hits = Physics.RaycastAll(ray, capsule.height * jumpRayLength);
+		System.Array.Sort(hits, rayHitComparer);
 
 
 		if (grounded || GetComponent<Rigidbody>().velocity.y < jumpPower * .5f)
@@ -132,7 +141,7 @@ public class FirstPersonCharacter : MonoBehaviour
 
 					// stick to surface - helps character stick to ground - specially when running down slopes
 					//if (rigidbody.velocity.y <= 0) {
-					GetComponent<Rigidbody>().position = Vector3.MoveTowards (GetComponent<Rigidbody>().position, hits[i].point + Vector3.up * capsule.height*.5f, Time.deltaTime * advanced.groundStickyEffect);
+					GetComponent<Rigidbody>().position = Vector3.MoveTowards(GetComponent<Rigidbody>().position, hits[i].point + Vector3.up * capsule.height * .5f, Time.deltaTime * advanced.groundStickyEffect);
 					//}
 					GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, 0, GetComponent<Rigidbody>().velocity.z);
 					break;
@@ -140,14 +149,12 @@ public class FirstPersonCharacter : MonoBehaviour
 			}
 		}
 
-		Debug.DrawRay(ray.origin, ray.direction * capsule.height * jumpRayLength, grounded ? Color.green : Color.red );
+		Debug.DrawRay(ray.origin, ray.direction * capsule.height * jumpRayLength, grounded ? Color.green : Color.red);
 
 
 		// add extra gravity
 		GetComponent<Rigidbody>().AddForce(Physics.gravity * (advanced.gravityMultiplier - 1));
 	}
-
-
 	//used for comparing distances
 	class RayHitComparer: IComparer
 	{

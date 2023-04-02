@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.466, y: -2.223, z: -3.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2810626834769247169}
   - {fileID: 2810626836771527864}
@@ -46,11 +47,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2345217938358572859}
-  - component: {fileID: 2345217938358572857}
   - component: {fileID: 2345217938358572856}
   - component: {fileID: 2345217938358572862}
   - component: {fileID: 2345217938358572863}
   - component: {fileID: 2345217938358572860}
+  - component: {fileID: -7833482096065892234}
   m_Layer: 19
   m_Name: Rooke
   m_TagString: CoopAI
@@ -68,60 +69,12 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.07, y: -3.672, z: 15.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2345217938095310065}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2345217938358572857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2345217938358572858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fa35b3c8200736468e59f5a9be5f39f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Distance: 9999994
-  visibl: 0
-  Damage: 20
-  visibilityDistance: 0
-  fieldOfViewDegrees: 0
-  agent: {fileID: 2345217938358572856}
-  CoopAI: {fileID: 0}
-  Enemy: {fileID: 0}
-  player: {fileID: 0}
-  isFreandly: 1
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 2147483647
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 2097152
-  whatIsCoop:
-    serializedVersion: 2
-    m_Bits: 524288
-  whatIsEnemy:
-    serializedVersion: 2
-    m_Bits: 262144
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 0
-  timeBetweenAttacks: 0.5
-  sightRange: 20
-  attackRange: 12
-  playerInSightRange: 0
-  playerInAttackRange: 0
-  EnemyInsightRange: 0
-  CoopAIInSightRange: 0
-  CoopAIInAttackRange: 0
-  EnemyInAttackRange: 0
-  FalletSteals: 0
-  Alarmed: {fileID: 0}
-  alarmedSignal: 0
-  timeToAllarm: 5
 --- !u!195 &2345217938358572856
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -159,18 +112,16 @@ MonoBehaviour:
   HpBar: {fileID: 0}
   fill: 0
   CountHP: {fileID: 0}
-  DeadC: {fileID: 0}
-  Dead: {fileID: 0}
   canDie: 1
   startingHealth: 100
   maxHealth: 100
   currentHealth: 0
-  replaceWhenDead: 0
   deadReplacement: {fileID: 0}
-  makeExplosion: 0
-  explosion: {fileID: 0}
   isPlayer: 0
-  deathCam: {fileID: 0}
+  MoneyForDead: 10
+  Mscore: {fileID: 0}
+  Cursor: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!136 &2345217938358572863
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -201,6 +152,55 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &-7833482096065892234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2345217938358572858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 433c5877e9bc05647b3a66e85d3f9e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 2345217938358572856}
+  Weapon: {fileID: 4146535589855044482}
+  Distance: 50
+  Damage: 100
+  TimeReload: 3
+  Enemy: {fileID: 0}
+--- !u!1 &4146535589855044482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4294946260171706154}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4294946260171706154
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4146535589855044482}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.297, y: -0.143, z: -0.015}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1357628599892493807}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &2345217938066193235
 PrefabInstance:
   m_ObjectHideFlags: 0

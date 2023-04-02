@@ -9,8 +9,6 @@ public class Health : MonoBehaviour
 
 	private Mission countOfdeads;
 
-	public GameObject DeadC;
-
 	public bool canDie = true;					// Whether or not this health can die
 
 	public float startingHealth = 50.0f;		// The amount of health to start with
@@ -21,10 +19,11 @@ public class Health : MonoBehaviour
 
 	public bool isPlayer = false;				// Whether or not this health is the player
 
-	public int MoneyForDead;
+	public int MoneyForDead = 10;
 	public Take Mscore;
 
-	[SerializeField]private GameObject deathCam;					// The camera to activate when the player dies
+	[SerializeField] private FirstPersonCharacter Cursor;
+	[SerializeField]private Animator anim;
 
 	private bool dead = false;					// Used to make sure the Die() function isn't called twice
 	// Use this for initialization
@@ -76,15 +75,20 @@ public class Health : MonoBehaviour
 
 		if (isPlayer == true)
 		{
-			if (isPlayer && deathCam != null)
+			if (isPlayer)
 			{
-				Time.timeScale = 0f;
-				DeadC.SetActive(true);
-				deathCam.SetActive(true);
-				Cursor.lockState = CursorLockMode.None;
+				anim.SetBool("IsDead",true);
 			}
 		}
+        else
+        {
+			Destroy(gameObject);
+		}
 		// Remove this GameObject from the scene
-		Destroy(gameObject);
+	}
+	public void DeadPlayer()
+    {
+		Cursor.lockCursor = false;
+		Time.timeScale = 0f;
 	}
 }

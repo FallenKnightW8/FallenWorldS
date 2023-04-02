@@ -2,11 +2,10 @@
 using UnityEngine.AI;
 using System.Collections;
 public abstract class EnemyAiTutorial : MonoBehaviour
-{   //^^^abstract
-//    public GameObject FR;
+{  
     public float Distance;
 
-    public int Damage;
+    public int Damage = 5;
 
     public float TimeReload = 3;
     protected bool canShot = true;
@@ -20,9 +19,7 @@ public abstract class EnemyAiTutorial : MonoBehaviour
     public NavMeshAgent agent;
 //    public Animation anim;
 
-    public Transform CoopAI,Enemy, FollowPL,player;
-
-    public bool isFreandly = false;
+    public Transform CoopAI,Enemy,player;
 
     private void Awake()
     {
@@ -33,13 +30,16 @@ public abstract class EnemyAiTutorial : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        transform.LookAt(player);
         EnemyS();
+        if (Enemy != null)
+            transform.LookAt(Enemy);
+        else
+            Enemy = player;
     }
 
     //    IEnumerator AttackPlayer(float timeToShot)
     protected virtual void AttacPlayer()
-    {
+    { 
         Ray ray = new Ray(Weapon.transform.position, Weapon.transform.forward);
         RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Distance))
@@ -47,6 +47,8 @@ public abstract class EnemyAiTutorial : MonoBehaviour
             hit.collider.gameObject.SendMessageUpwards("ChangeHealth", -Damage, SendMessageOptions.DontRequireReceiver);
             canShot = false;
             }
+            else
+            agent.SetDestination(Enemy.position);
     }
     protected virtual void EnemyS()
     {
@@ -57,15 +59,21 @@ public abstract class EnemyAiTutorial : MonoBehaviour
             // Detect if player is within the field of view
             if (Physics.Raycast(transform.position, rayDirection, out hit, visibilityDistance))
             {
-                if ((hit.transform.CompareTag("Player") || hit.transform.CompareTag("CoopAi")) && canShot) 
+                if ((hit.transform.CompareTag("Player") || hit.transform.CompareTag("CoopAI")) && canShot) 
                 {
                     //                    StartCoroutine(AttackPlayer(timeToShot));
-                    Debug.Log("attack");
+//                    Debug.Log("attack");
+                    if (hit.transform.CompareTag("Player")) Enemy = player;
+                    else
+                    {
+                        CoopAI = hit.transform;
+                        Enemy = CoopAI;
+                    }
                     AttacPlayer();
                 }
                 else
                 {
-                    Debug.Log("reload");
+//                    Debug.Log("reload");
                     StartCoroutine(Reload(TimeReload));
                 }
 //else if (hit.transform.CompareTag(""))
