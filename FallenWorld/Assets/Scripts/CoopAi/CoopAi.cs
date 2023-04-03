@@ -22,7 +22,6 @@ public abstract class CoopAi : MonoBehaviour
 
     private void Update()
     {
-        transform.LookAt(Enemy);
         Enemy = GameObject.FindWithTag("Enemy").transform;
         //        Enemy = GameObject.FindWithTag("Enemy").transform;
         Coop();
@@ -41,6 +40,7 @@ public abstract class CoopAi : MonoBehaviour
                 {
                     Enemy = hit.transform;
                     AttacEnemy();
+                    transform.LookAt(Enemy);
                 }
                 else if (!hit.transform.CompareTag("Enemy") && canShot)
                 {
@@ -50,7 +50,6 @@ public abstract class CoopAi : MonoBehaviour
                 {
                     StartCoroutine(Reload(TimeReload));
                 }
-                //else if (hit.transform.CompareTag(""))
             }
         }
     }

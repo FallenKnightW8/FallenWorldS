@@ -164,12 +164,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 433c5877e9bc05647b3a66e85d3f9e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 2345217938358572856}
-  Weapon: {fileID: 4146535589855044482}
   Distance: 50
-  Damage: 100
-  TimeReload: 3
+  Damage: 10
+  TimeReload: 1
+  Weapon: {fileID: 4146535589855044482}
+  queue: 2
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 0
+  agent: {fileID: 2345217938358572856}
+  CoopAI: {fileID: 0}
   Enemy: {fileID: 0}
+  player: {fileID: 0}
+  IsFreand: 1
 --- !u!1 &4146535589855044482
 GameObject:
   m_ObjectHideFlags: 0

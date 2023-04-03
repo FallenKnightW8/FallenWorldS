@@ -4902,6 +4902,7 @@ MonoBehaviour:
     highFrictionMaterial: {fileID: 0}
     groundStickyEffect: 5
   lockCursor: 1
+  lockMove: 0
 --- !u!114 &1680082402794608390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4959,7 +4960,6 @@ MonoBehaviour:
   HpBar: {fileID: 165806468}
   fill: 0
   CountHP: {fileID: 210456664}
-  DeadC: {fileID: 1462908560}
   canDie: 1
   startingHealth: 100
   maxHealth: 100
@@ -4968,7 +4968,6 @@ MonoBehaviour:
   isPlayer: 1
   MoneyForDead: 0
   Mscore: {fileID: 0}
-  deathCam: {fileID: 0}
   Cursor: {fileID: 1680082402794608388}
   anim: {fileID: 0}
 --- !u!114 &3709731098551926453
@@ -4989,7 +4988,6 @@ MonoBehaviour:
   Hp: {fileID: 1680082402794711938}
   CountAids: {fileID: 695466028}
   Guy0: {fileID: 2345217938358572858, guid: 2f878cc50271fae4c8ebc8f1b76b5b32, type: 3}
-  Distance: 1
   countR: 0
   CountsCH: {fileID: 2087982866}
   CallHelpButton: 103

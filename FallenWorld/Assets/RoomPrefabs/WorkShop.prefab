@@ -133,6 +133,7 @@ MonoBehaviour:
   spawns: []
   prefabToSpawn: {fileID: 0}
   BlockMeshes: []
+  IsStarterRoom: 0
 --- !u!1 &151151339875498152
 GameObject:
   m_ObjectHideFlags: 0

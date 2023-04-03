@@ -13,13 +13,17 @@ public abstract class EnemyAiTutorial : MonoBehaviour
     public GameObject Weapon;
 
     private float visibilityDistance = 50;
-    private float fieldOfViewDegrees = 180;
+    private float fieldOfViewDegrees = 360;
     public int queue;
+
+    public LayerMask whatIsEnemy;
 
     public NavMeshAgent agent;
 //    public Animation anim;
 
     public Transform CoopAI,Enemy,player;
+
+    [SerializeField] protected bool IsFreand;
 
     private void Awake()
     {
@@ -27,17 +31,21 @@ public abstract class EnemyAiTutorial : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("MainCamera").transform;
 //        StartCoroutine(CorotineAttack);
-    }
+        if(IsFreand)
+        fieldOfViewDegrees = 360;
+}
     private void FixedUpdate()
     {
-        EnemyS();
+        if (IsFreand)
+        {
+            Enemy = GameObject.FindWithTag("Enemy").transform;
+            Coop();
+        }
+        else EnemyS();
         if (Enemy != null)
             transform.LookAt(Enemy);
-        else
-            Enemy = player;
     }
 
-    //    IEnumerator AttackPlayer(float timeToShot)
     protected virtual void AttacPlayer()
     { 
         Ray ray = new Ray(Weapon.transform.position, Weapon.transform.forward);
@@ -61,8 +69,6 @@ public abstract class EnemyAiTutorial : MonoBehaviour
             {
                 if ((hit.transform.CompareTag("Player") || hit.transform.CompareTag("CoopAI")) && canShot) 
                 {
-                    //                    StartCoroutine(AttackPlayer(timeToShot));
-//                    Debug.Log("attack");
                     if (hit.transform.CompareTag("Player")) Enemy = player;
                     else
                     {
@@ -73,10 +79,33 @@ public abstract class EnemyAiTutorial : MonoBehaviour
                 }
                 else
                 {
-//                    Debug.Log("reload");
                     StartCoroutine(Reload(TimeReload));
                 }
-//else if (hit.transform.CompareTag(""))
+            }
+        }
+    }
+
+    protected virtual void Coop()
+    {
+        RaycastHit hit;
+        Vector3 rayDirection = Enemy.transform.position - transform.position;
+        if ((Vector3.Angle(transform.position, transform.forward*50)) <= fieldOfViewDegrees * 0.5f)
+        {
+            if (Physics.Raycast(transform.position, rayDirection, out hit, visibilityDistance))
+            {
+                if (hit.transform.CompareTag("Enemy") && canShot)
+                {
+                    if (hit.transform.CompareTag("Enemy")) Enemy = hit.transform;
+                    AttacPlayer();
+                }
+                else if(!hit.transform.CompareTag("Enemy") && canShot)
+                {
+                    agent.SetDestination(Enemy.position);
+                }
+                else
+                {
+                    StartCoroutine(Reload(TimeReload));
+                }
             }
         }
     }

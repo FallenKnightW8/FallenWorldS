@@ -12,6 +12,7 @@ public class RoomsPlacer : MonoBehaviour
     public Room[] RoomPrefabs;
     public Room[] RoomPrGuns;
     public Room[] RoomPrCooc;
+    public Room[] BoosFight;
     private int TypeRoom;
     private int RandomChoiseRoom;
     private bool spwnedBossRoom = false;
@@ -24,11 +25,14 @@ public class RoomsPlacer : MonoBehaviour
     public int RoomsAera;
     public int CountOfRooms;
 
+
     private void Start()
     {
         spawnedRooms = new Room[RoomsAera, RoomsAera];
         spawnedRooms[0, 1] = StartingRoom;
-
+        if (PlayerPrefs.GetInt("countOFmissionReady") >= 5)
+            TypeRoom = 2;
+        else
         TypeRoom = Random.Range(0,1);
         switch (TypeRoom)
         {
@@ -42,11 +46,19 @@ public class RoomsPlacer : MonoBehaviour
         {
             for (int i=0; i!= RoomPrCooc.Length;i++)
             {
-                RoomPrefabs[i] = RoomPrGuns[i];
+                RoomPrefabs[i] = RoomPrCooc[i];
             }
             break;
             }
-        default:
+            case 2:
+                {
+                    for (int i = 0; i != RoomPrCooc.Length; i++)
+                    {
+                        RoomPrefabs[i] = BoosFight[i];
+                    }
+                    break;
+                }
+            default:
         break;
         }
 

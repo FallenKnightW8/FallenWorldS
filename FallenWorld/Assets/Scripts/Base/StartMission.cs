@@ -6,7 +6,7 @@ using TMPro;
 
 public class StartMission : MonoBehaviour
 {
-    private float TimeToStart = 10f;
+    public float TimeToStart = 3f;
     private float time;
     private float timeRound;
     [SerializeField] private GameObject textGO;
@@ -23,7 +23,7 @@ public class StartMission : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         started = true;
-        time = 11;
+        time = 3;
         textGO.SetActive(true);
         StartCoroutine(StartingM());
     }
@@ -32,7 +32,7 @@ public class StartMission : MonoBehaviour
         if(started == true)
         {
             time -= Time.deltaTime;
-            timeRound = Mathf.Round(time);
+            timeRound = time;
             TextTime.text ="Time to start = " + timeRound.ToString();
         }
     }

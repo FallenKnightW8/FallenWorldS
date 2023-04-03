@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
-using System.Collections.Generic;
 
 public class Settings : MonoBehaviour
 {

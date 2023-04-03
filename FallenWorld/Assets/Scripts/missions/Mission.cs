@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -33,6 +34,9 @@ public class Mission : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(BakeMission());
+        if (PlayerPrefs.GetInt("countOFmissionReady") != 0)
+            countOFmissionReady = PlayerPrefs.GetInt("countOFmissionReady");
         SavePlPoints = GameObject.Find("PlayerObj").GetComponent<Take>();
         Locks = GameObject.Find("PlayerObj").GetComponent<FirstPersonCharacter>();
         RewardFPass *=  RangOfM;
@@ -46,6 +50,13 @@ public class Mission : MonoBehaviour
         }
         RandomType();
 
+    }
+
+    private IEnumerator BakeMission()
+    {
+        yield return new WaitForSeconds(1f);
+        GetComponent<NavMeshSurface>().BuildNavMesh();
+        StopAllCoroutines();
     }
 
     private void Update()
@@ -94,6 +105,7 @@ public class Mission : MonoBehaviour
         SavePlPoints.Point += RewardFPass;
         PlayerPrefs.SetInt("CountOfreadM", countOFmissionReady);
         SavePlPoints.SaveMoney();
+        PlayerPrefs.SetInt("countOFmissionReady", countOFmissionReady);
         SceneManager.LoadScene("RoomB");
     }
     private void TimerOnMisssion()

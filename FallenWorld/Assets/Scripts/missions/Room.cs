@@ -1,6 +1,5 @@
 using UnityEngine;
-//using UnityEngine.AI;
-using UnityEditor.AI;
+//using UnityEditor.AI;
 
 public class Room : MonoBehaviour
 {
@@ -14,13 +13,15 @@ public class Room : MonoBehaviour
     public GameObject prefabToSpawn;
     private int RandomSp;
 
-    public NavMeshBuilder NavMeshBuilder;
+//    public NavMeshBuilder NavMeshBuilder;
 
     public Mesh[] BlockMeshes;
+    [SerializeField] private bool IsStarterRoom = false;
+
 
     private void Start()
     {
-        NavMeshBuilder.BuildNavMesh();
+        //        NavMeshBuilder.BuildNavMesh();
         RandomSp = Random.Range(0,spawns.Length);
         SetSpawn(RandomSp);
 
@@ -61,9 +62,12 @@ public class Room : MonoBehaviour
     }
     void Spawn()
     {
-        if (prefabToSpawn != null)
+        if (prefabToSpawn != null && !IsStarterRoom)
         {
-            // Instantiate the prefab
+            Instantiate(prefabToSpawn, ActiveSpawn.transform.position, Quaternion.identity);
+        }
+        else if(prefabToSpawn != null && IsStarterRoom && PlayerPrefs.GetInt("ListHasBuyed_6") == 6)
+        {
             Instantiate(prefabToSpawn, ActiveSpawn.transform.position, Quaternion.identity);
         }
     }

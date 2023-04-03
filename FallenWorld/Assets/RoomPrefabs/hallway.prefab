@@ -514,6 +514,7 @@ MonoBehaviour:
   prefabToSpawn: {fileID: 6915698731029895148, guid: 84ebb551dc4e591469fc7b7fff25e85a,
     type: 3}
   BlockMeshes: []
+  IsStarterRoom: 0
 --- !u!65 &1419995545648734000
 BoxCollider:
   m_ObjectHideFlags: 0
