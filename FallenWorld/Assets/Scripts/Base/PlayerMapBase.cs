@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMapBase : MonoBehaviour
@@ -7,12 +6,13 @@ public class PlayerMapBase : MonoBehaviour
     public KeyCode JobButton;
     public KeyCode CloseButon;
 
-    public int isTRue = 0;
+    private int isTRue = 0;
 
     public GameObject TXT;
 
     public GameObject MapB;
     public GameObject Table;
+    public GameObject Cruew;
 
     public ChangeWeaponOnBase job;
 
@@ -47,6 +47,10 @@ public class PlayerMapBase : MonoBehaviour
             {
                 pc();
             }
+            else if (hit.collider.GetComponent<crewChoise>())
+            {
+                Crew();
+            }
         }
         else
         {
@@ -55,18 +59,31 @@ public class PlayerMapBase : MonoBehaviour
 
     }
 
+    private void Enter()
+    {
+        isTRue = 1;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        player.GetComponent<FirstPersonCharacter>().lockCursor = false;
+        player.GetComponent<FirstPersonCharacter>().lockMove = true;
+    }
+
     public void pc()
     {
         TXT.SetActive(true);
         if (Input.GetKeyDown(JobButton))
         {
-
-            isTRue = 1;
             Table.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            player.GetComponent<FirstPersonCharacter>().lockCursor = false;
-            player.GetComponent<FirstPersonCharacter>().lockMove = true;
+            Enter();
+        }
+    }    public void Crew()
+    {
+        TXT.SetActive(true);
+        if (Input.GetKeyDown(JobButton))
+        {
+
+            Cruew.SetActive(true);
+            Enter();
         }
     }
         public void Map()
@@ -74,14 +91,8 @@ public class PlayerMapBase : MonoBehaviour
         TXT.SetActive(true);
         if (Input.GetKeyDown(JobButton))
         {
-            isTRue = 1;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
             MapB.SetActive(true);
-            TXT.SetActive(false);
-            player.GetComponent<FirstPersonCharacter>().lockCursor = true;
-//            player.GetComponent<FirstPersonMovement>().CanMove = false;
-//            player.GetComponent<FirstPersonLook>().canM = false;
+            Enter();
         }
     }
 
@@ -90,6 +101,7 @@ public class PlayerMapBase : MonoBehaviour
         isTRue = 0;
         MapB.SetActive(false);
         Table.SetActive(false);
+        Cruew.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         player.GetComponent<FirstPersonCharacter>().lockCursor = true;

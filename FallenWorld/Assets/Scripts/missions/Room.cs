@@ -16,7 +16,6 @@ public class Room : MonoBehaviour
 //    public NavMeshBuilder NavMeshBuilder;
 
     public Mesh[] BlockMeshes;
-    [SerializeField] private bool IsStarterRoom = false;
 
 
     private void Start()
@@ -62,11 +61,7 @@ public class Room : MonoBehaviour
     }
     void Spawn()
     {
-        if (prefabToSpawn != null && !IsStarterRoom)
-        {
-            Instantiate(prefabToSpawn, ActiveSpawn.transform.position, Quaternion.identity);
-        }
-        else if(prefabToSpawn != null && IsStarterRoom && PlayerPrefs.GetInt("ListHasBuyed_6") == 6)
+        if (prefabToSpawn != null && spawns[0] != null)
         {
             Instantiate(prefabToSpawn, ActiveSpawn.transform.position, Quaternion.identity);
         }

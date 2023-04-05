@@ -22,8 +22,5 @@ public class PC : MonoBehaviour
     Upg.SetActive(true);
     Pc.SetActive(false);
   }
-  private void Close()
-  {
-    TRUE.isTRue = 0;
-  }
+
 }

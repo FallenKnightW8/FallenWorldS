@@ -118,7 +118,7 @@ MonoBehaviour:
   currentHealth: 0
   deadReplacement: {fileID: 0}
   isPlayer: 0
-  MoneyForDead: 10
+  MoneyForDead: 0
   Mscore: {fileID: 0}
   Cursor: {fileID: 0}
   anim: {fileID: 0}
