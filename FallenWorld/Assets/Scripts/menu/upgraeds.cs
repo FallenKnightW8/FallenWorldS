@@ -73,7 +73,6 @@ public class upgraeds : MonoBehaviour
         HavePoints.SaveMoney();
         ListHasBuyed[Selected] = Selected;
         SkillsButons[ListHasBuyed[Selected]].SetActive(true);
-
         SaveBuyed();
     }
     // Skills to buy
@@ -95,10 +94,10 @@ public class upgraeds : MonoBehaviour
         OpenDes(false);
     }
 
-    public void Rober()
+    public void Shield()
     {
-        nameP = "Master of robery";
-        desc = "you get more money";
+        nameP = "Shield man";
+        desc = "Now you can choise a Man with shield";
         Selected = 7;
         Price = 200;
         OpenDes(false);

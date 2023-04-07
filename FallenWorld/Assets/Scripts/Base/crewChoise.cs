@@ -10,14 +10,21 @@ public class crewChoise : MonoBehaviour
     [SerializeField] private Image Second;
     [SerializeField] private Image Thret;
     [SerializeField] private Image Fourth;
-    [SerializeField] private Image[] ColectionOfMembers;
+    [SerializeField] private GameObject[] ColectionOfMembers;
     [Header("Buton Part")]
     [SerializeField] private GameObject TheButtonsOfchoise;
+    [SerializeField] private GameObject Shield;
 
     [Header("Logic")]
     private int ToSaveMember;
     private int ToSaveSlot;
 
+
+    private void Start()
+    {
+        if (PlayerPrefs.GetInt("ListHasBuyed_6") == 6) Shield.SetActive(true);
+
+    }
     public void buttonOfChois(int Value)
     {
         TheButtonsOfchoise.SetActive(true);
