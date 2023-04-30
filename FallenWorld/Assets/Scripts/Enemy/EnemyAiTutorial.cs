@@ -69,11 +69,14 @@ public abstract class EnemyAiTutorial : MonoBehaviour
             {
                 if ((hit.transform.CompareTag("Player") || hit.transform.CompareTag("CoopAI")) && canShot) 
                 {
-                    if (hit.transform.CompareTag("Player")) Enemy = player;
-                    else
+                    if (hit.transform.CompareTag("CoopAI"))
                     {
                         CoopAI = hit.transform;
                         Enemy = CoopAI;
+                    }
+                    else
+                    {
+                        Enemy = player;
                     }
                     AttacPlayer();
                 }

@@ -789,7 +789,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 120126944}
   RoomPrGuns:
-  - {fileID: 1235851321}
+  - {fileID: 151151338939420374, guid: 38e79d9bd05798847bc76d11c184cb9b, type: 3}
   - {fileID: 8421143775597486715, guid: 780282341c83d4b4e8ca3388b0dd8511, type: 3}
   RoomPrCooc:
   - {fileID: 6706611388112720866, guid: 97b2ec0d466e1254fb198597a76f28fa, type: 3}
@@ -983,18 +983,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113774116}
   m_CullTransparentMesh: 1
---- !u!114 &1235851321 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 151151338939420374, guid: 38e79d9bd05798847bc76d11c184cb9b,
-    type: 3}
-  m_PrefabInstance: {fileID: 151151339888875247}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee5157c7284f6e14faaea8ac85fc9f47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1239612315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1954,6 +1942,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WorkShop
       objectReference: {fileID: 0}
+    - target: {fileID: 151151338939420379, guid: 38e79d9bd05798847bc76d11c184cb9b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38e79d9bd05798847bc76d11c184cb9b, type: 3}
 --- !u!1001 &3218031289068859778
@@ -2174,6 +2167,7 @@ MonoBehaviour:
   PrefabsToSpawns:
   - {fileID: 2345217938358572858, guid: 2f878cc50271fae4c8ebc8f1b76b5b32, type: 3}
   - {fileID: 2345217938358572858, guid: 2f878cc50271fae4c8ebc8f1b76b5b32, type: 3}
+  - {fileID: 2811564270838956143, guid: c169dcee89c8a8144b99c5072ab283e7, type: 3}
 --- !u!1001 &3345082656193190960
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class crewChoise : MonoBehaviour
     [SerializeField] private Image Second;
     [SerializeField] private Image Thret;
     [SerializeField] private Image Fourth;
-    [SerializeField] private GameObject[] ColectionOfMembers;
+    [SerializeField] private Sprite[] ColectionOfMembers;
     [Header("Buton Part")]
     [SerializeField] private GameObject TheButtonsOfchoise;
     [SerializeField] private GameObject Shield;
@@ -18,6 +18,7 @@ public class crewChoise : MonoBehaviour
     [Header("Logic")]
     private int ToSaveMember;
     private int ToSaveSlot;
+    private Sprite ToChange;
 
 
     private void Start()
@@ -29,6 +30,7 @@ public class crewChoise : MonoBehaviour
     {
         TheButtonsOfchoise.SetActive(true);
         ToSaveMember = Value;
+        ToChange = ColectionOfMembers[Value];
     }
 
     public void ButtonOfSlotMember(int Value)
@@ -36,6 +38,21 @@ public class crewChoise : MonoBehaviour
         ToSaveSlot = Value;
         SaveTheChoise();
         TheButtonsOfchoise.SetActive(false);
+        switch (Value)
+        {
+            case 1:
+                First.sprite = ToChange;
+                break;
+            case 2:
+                Second.sprite = ToChange;
+                break;
+            case 3:
+                Thret.sprite = ToChange;
+                break;
+            case 4:
+                Fourth.sprite = ToChange;
+                break;
+        }
     }
 
     private void SaveTheChoise()

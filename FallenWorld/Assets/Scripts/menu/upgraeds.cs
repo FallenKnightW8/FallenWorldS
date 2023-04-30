@@ -57,6 +57,11 @@ public class upgraeds : MonoBehaviour
             PriceText.GetComponent<Text>().color = new Color(0, 255, 0);
             ButtonOfBuy.SetActive(true);
         }
+        if(HaveM)
+        {
+            for(int i = 0; i != 3;i++)
+            GameObject.FindWithTag("additional").SetActive(true);
+        }
     }
 
     private void SaveBuyed()
@@ -85,6 +90,14 @@ public class upgraeds : MonoBehaviour
         OpenDes(true);//+buff damage,+buff speed,+more health
     }
 
+    public void Armor1()
+    {
+        nameP = "Light Armor";
+        desc = "You have 100 points of armor";
+        Price = 100;
+        Selected = 2;
+        OpenDes(false);
+    }
     public void AnubitionOnmission()
     {
         nameP = "AnubitionOnmission";
@@ -100,7 +113,7 @@ public class upgraeds : MonoBehaviour
         desc = "Now you can choise a Man with shield";
         Selected = 7;
         Price = 200;
-        OpenDes(false);
+        OpenDes(true);
     }
 
     public void ChangeWeaponOnBase()
