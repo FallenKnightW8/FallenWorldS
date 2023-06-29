@@ -110,13 +110,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HpBar: {fileID: 0}
-  fill: 0
+  ArmorBar: {fileID: 0}
   CountHP: {fileID: 0}
+  Enemy: {fileID: 0}
   canDie: 1
   startingHealth: 100
   maxHealth: 100
   currentHealth: 0
-  deadReplacement: {fileID: 0}
+  ArmorCount: 0
   isPlayer: 0
   MoneyForDead: 0
   Mscore: {fileID: 0}
@@ -166,6 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 50
   Damage: 10
+  DistanceToAttack: 3
   TimeReload: 1
   Weapon: {fileID: 4146535589855044482}
   queue: 2
@@ -174,8 +176,11 @@ MonoBehaviour:
     m_Bits: 0
   agent: {fileID: 2345217938358572856}
   CoopAI: {fileID: 0}
-  Enemy: {fileID: 0}
   player: {fileID: 0}
+  CurentTarget: {fileID: 0}
+  FindEnemys: []
+  Enemy:
+  - {fileID: 0}
   IsFreand: 1
 --- !u!1 &4146535589855044482
 GameObject:

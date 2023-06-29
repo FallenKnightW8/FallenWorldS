@@ -449,7 +449,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Distance: 5
-  Damage: 5
+  Damage: 10
+  DistanceToAttack: 2
   TimeReload: 2
   Weapon: {fileID: 323441895977529092}
   queue: 1
@@ -458,8 +459,11 @@ MonoBehaviour:
     m_Bits: 0
   agent: {fileID: 7749337203344140719}
   CoopAI: {fileID: 0}
-  Enemy: {fileID: 0}
   player: {fileID: 0}
+  CurentTarget: {fileID: 0}
+  FindEnemys: []
+  Enemy:
+  - {fileID: 0}
   IsFreand: 0
 --- !u!195 &7749337203344140719
 NavMeshAgent:

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnCoop : MonoBehaviour
@@ -12,7 +10,9 @@ public class SpawnCoop : MonoBehaviour
         for (int i = 1; i!=5;i++)
         {
             if (PlayerPrefs.GetInt("SaveMember" + i) != 0)
-                Instantiate(PrefabsToSpawns[PlayerPrefs.GetInt("SaveMember" + i)], Spawns[i-1].transform.position, Quaternion.identity);
+            {
+                Instantiate(PrefabsToSpawns[PlayerPrefs.GetInt("SaveMember" + i)], Spawns[i - 1].transform.position, Quaternion.identity);
+            }
             else break;
         }
     }

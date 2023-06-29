@@ -11,7 +11,7 @@ public class GrenadeLauncher : EnemyAiTutorial
         base.EnemyS();
     }
 
-    protected override void AttacPlayer()
+    protected override void Attack()
     {
         transform.LookAt(player);
         {

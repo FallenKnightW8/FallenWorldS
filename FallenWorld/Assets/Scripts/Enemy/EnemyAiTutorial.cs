@@ -1,12 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
 public abstract class EnemyAiTutorial : MonoBehaviour
-{  
+{
     public float Distance;
 
     public int Damage = 5;
-
+    public float DistanceToAttack;
     public float TimeReload = 3;
     protected bool canShot = true;
 
@@ -19,67 +19,69 @@ public abstract class EnemyAiTutorial : MonoBehaviour
     public LayerMask whatIsEnemy;
 
     public NavMeshAgent agent;
-//    public Animation anim;
+    //    public Animation anim;
 
-    public Transform CoopAI,Enemy,player;
+    public Transform CoopAI, player,CurentTarget;
+    public GameObject[] FindEnemys;
+    public Transform[] Enemy;
 
     [SerializeField] protected bool IsFreand;
 
     private void Awake()
     {
-//        anim = GetComponent<Animator>();
+        //        anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("MainCamera").transform;
-//        StartCoroutine(CorotineAttack);
-        if(IsFreand)
-        fieldOfViewDegrees = 360;
-}
-    private void FixedUpdate()
-    {
+        //        StartCoroutine(CorotineAttack);
+        if (IsFreand)
+            fieldOfViewDegrees = 360;
         if (IsFreand)
         {
-            Enemy = GameObject.FindWithTag("Enemy").transform;
+            FindEnemys = new GameObject[30];
+            Enemy = new Transform[30];
+        }
+        else
+        {
+            FindEnemys = new GameObject[4];
+            Enemy = new Transform[5];
+        }
+    }
+    private void FixedUpdate()
+    {
+        WhoClosed();
+        if (IsFreand)
+        {
             Coop();
         }
-        else EnemyS();
-        if (Enemy != null)
-            transform.LookAt(Enemy);
+        else
+        {
+            EnemyS(); 
+        }
+        if (CurentTarget != null)
+            transform.LookAt(CurentTarget);
     }
-
-    protected virtual void AttacPlayer()
-    { 
-        Ray ray = new Ray(Weapon.transform.position, Weapon.transform.forward);
-        RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Distance))
-            {
+    protected virtual void Attack()
+    {
+        if (Physics.Raycast(new Ray(Weapon.transform.position, Weapon.transform.forward), out RaycastHit hit, Distance))
+        {
             hit.collider.gameObject.SendMessageUpwards("ChangeHealth", -Damage, SendMessageOptions.DontRequireReceiver);
             canShot = false;
-            }
-            else
-            agent.SetDestination(Enemy.position);
+        }
     }
     protected virtual void EnemyS()
     {
-        RaycastHit hit;
-        Vector3 rayDirection = player.transform.position - transform.position;
+        Vector3 rayDirection = CurentTarget.transform.position - transform.position;
         if ((Vector3.Angle(rayDirection, transform.forward)) <= fieldOfViewDegrees * 0.5f)
         {
             // Detect if player is within the field of view
-            if (Physics.Raycast(transform.position, rayDirection, out hit, visibilityDistance))
+            if (Physics.Raycast(transform.position, rayDirection, out RaycastHit hit, visibilityDistance))
             {
-                if ((hit.transform.CompareTag("Player") || hit.transform.CompareTag("CoopAI")) && canShot) 
+                if ((hit.transform.CompareTag("Player") || hit.transform.CompareTag("CoopAI")) && canShot)
                 {
-                    if (hit.transform.CompareTag("CoopAI"))
-                    {
-                        CoopAI = hit.transform;
-                        Enemy = CoopAI;
-                    }
-                    else
-                    {
-                        Enemy = player;
-                    }
-                    AttacPlayer();
+                    Attack();
                 }
+                else if((!hit.transform.CompareTag("Player") && !hit.transform.CompareTag("CoopAI")) && canShot)
+                    Moving();
                 else
                 {
                     StartCoroutine(Reload(TimeReload));
@@ -87,32 +89,63 @@ public abstract class EnemyAiTutorial : MonoBehaviour
             }
         }
     }
+    private void WhoClosed()
+    {
+        float x;
+        int y = 0;
+        if (!IsFreand)
+        {
+            FindEnemys = GameObject.FindGameObjectsWithTag("CoopAI");
+            Enemy[0] = player;
+            x = Vector3.Distance(Enemy[0].position, this.transform.position);
+        }
+        else
+        {
+            FindEnemys = GameObject.FindGameObjectsWithTag("Enemy");
+            Enemy[0] = GameObject.FindWithTag("Enemy").transform;
+            x = Vector3.Distance(Enemy[0].position, this.transform.position);
+        }
+        for (int i=0; i!= FindEnemys.Length; i++)
+        {
+            Enemy[i+1] = FindEnemys[i].transform;
+        }
 
+        for (int i=1;i!= FindEnemys.Length; i++)
+        {
+            if (x > Vector3.Distance(Enemy[i].position, this.transform.position)) 
+            {
+                x = Vector3.Distance(Enemy[i].position, this.transform.position);
+                y = i;
+            }
+        CurentTarget = Enemy[y];
+
+        }
+    }
+    private void Moving()
+    {
+        if (Vector3.Distance(CurentTarget.transform.position, this.transform.position) >= DistanceToAttack)
+        {
+            agent.destination = (CurentTarget.transform.position);
+        }
+        else
+            agent.SetDestination(this.transform.position);
+    }
     protected virtual void Coop()
     {
-        RaycastHit hit;
-        Vector3 rayDirection = Enemy.transform.position - transform.position;
-        if ((Vector3.Angle(transform.position, transform.forward*50)) <= fieldOfViewDegrees * 0.5f)
+        Vector3 rayDirection = CurentTarget.transform.position - transform.position;
+        if ((Vector3.Angle(transform.position, transform.forward * 50)) <= fieldOfViewDegrees * 0.5f)
         {
-            if (Physics.Raycast(transform.position, rayDirection, out hit, visibilityDistance))
+            if (Physics.Raycast(transform.position, rayDirection, out RaycastHit hit, visibilityDistance))
             {
                 if (hit.transform.CompareTag("Enemy") && canShot)
-                {
-                    if (hit.transform.CompareTag("Enemy")) Enemy = hit.transform;
-                    AttacPlayer();
-                }
-                else if(!hit.transform.CompareTag("Enemy") && canShot)
-                {
-                    agent.SetDestination(Enemy.position);
-                }
+                    Attack();
+                else if (!hit.transform.CompareTag("Enemy") && canShot)
+                    Moving();
                 else
-                {
                     StartCoroutine(Reload(TimeReload));
-                }
             }
         }
     }
-
     IEnumerator Reload(float TimeReload)
     {
         yield return new WaitForSeconds(TimeReload);
