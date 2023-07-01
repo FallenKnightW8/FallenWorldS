@@ -140,7 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f3d65b96cc3f7f43beba4b5ad55d727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rank: 1
+  IsBoss: 1
+  Rank: 4
   RankH: {fileID: 1022743996787396049}
   Damag: {fileID: 6758899755672320588}
   MFD: {fileID: 1022743996787396049}
@@ -163,8 +164,8 @@ MonoBehaviour:
   CountHP: {fileID: 0}
   Enemy: {fileID: 0}
   canDie: 1
-  startingHealth: 1000
-  maxHealth: 1000
+  startingHealth: 800
+  maxHealth: 800
   currentHealth: 0
   ArmorCount: 0
   isPlayer: 0

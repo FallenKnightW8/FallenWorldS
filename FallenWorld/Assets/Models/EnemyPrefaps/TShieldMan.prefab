@@ -436,6 +436,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4554053750097505706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770118951149528683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f3d65b96cc3f7f43beba4b5ad55d727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rank: 1
+  RankH: {fileID: 271033978}
+  Damag: {fileID: 7721222458993085562}
+  MFD: {fileID: 271033978}
+  EnemyModels: []
+  countOFEnemis: {fileID: 0}
 --- !u!114 &7721222458993085562
 MonoBehaviour:
   m_ObjectHideFlags: 0
